@@ -1,0 +1,154 @@
+:root {
+  color-scheme: light;
+  --ink: #2b2622;
+  --muted: #6a5f55;
+  --paper: #f7f2ea;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Garamond,
+    "Times New Roman", serif;
+  color: var(--ink);
+  background: var(--paper);
+  line-height: 1.8;
+  letter-spacing: 0.01em;
+}
+
+.page {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 72px 24px 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+
+.site-header {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+h1 {
+  font-size: clamp(2.1rem, 3vw, 3rem);
+  line-height: 1.2;
+  max-width: 24ch;
+}
+
+h2 {
+  font-size: clamp(1.6rem, 2.4vw, 2.2rem);
+  line-height: 1.3;
+  margin-bottom: 12px;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+}
+
+.lead {
+  font-size: 1.1rem;
+  color: var(--muted);
+  max-width: 60ch;
+}
+
+.header-meta {
+  display: grid;
+  gap: 16px 32px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  border-top: 1px solid rgba(106, 95, 85, 0.35);
+  padding-top: 20px;
+}
+
+.meta-title {
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.card {
+  padding: 20px 0;
+  border-top: 1px solid rgba(106, 95, 85, 0.2);
+}
+
+.flavor-list {
+  list-style: disc;
+  list-style-position: inside;
+  margin-top: 16px;
+  display: grid;
+  gap: 8px;
+}
+
+.flavor-list li {
+  color: var(--muted);
+}
+
+.columns {
+  display: grid;
+  gap: 28px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.columns article {
+  padding: 8px 0;
+}
+
+.visit-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  color: var(--muted);
+}
+
+.closing {
+  text-align: center;
+  max-width: 60ch;
+  margin: 0 auto;
+}
+
+.site-footer {
+  border-top: 1px solid rgba(106, 95, 85, 0.35);
+  padding-top: 24px;
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--muted);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.hours {
+  display: grid;
+  gap: 6px;
+}
+
+@media (max-width: 640px) {
+  .page {
+    padding: 56px 20px 48px;
+  }
+
+  .card {
+    padding: 20px 0;
+  }
+}
