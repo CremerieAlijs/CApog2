@@ -89,12 +89,11 @@ const renderTasteOfMoment = (targetEl, tasteName, instaEmbedHtml) => {
   targetEl.append(section);
 };
 
-const ensureInstagramEmbed = (instaEmbedHtml) => {
+const ensureInstagramEmbed = () => {
   const embedScriptSrc = "https://www.instagram.com/embed.js";
-  const scriptAlreadyInHtml = instaEmbedHtml.includes(embedScriptSrc);
   let script = document.querySelector(`script[src="${embedScriptSrc}"]`);
 
-  if (!script && !scriptAlreadyInHtml) {
+  if (!script) {
     script = document.createElement("script");
     script.async = true;
     script.src = embedScriptSrc;
@@ -133,7 +132,7 @@ const loadTasteOfMoment = async () => {
     }
 
     renderTasteOfMoment(target, tasteName, instaEmbedHtml);
-    ensureInstagramEmbed(instaEmbedHtml);
+    ensureInstagramEmbed();
   } catch (error) {
     setUnavailable();
   }
