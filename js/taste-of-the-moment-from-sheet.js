@@ -1,5 +1,9 @@
-const CSV_URL =
-  "https://docs.google.com/spreadsheets/d/e/2PACX-1vTFHVIq4m5c0quhYDrSoDoYVxV-0LsN5h1ZSzv-hOBFIN6YRFZjkKB59JNWyeLoR7et0p6kHFPgoyxG/pub?gid=1550368812&single=true&output=csv";
+(() => {
+  if (window.__tasteOfTheMomentLoaded) return;
+  window.__tasteOfTheMomentLoaded = true;
+
+  const CSV_URL =
+    "https://docs.google.com/spreadsheets/d/e/2PACX-1vTFHVIq4m5c0quhYDrSoDoYVxV-0LsN5h1ZSzv-hOBFIN6YRFZjkKB59JNWyeLoR7et0p6kHFPgoyxG/pub?gid=1550368812&single=true&output=csv";
 
 const target = document.getElementById("taste-of-the-moment");
 
@@ -143,4 +147,5 @@ const loadTasteOfMoment = async () => {
   }
 };
 
-loadTasteOfMoment();
+  loadTasteOfMoment();
+})();
