@@ -17,8 +17,8 @@ const renderTasteOfMoment = (targetEl, tasteName, instaEmbedHtml) => {
   section.className = "moment";
   section.setAttribute("aria-labelledby", "moment-title");
 
-  const title = document.createElement("p");
-  title.className = "meta-title";
+  const title = document.createElement("h2");
+  title.className = "moment-title";
   title.id = "moment-title";
   title.textContent = "Smaak van het moment";
 
