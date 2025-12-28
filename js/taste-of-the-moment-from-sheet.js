@@ -1,5 +1,5 @@
-const GVIZ_URL =
-  "https://docs.google.com/spreadsheets/d/e/2PACX-1vTFHVIq4m5c0quhYDrSoDoYVxV-0LsN5h1ZSzv-hOBFIN6YRFZjkKB59JNWyeLoR7et0p6kHFPgoyxG/gviz/tq?gid=1550368812&tqx=out:json";
+const CSV_URL =
+  "https://docs.google.com/spreadsheets/d/e/2PACX-1vTFHVIq4m5c0quhYDrSoDoYVxV-0LsN5h1ZSzv-hOBFIN6YRFZjkKB59JNWyeLoR7et0p6kHFPgoyxG/pub?gid=1550368812&single=true&output=csv";
 
 const target = document.getElementById("taste-of-the-moment");
 
@@ -55,13 +55,58 @@ const ensureInstagramEmbed = () => {
   }
 };
 
-const extractGvizJson = (text) => {
-  const start = text.indexOf("{");
-  const end = text.lastIndexOf("}");
-  if (start === -1 || end === -1 || start >= end) {
-    throw new Error("Invalid GViz response");
+const parseCsv = (text) => {
+  const rows = [];
+  let row = [];
+  let field = "";
+  let inQuotes = false;
+
+  for (let i = 0; i < text.length; i += 1) {
+    const char = text[i];
+    const nextChar = text[i + 1];
+
+    if (char === '"') {
+      if (inQuotes && nextChar === '"') {
+        field += '"';
+        i += 1;
+      } else {
+        inQuotes = !inQuotes;
+      }
+      continue;
+    }
+
+    if (char === "," && !inQuotes) {
+      row.push(field);
+      field = "";
+      continue;
+    }
+
+    if ((char === "\n" || char === "\r") && !inQuotes) {
+      if (char === "\r" && nextChar === "\n") {
+        i += 1;
+      }
+      row.push(field);
+      field = "";
+      rows.push(row);
+      row = [];
+      continue;
+    }
+
+    field += char;
   }
-  return JSON.parse(text.slice(start, end + 1));
+
+  row.push(field);
+  rows.push(row);
+  return rows;
+};
+
+const extractTasteFromRows = (rows) => {
+  const dataRows = rows.slice(1);
+  const row = dataRows.find((item) => (item?.[0] ?? "").trim());
+  return {
+    tasteName: row?.[0]?.trim() ?? "",
+    embedHtml: row?.[1] ?? "",
+  };
 };
 
 const sanitizeEmbedHtml = (embedHtml) =>
@@ -76,15 +121,15 @@ const loadTasteOfMoment = async () => {
   let embedHtml = "";
 
   try {
-    const response = await fetch(GVIZ_URL, { cache: "no-store" });
+    const response = await fetch(CSV_URL, { cache: "no-store" });
     if (!response.ok) {
       throw new Error("Fetch failed");
     }
     const text = await response.text();
-    const data = extractGvizJson(text);
-    const row = data.table.rows.find((item) => item.c?.[0]?.v);
-    tasteName = row?.c?.[0]?.v ?? "";
-    embedHtml = row?.c?.[1]?.v ?? "";
+    const rows = parseCsv(text);
+    const extracted = extractTasteFromRows(rows);
+    tasteName = extracted.tasteName;
+    embedHtml = extracted.embedHtml;
   } catch (error) {
     tasteName = "";
     embedHtml = "";
