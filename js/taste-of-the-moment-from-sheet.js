@@ -85,12 +85,7 @@ const loadTasteOfMoment = async () => {
     const row = data.table.rows.find((item) => item.c?.[0]?.v);
     tasteName = row?.c?.[0]?.v ?? "";
     embedHtml = row?.c?.[1]?.v ?? "";
-    console.log("[Taste of the moment]", {
-      tasteName,
-      hasEmbed: Boolean(embedHtml),
-    });
   } catch (error) {
-    console.error("[Taste of the moment] failed", error);
     tasteName = "";
     embedHtml = "";
   }
