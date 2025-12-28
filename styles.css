@@ -184,12 +184,26 @@ main {
   list-style: disc;
   list-style-position: inside;
   margin-top: 16px;
-  display: grid;
-  gap: 8px;
+  column-gap: 56px;
+}
+
+@media (min-width: 900px) {
+  .flavor-list {
+    columns: 2;
+  }
+}
+
+@media (min-width: 1200px) {
+  .flavor-list {
+    columns: 3;
+  }
 }
 
 .flavor-list li {
   color: var(--muted);
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  margin: 0 0 8px;
 }
 
 .flavor-list li::marker {
