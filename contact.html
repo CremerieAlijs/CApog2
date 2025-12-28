@@ -16,7 +16,9 @@
     <div class="page">
       <header class="site-header">
         <div class="brand">
-          <img class="logo" src="logo-cremerie-alijs.svg" alt="Cremerie Alijs logo" />
+          <a href="index.html" aria-label="Ga naar de homepagina">
+            <img class="logo" src="logo-cremerie-alijs.svg" alt="Cremerie Alijs logo" />
+          </a>
           <div>
             <p class="eyebrow">Cremerie Alijs</p>
             <h1>Contact</h1>
@@ -53,12 +55,11 @@
             </div>
           </div>
         </section>
-        <section class="card hours-highlight">
+        <section class="card">
           <h2>Openingsuren</h2>
           <div class="hours">
-            <p>Woensdag t.e.m. zondag</p>
-            <p class="hours-today">Vandaag open: 11u – 18u</p>
-            <p>In de lente en zomer: tot zonsondergang</p>
+            <p id="today-status"></p>
+            <ul id="opening-hours"></ul>
           </div>
         </section>
         <section class="card">

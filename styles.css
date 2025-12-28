@@ -144,13 +144,6 @@ main {
   border-top: 1px solid color-mix(in srgb, var(--pistache), transparent 30%);
 }
 
-.card.hours-highlight {
-  padding: 20px;
-  border: 1px solid color-mix(in srgb, var(--butter), transparent 35%);
-  border-radius: 16px;
-  background: color-mix(in srgb, var(--cream), transparent 25%);
-}
-
 .flavor-list {
   list-style: disc;
   list-style-position: inside;
