@@ -139,6 +139,27 @@ h3 {
   margin-bottom: 8px;
 }
 
+.moment {
+  display: grid;
+  gap: 12px;
+}
+
+.moment-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--choco);
+}
+
+.moment-embed {
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.moment-embed iframe,
+.moment-embed blockquote {
+  max-width: 100%;
+}
+
 main {
   display: flex;
   flex-direction: column;
