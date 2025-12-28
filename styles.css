@@ -43,6 +43,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 24px;
+  position: relative;
 }
 
 .brand {
@@ -219,30 +220,93 @@ main {
 }
 
 @media (max-width: 640px) {
+  .map iframe {
+    height: 220px;
+  }
+}
+
+@media (max-width: 900px) {
   .page {
-    padding: 56px 20px 48px;
+    padding: 52px 20px 44px;
+    gap: 48px;
   }
 
-  .card {
-    padding: 20px 0;
+  .site-header {
+    gap: 20px;
   }
 
   .brand {
     flex-direction: column;
     align-items: flex-start;
+    padding-right: 56px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .lead {
+    font-size: 1rem;
+  }
+
+  .header-meta,
+  .columns,
+  .visit-grid {
+    grid-template-columns: 1fr;
   }
 
   .site-nav {
+    display: none;
     flex-direction: column;
     align-items: flex-start;
-    gap: 8px;
+    gap: 12px;
+    position: absolute;
+    top: 72px;
+    left: 0;
+    right: 0;
+    padding: 16px 20px;
+    background: #fbf7f2;
+    border: 1px solid color-mix(in srgb, var(--butter), transparent 45%);
+    border-radius: 16px;
+    box-shadow: 0 20px 40px -32px color-mix(in srgb, var(--indigo), transparent 55%);
+    z-index: 10;
+  }
+
+  .site-header.is-menu-open .site-nav {
+    display: flex;
   }
 
   .site-nav a {
     font-size: 1rem;
   }
 
-  .map iframe {
-    height: 220px;
+  .nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 6px;
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+    border: 1px solid color-mix(in srgb, var(--butter), transparent 30%);
+    background: #fff;
+    color: var(--choco-dark);
+    position: absolute;
+    top: 8px;
+    right: 0;
+    cursor: pointer;
   }
+
+  .nav-toggle__line {
+    width: 18px;
+    height: 2px;
+    background: currentColor;
+    border-radius: 999px;
+    display: block;
+  }
+}
+
+.nav-toggle {
+  display: none;
 }

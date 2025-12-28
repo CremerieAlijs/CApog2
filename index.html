@@ -25,7 +25,18 @@
             <h1>Ambachtelijk ijs uit de buurt.</h1>
           </div>
         </div>
-        <nav class="site-nav" aria-label="Hoofdnavigatie">
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-label="Open navigatie"
+          aria-expanded="false"
+          aria-controls="primary-nav"
+        >
+          <span class="nav-toggle__line"></span>
+          <span class="nav-toggle__line"></span>
+          <span class="nav-toggle__line"></span>
+        </button>
+        <nav class="site-nav" id="primary-nav" aria-label="Hoofdnavigatie">
           <a class="is-active" href="index.html">Home</a>
           <a href="over-ons.html">Over ons</a>
           <a href="smaken.html">Smaken</a>
@@ -102,6 +113,7 @@
         <p>Cremerie Alijs · Lange Dreef 9 · 2820 Rijmenam</p>
       </footer>
     </div>
+    <script src="js/mobile-nav.js" defer></script>
     <script src="js/opening-hours-from-sheet.js" defer></script>
   </body>
 </html>
