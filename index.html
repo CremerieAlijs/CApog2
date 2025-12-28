@@ -15,9 +15,20 @@
   <body>
     <div class="page">
       <header class="site-header">
-        <img class="logo" src="logo-cremerie-alijs.svg" alt="Cremerie Alijs logo" />
-        <p class="eyebrow">Cremerie Alijs</p>
-        <h1>Ambachtelijk ijs uit de buurt.</h1>
+        <div class="brand">
+          <img class="logo" src="logo-cremerie-alijs.svg" alt="Cremerie Alijs logo" />
+          <div>
+            <p class="eyebrow">Cremerie Alijs</p>
+            <h1>Ambachtelijk ijs uit de buurt.</h1>
+          </div>
+        </div>
+        <nav class="site-nav" aria-label="Hoofdnavigatie">
+          <a class="is-active" href="index.html">Home</a>
+          <a href="over-ons.html">Over ons</a>
+          <a href="smaken.html">Smaken</a>
+          <a href="andere-zoetigheden.html">Andere zoetigheden</a>
+          <a href="contact.html">Contact</a>
+        </nav>
         <p class="lead">
           Een rustige plek voor een eenvoudige bol of een kleine pauze. We werken met vaste
           smaken en wisselen zacht mee met het seizoen.
@@ -30,7 +41,7 @@
           <div class="hours">
             <p class="meta-title">Openingsuren</p>
             <p>Woensdag t.e.m. zondag</p>
-            <p>11u – 18u</p>
+            <p class="hours-today">Vandaag open: 11u – 18u</p>
             <p>In de lente en zomer: tot zonsondergang</p>
           </div>
         </div>
@@ -47,20 +58,40 @@
 
       <main>
         <section class="card">
-          <h2>Vaste smaken</h2>
+          <h2>Welkom bij Cremerie Alijs</h2>
+          <p>
+            In ons huisje aan de Lange Dreef maken we ijs zoals we het zelf graag eten:
+            romig, helder van smaak en altijd met een vrolijke draai. We werken met melk van
+            lokale boerderijen, zacht fruit uit de streek en kruiden die onze keuken elke
+            dag een ander aroma geven.
+          </p>
+        </section>
+        <section class="card columns">
+          <article>
+            <h3>Wat je bij ons vindt</h3>
+            <p>
+              Naast onze vaste smaken vind je elke week een seizoenskeuze. Denk aan
+              aardbei-basilicum in juni, pruim met kaneel in september en warme
+              chocoladesaus op de eerste winteravond.
+            </p>
+          </article>
+          <article>
+            <h3>Voor kleine momenten</h3>
+            <p>
+              Kom langs na een wandeling, neem een doos mee naar huis of ontdek onze
+              mini-coupes voor verjaardagen. We helpen je graag kiezen.
+            </p>
+          </article>
+        </section>
+        <section class="card">
+          <h2>Vandaag in de vitrine</h2>
           <ul class="flavor-list">
-            <li>Vanille</li>
-            <li>Chocolade</li>
-            <li>Mokka</li>
-            <li>Stracciatella</li>
-            <li>Speculaas</li>
-            <li>Aardbei</li>
-            <li>Pistache</li>
-            <li>Citroensorbet</li>
-            <li>Suikervrije vanille</li>
-            <li>Vegan smaak van het moment</li>
-            <li>Wisselsmaak</li>
-            <li>Banaan</li>
+            <li>Vanille met een toets van banaan</li>
+            <li>Chocolade &amp; mokka swirl</li>
+            <li>Aardbei met bosvruchten</li>
+            <li>Pistache met munt</li>
+            <li>Citroensorbet met munt</li>
+            <li>Wisselsmaak: salted caramel</li>
           </ul>
         </section>
       </main>
