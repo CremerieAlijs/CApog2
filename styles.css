@@ -86,6 +86,11 @@ body {
   font-weight: 600;
 }
 
+/* desktop default */
+.nav-toggle {
+  display: none;
+}
+
 .eyebrow {
   text-transform: uppercase;
   letter-spacing: 0.18em;
@@ -256,7 +261,15 @@ main {
   .visit-grid {
     grid-template-columns: 1fr;
   }
+}
 
+/* mobiel */
+@media (max-width: 1024px) {
+  .site-header {
+    position: relative;
+  }
+
+  /* toon hamburger */
   .nav-toggle {
     display: inline-flex;
     flex-direction: column;
@@ -265,49 +278,39 @@ main {
     gap: 5px;
     width: 44px;
     height: 44px;
-    position: absolute;
+    position: fixed;
     top: 16px;
     right: 16px;
-    border: 1px solid color-mix(in srgb, var(--pistache), transparent 45%);
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 999px;
-    background: white;
-    cursor: pointer;
-    z-index: 1000;
+    z-index: 9999;
   }
 
   .nav-toggle__line {
-    display: block;
     width: 20px;
     height: 2px;
-    background: var(--choco);
+    background: #3b2a1f;
+    display: block;
   }
 
-  #primary-nav {
+  /* verberg desktop nav */
+  .site-nav {
     display: none;
-    position: absolute;
-    top: 72px;
-    right: 16px;
-    left: 16px;
-    flex-direction: column;
-    gap: 12px;
-    padding: 14px 16px;
-    background: white;
-    border: 1px solid color-mix(in srgb, var(--butter), transparent 55%);
-    border-radius: 16px;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-    z-index: 999;
   }
 
-  #primary-nav.is-open {
+  /* mobiele nav wanneer open */
+  .site-nav.is-open {
     display: flex;
+    position: fixed;
+    top: 72px;
+    left: 16px;
+    right: 16px;
+    flex-direction: column;
+    background: #fff;
+    padding: 16px;
+    border-radius: 16px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    z-index: 9998;
   }
-
-  .site-nav a {
-    font-size: 1.05rem;
-    padding: 10px 0;
-  }
-}
-
-.nav-toggle {
-  display: none;
 }
