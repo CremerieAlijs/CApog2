@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Cremerie Alijs favicon">
+  <title>Cremerie Alijs favicon</title>
+  <path
+    d="M21 30c0-6.5 22-6.5 22 0 0 6.5-5.5 11-11 11s-11-4.5-11-11z"
+    fill="#f7f2e8"
+    stroke="#d6c9b6"
+    stroke-width="1.5"
+  />
+  <path
+    d="M23.5 24.5c0-5 17-5 17 0 0 4.5-4 7.5-8.5 7.5s-8.5-3-8.5-7.5z"
+    fill="#fff9f0"
+    stroke="#e0d3bf"
+    stroke-width="1.2"
+  />
+  <path
+    d="M26.5 19.5c0-3.8 11-3.8 11 0 0 3.2-2.8 5.5-5.5 5.5s-5.5-2.3-5.5-5.5z"
+    fill="#fffdf7"
+    stroke="#e8ddcd"
+    stroke-width="1"
+  />
+  <path
+    d="M24 30h16L32 60z"
+    fill="#d5955c"
+    stroke="#a36a3d"
+    stroke-width="1.5"
+  />
+  <path
+    d="M28 36l4 8 4-8"
+    fill="none"
+    stroke="#b67847"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg>
