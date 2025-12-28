@@ -25,7 +25,18 @@
             <h1>Smaken</h1>
           </div>
         </div>
-        <nav class="site-nav" aria-label="Hoofdnavigatie">
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-label="Open navigatie"
+          aria-expanded="false"
+          aria-controls="primary-nav"
+        >
+          <span class="nav-toggle__line"></span>
+          <span class="nav-toggle__line"></span>
+          <span class="nav-toggle__line"></span>
+        </button>
+        <nav class="site-nav" id="primary-nav" aria-label="Hoofdnavigatie">
           <a href="index.html">Home</a>
           <a href="over-ons.html">Over ons</a>
           <a class="is-active" href="smaken.html">Smaken</a>
@@ -79,5 +90,6 @@
         <p>Cremerie Alijs · Lange Dreef 9 · 2820 Rijmenam</p>
       </footer>
     </div>
+    <script src="js/mobile-nav.js" defer></script>
   </body>
 </html>
