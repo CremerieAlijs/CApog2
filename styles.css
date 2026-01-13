@@ -79,7 +79,7 @@ a:focus-visible {
   display: block;
   width: auto;
   height: auto;
-  max-height: 72px;
+  max-height: 80px;
   max-width: min(200px, 45vw);
   margin-bottom: 4px;
   padding: 6px 0;
