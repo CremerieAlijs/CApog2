@@ -1,0 +1,592 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Website Presentatie — Cremerie Alijs</title>
+    <meta name="robots" content="noindex, nofollow" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <style>
+      :root {
+        --brand-cream-light: #e8cfb6;
+        --brand-golden: #f4c784;
+        --brand-caramel: #a6572d;
+        --brand-chocolate: #632d16;
+        --brand-coral: #cc6358;
+        --brand-red: #a82b1d;
+        --brand-sage-light: #b8c470;
+        --brand-sage: #92a152;
+        --brand-navy: #1d1f52;
+        --brand-mauve: #8c7085;
+        --brand-white: #f5e6d7;
+      }
+
+      *, *::before, *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: 'Montserrat', sans-serif;
+        background: var(--brand-white);
+        color: var(--brand-chocolate);
+        line-height: 1.7;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      /* Hero */
+      .hero {
+        background: var(--brand-sage);
+        padding: 6rem 2rem;
+        text-align: center;
+        color: var(--brand-white);
+      }
+
+      .hero h1 {
+        font-size: clamp(2rem, 5vw, 3rem);
+        font-weight: 700;
+        margin-bottom: 1rem;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        font-weight: 300;
+        opacity: 0.9;
+      }
+
+      /* Sections */
+      section {
+        padding: 5rem 0;
+        border-bottom: 1px solid rgba(99, 45, 22, 0.1);
+      }
+
+      section:last-of-type {
+        border-bottom: none;
+      }
+
+      h2 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--brand-chocolate);
+        margin-bottom: 1.5rem;
+      }
+
+      h3 {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--brand-chocolate);
+        margin: 2rem 0 1rem;
+      }
+
+      p {
+        margin-bottom: 1rem;
+        color: var(--brand-caramel);
+      }
+
+      ul {
+        list-style: none;
+        margin-bottom: 1.5rem;
+      }
+
+      ul li {
+        padding: 0.5rem 0;
+        padding-left: 1.5rem;
+        position: relative;
+        color: var(--brand-caramel);
+      }
+
+      ul li::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 1rem;
+        width: 8px;
+        height: 8px;
+        background: var(--brand-sage);
+        border-radius: 50%;
+      }
+
+      /* Color Palette */
+      .color-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 1rem;
+        margin: 2rem 0;
+      }
+
+      .color-swatch {
+        aspect-ratio: 1;
+        border-radius: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 1rem;
+        font-size: 0.8rem;
+        font-weight: 600;
+        box-shadow: 0 4px 20px -5px rgba(0,0,0,0.15);
+      }
+
+      .color-swatch span {
+        display: block;
+        font-weight: 400;
+        font-size: 0.7rem;
+        opacity: 0.8;
+        margin-top: 0.25rem;
+      }
+
+      /* Theme Calendar */
+      .theme-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 2rem 0;
+        font-size: 0.95rem;
+      }
+
+      .theme-table th,
+      .theme-table td {
+        padding: 1rem;
+        text-align: left;
+        border-bottom: 1px solid rgba(99, 45, 22, 0.1);
+      }
+
+      .theme-table th {
+        font-weight: 600;
+        color: var(--brand-chocolate);
+        background: rgba(146, 161, 82, 0.1);
+      }
+
+      .theme-table td {
+        color: var(--brand-caramel);
+      }
+
+      .theme-dot {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        margin-right: 0.75rem;
+        vertical-align: middle;
+      }
+
+      .view-link {
+        display: inline-block;
+        padding: 0.4rem 1rem;
+        background: var(--brand-sage);
+        color: var(--brand-white);
+        text-decoration: none;
+        border-radius: 100px;
+        font-weight: 600;
+        font-size: 0.85rem;
+        white-space: nowrap;
+        transition: background 0.2s ease, transform 0.2s ease;
+      }
+
+      .view-link:hover {
+        background: var(--brand-chocolate);
+        transform: translateX(3px);
+      }
+
+      /* Theme Preview */
+      .theme-preview {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 1.5rem;
+        margin: 2rem 0;
+      }
+
+      .theme-card {
+        border-radius: 1rem;
+        padding: 1.5rem;
+        text-align: center;
+        color: white;
+        box-shadow: 0 8px 30px -10px rgba(0,0,0,0.2);
+      }
+
+      .theme-card h4 {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+
+      .theme-card p {
+        font-size: 0.85rem;
+        font-weight: 300;
+        color: inherit;
+        opacity: 0.9;
+        margin: 0;
+      }
+
+      /* Features */
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 2rem;
+        margin: 2rem 0;
+      }
+
+      .feature {
+        background: white;
+        padding: 2rem;
+        border-radius: 1rem;
+        box-shadow: 0 4px 20px -5px rgba(0,0,0,0.1);
+      }
+
+      .feature h4 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--brand-chocolate);
+        margin-bottom: 0.75rem;
+      }
+
+      .feature p {
+        font-size: 0.95rem;
+        margin: 0;
+      }
+
+      /* Code block */
+      .code-block {
+        background: var(--brand-chocolate);
+        color: var(--brand-cream-light);
+        padding: 1.5rem;
+        border-radius: 0.75rem;
+        font-family: monospace;
+        font-size: 0.9rem;
+        overflow-x: auto;
+        margin: 1.5rem 0;
+      }
+
+      /* Footer */
+      footer {
+        background: var(--brand-chocolate);
+        color: var(--brand-white);
+        text-align: center;
+        padding: 3rem 2rem;
+      }
+
+      footer p {
+        color: var(--brand-cream-light);
+        opacity: 0.7;
+      }
+
+      /* Back link */
+      .back-link {
+        display: inline-block;
+        margin-top: 2rem;
+        padding: 0.75rem 1.5rem;
+        background: var(--brand-sage);
+        color: var(--brand-white);
+        text-decoration: none;
+        border-radius: 100px;
+        font-weight: 600;
+        transition: background 0.3s ease;
+      }
+
+      .back-link:hover {
+        background: var(--brand-caramel);
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="hero">
+      <div class="container">
+        <h1>Website Cremerie Alijs</h1>
+        <p>Ontwikkeld op basis van jullie merkidentiteit</p>
+      </div>
+    </header>
+
+    <main>
+      <!-- Intro -->
+      <section>
+        <div class="container">
+          <h2>Over dit project</h2>
+          <p>
+            De website van Cremerie Alijs is volledig opgebouwd rond jullie brand guide.
+            Elk kleur, elk lettertype en elke designkeuze komt rechtstreeks uit de merkidentiteit
+            die voor Alijs werd ontwikkeld.
+          </p>
+          <p>
+            Het resultaat is een warme, speelse website die de sfeer van een retro jaren '70
+            dorpsijssalon ademt — precies wat Cremerie Alijs uitstraalt.
+          </p>
+        </div>
+      </section>
+
+      <!-- Color Palette -->
+      <section>
+        <div class="container">
+          <h2>Kleurenpalet</h2>
+          <p>
+            De volledige kleurenpalet uit de brand guide is geïmplementeerd als CSS-variabelen.
+            Dit zorgt voor consistentie doorheen de hele website.
+          </p>
+
+          <div class="color-grid">
+            <div class="color-swatch" style="background: var(--brand-sage); color: white;">
+              Sage
+              <span>#92a152</span>
+            </div>
+            <div class="color-swatch" style="background: var(--brand-sage-light); color: #4a5638;">
+              Sage Light
+              <span>#b8c470</span>
+            </div>
+            <div class="color-swatch" style="background: var(--brand-red); color: white;">
+              Terracotta
+              <span>#a82b1d</span>
+            </div>
+            <div class="color-swatch" style="background: var(--brand-coral); color: white;">
+              Coral
+              <span>#cc6358</span>
+            </div>
+            <div class="color-swatch" style="background: var(--brand-golden); color: var(--brand-chocolate);">
+              Golden
+              <span>#f4c784</span>
+            </div>
+            <div class="color-swatch" style="background: var(--brand-caramel); color: white;">
+              Caramel
+              <span>#a6572d</span>
+            </div>
+            <div class="color-swatch" style="background: var(--brand-chocolate); color: white;">
+              Chocolate
+              <span>#632d16</span>
+            </div>
+            <div class="color-swatch" style="background: var(--brand-mauve); color: white;">
+              Mauve
+              <span>#8c7085</span>
+            </div>
+            <div class="color-swatch" style="background: var(--brand-navy); color: white;">
+              Navy
+              <span>#1d1f52</span>
+            </div>
+            <div class="color-swatch" style="background: var(--brand-cream-light); color: var(--brand-chocolate);">
+              Cream Light
+              <span>#e8cfb6</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Seasonal Theming -->
+      <section>
+        <div class="container">
+          <h2>Seizoensgebonden thema's</h2>
+          <p>
+            De website past zich automatisch aan op basis van de datum. In de zomer ziet
+            de site er groen uit, in de winter rood. Daarnaast zijn er speciale thema's
+            voor feestdagen — elk met een eigen kleur én slogan.
+          </p>
+
+          <h3>Themakalender</h3>
+          <table class="theme-table">
+            <thead>
+              <tr>
+                <th>Thema</th>
+                <th>Periode</th>
+                <th>Slogan</th>
+                <th>Bekijk</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="theme-dot" style="background: var(--brand-sage);"></span>Zomer</td>
+                <td>1 april – 31 oktober</td>
+                <td>Waar elk bolletje een zomerherinnering is</td>
+                <td><a href="/?theme=summer" class="view-link">Bekijk →</a></td>
+              </tr>
+              <tr>
+                <td><span class="theme-dot" style="background: var(--brand-red);"></span>Winter</td>
+                <td>1 november – 31 maart</td>
+                <td>Waar warmte smelt op je tong</td>
+                <td><a href="/?theme=winter" class="view-link">Bekijk →</a></td>
+              </tr>
+              <tr>
+                <td><span class="theme-dot" style="background: var(--brand-coral);"></span>Valentijn</td>
+                <td>14 februari</td>
+                <td>Liefde smaakt naar meer</td>
+                <td><a href="/?theme=valentines" class="view-link">Bekijk →</a></td>
+              </tr>
+              <tr>
+                <td><span class="theme-dot" style="background: var(--brand-golden);"></span>Pasen</td>
+                <td>Paaszaterdag – Paasmaandag</td>
+                <td>Lente in elk bolletje</td>
+                <td><a href="/?theme=easter" class="view-link">Bekijk →</a></td>
+              </tr>
+              <tr>
+                <td><span class="theme-dot" style="background: var(--brand-mauve);"></span>Moederdag</td>
+                <td>2e zondag van mei</td>
+                <td>Voor de allerliefste</td>
+                <td><a href="/?theme=mothersday" class="view-link">Bekijk →</a></td>
+              </tr>
+              <tr>
+                <td><span class="theme-dot" style="background: var(--brand-sage-light);"></span>Midzomer</td>
+                <td>21 juni</td>
+                <td>De langste dag, het lekkerste ijs</td>
+                <td><a href="/?theme=midsummer" class="view-link">Bekijk →</a></td>
+              </tr>
+              <tr>
+                <td><span class="theme-dot" style="background: var(--brand-chocolate);"></span>Nationale feestdag</td>
+                <td>21 juli</td>
+                <td>Trots Belgisch, ambachtelijk lekker</td>
+                <td><a href="/?theme=national" class="view-link">Bekijk →</a></td>
+              </tr>
+              <tr>
+                <td><span class="theme-dot" style="background: var(--brand-caramel);"></span>Halloween</td>
+                <td>31 oktober</td>
+                <td>Griezelig goed</td>
+                <td><a href="/?theme=halloween" class="view-link">Bekijk →</a></td>
+              </tr>
+              <tr>
+                <td><span class="theme-dot" style="background: var(--brand-navy);"></span>Sinterklaas</td>
+                <td>5 – 6 december</td>
+                <td>Van de Sint, met liefde gedraaid</td>
+                <td><a href="/?theme=sinterklaas" class="view-link">Bekijk →</a></td>
+              </tr>
+              <tr>
+                <td><span class="theme-dot" style="background: var(--brand-red);"></span>Kerst</td>
+                <td>24 – 26 december</td>
+                <td>Maak het feest compleet</td>
+                <td><a href="/?theme=christmas" class="view-link">Bekijk →</a></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>Voorbeelden</h3>
+          <div class="theme-preview">
+            <div class="theme-card" style="background: var(--brand-sage);">
+              <h4>Zomer</h4>
+              <p>Waar elk bolletje een zomerherinnering is</p>
+            </div>
+            <div class="theme-card" style="background: var(--brand-red);">
+              <h4>Winter</h4>
+              <p>Waar warmte smelt op je tong</p>
+            </div>
+            <div class="theme-card" style="background: var(--brand-coral);">
+              <h4>Valentijn</h4>
+              <p>Liefde smaakt naar meer</p>
+            </div>
+            <div class="theme-card" style="background: var(--brand-golden); color: var(--brand-chocolate);">
+              <h4>Pasen</h4>
+              <p>Lente in elk bolletje</p>
+            </div>
+            <div class="theme-card" style="background: var(--brand-mauve);">
+              <h4>Moederdag</h4>
+              <p>Voor de allerliefste</p>
+            </div>
+            <div class="theme-card" style="background: var(--brand-navy);">
+              <h4>Sinterklaas</h4>
+              <p>Van de Sint, met liefde gedraaid</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Dynamic Content -->
+      <section>
+        <div class="container">
+          <h2>Dynamische content</h2>
+          <p>
+            De volgende gegevens worden automatisch opgehaald uit jullie Google Spreadsheet.
+            Zo kan je zelf de inhoud aanpassen zonder de website te moeten bewerken.
+          </p>
+
+          <div class="feature-grid">
+            <div class="feature">
+              <h4>Openingsuren</h4>
+              <p>De huidige status ("Vandaag open tot...") en het volledige weekoverzicht worden live geladen.</p>
+            </div>
+            <div class="feature">
+              <h4>Smaken</h4>
+              <p>De lijst met beschikbare ijssmaken wordt automatisch bijgewerkt vanuit de spreadsheet.</p>
+            </div>
+            <div class="feature">
+              <h4>Smaak van het moment</h4>
+              <p>De uitgelichte smaak verschijnt prominent op de homepage wanneer je er één instelt.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Features -->
+      <section>
+        <div class="container">
+          <h2>Technische kenmerken</h2>
+
+          <div class="feature-grid">
+            <div class="feature">
+              <h4>Volledig responsive</h4>
+              <p>De website werkt perfect op desktop, tablet en smartphone.</p>
+            </div>
+            <div class="feature">
+              <h4>Snelle laadtijd</h4>
+              <p>Geoptimaliseerde code zonder zware frameworks — de site laadt razendsnel.</p>
+            </div>
+            <div class="feature">
+              <h4>Toegankelijk</h4>
+              <p>Gebouwd met toegankelijkheid in gedachten: goede contrasten, focus-states en verminderde animaties voor wie dat prefereert.</p>
+            </div>
+            <div class="feature">
+              <h4>SEO-geoptimaliseerd</h4>
+              <p>Structured data, meta tags en Open Graph zodat de site goed vindbaar is en mooi deelt op sociale media.</p>
+            </div>
+            <div class="feature">
+              <h4>Thema-aware logo</h4>
+              <p>Het logo past zijn kleur automatisch aan op basis van het actieve seizoensthema.</p>
+            </div>
+            <div class="feature">
+              <h4>Vloeiende overgangen</h4>
+              <p>Thema-wisselingen gebeuren met zachte animaties. Bezoekers die beweging liever vermijden krijgen een statische versie.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Typography -->
+      <section>
+        <div class="container">
+          <h2>Typografie</h2>
+          <p>
+            Het lettertype <strong>Montserrat</strong> wordt gebruikt doorheen de hele website,
+            zoals aangegeven in de brand guide. De verschillende gewichten zorgen voor hiërarchie:
+          </p>
+          <ul>
+            <li><strong>Light (300)</strong> — voor subtiele tekst en taglines</li>
+            <li><strong>Regular (400)</strong> — voor lopende tekst</li>
+            <li><strong>Medium (500)</strong> — voor kleine labels</li>
+            <li><strong>Semibold (600)</strong> — voor knoppen en badges</li>
+            <li><strong>Bold (700)</strong> — voor titels en koppen</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section>
+        <div class="container" style="text-align: center;">
+          <h2>Bekijk de website</h2>
+          <p>Klaar om de website in actie te zien?</p>
+          <a href="/" class="back-link">Naar de homepage →</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <p>Deze pagina is niet zichtbaar voor bezoekers en wordt niet geïndexeerd door zoekmachines.</p>
+      </div>
+    </footer>
+  </body>
+</html>

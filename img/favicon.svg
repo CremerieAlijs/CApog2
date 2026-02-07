@@ -1,35 +1,31 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Cremerie Alijs favicon">
   <title>Cremerie Alijs favicon</title>
-  <path
-    d="M21 30c0-6.5 22-6.5 22 0 0 6.5-5.5 11-11 11s-11-4.5-11-11z"
-    fill="#f7f2e8"
-    stroke="#d6c9b6"
-    stroke-width="1.5"
-  />
-  <path
-    d="M23.5 24.5c0-5 17-5 17 0 0 4.5-4 7.5-8.5 7.5s-8.5-3-8.5-7.5z"
-    fill="#fff9f0"
-    stroke="#e0d3bf"
-    stroke-width="1.2"
-  />
-  <path
-    d="M26.5 19.5c0-3.8 11-3.8 11 0 0 3.2-2.8 5.5-5.5 5.5s-5.5-2.3-5.5-5.5z"
-    fill="#fffdf7"
-    stroke="#e8ddcd"
-    stroke-width="1"
-  />
-  <path
-    d="M24 30h16L32 60z"
-    fill="#d5955c"
-    stroke="#a36a3d"
-    stroke-width="1.5"
-  />
-  <path
-    d="M28 36l4 8 4-8"
-    fill="none"
-    stroke="#b67847"
-    stroke-width="2"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-  />
+  <style>
+    :root {
+      --favicon-bg: #92a152;
+      --favicon-scoop: #f5e6d7;
+      --favicon-scoop-alt: #f9f5eb;
+      --favicon-cone: #92a152;
+      --favicon-cone-line: #5c6b4a;
+      --favicon-sprinkle: #5c6b4a;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --favicon-bg: #92a152;
+      }
+    }
+  </style>
+  <!-- Background circle -->
+  <circle cx="32" cy="32" r="30" fill="var(--favicon-bg, #92a152)"/>
+  <!-- Ice cream scoops -->
+  <ellipse cx="32" cy="24" rx="16" ry="14" fill="var(--favicon-scoop, #f5e6d7)"/>
+  <ellipse cx="26" cy="28" rx="10" ry="9" fill="var(--favicon-scoop-alt, #f9f5eb)"/>
+  <ellipse cx="38" cy="30" rx="8" ry="7" fill="var(--favicon-scoop, #f5e6d7)"/>
+  <!-- Cone -->
+  <path d="M20 32 L32 56 L44 32 Z" fill="var(--favicon-cone, #92a152)"/>
+  <path d="M24 38 L32 50 L40 38" stroke="var(--favicon-cone-line, #5c6b4a)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <!-- Sprinkles -->
+  <circle cx="28" cy="20" r="2" fill="var(--favicon-sprinkle, #5c6b4a)"/>
+  <circle cx="36" cy="22" r="1.5" fill="var(--favicon-cone-line, #5c6b4a)"/>
+  <circle cx="32" cy="26" r="1" fill="var(--favicon-sprinkle, #5c6b4a)"/>
 </svg>
