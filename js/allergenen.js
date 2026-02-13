@@ -1,54 +1,23 @@
 (() => {
-  const SHEET_ID = "1vDlIiBXnlJ5WnvD9FS3tJPHq3hsECP63BTwSWvhinj4";
-  const GID = "1971864328";
-  const CSV_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&gid=${GID}`;
+  const ALLERGENS_URL =
+    "https://docs.google.com/spreadsheets/d/e/2PACX-1vTFHVIq4m5c0quhYDrSoDoYVxV-0LsN5h1ZSzv-hOBFIN6YRFZjkKB59JNWyeLoR7et0p6kHFPgoyxG/pubhtml?gid=1971864328&single=true";
 
-  const parseCsv = (text) => {
-    const rows = [];
-    let row = [];
-    let field = "";
-    let inQuotes = false;
-
-    for (let i = 0; i < text.length; i += 1) {
-      const char = text[i];
-      const nextChar = text[i + 1];
-
-      if (char === '"') {
-        if (inQuotes && nextChar === '"') {
-          field += '"';
-          i += 1;
-        } else {
-          inQuotes = !inQuotes;
-        }
-        continue;
-      }
-
-      if (char === "," && !inQuotes) {
-        row.push(field);
-        field = "";
-        continue;
-      }
-
-      if ((char === "\n" || char === "\r") && !inQuotes) {
-        if (char === "\r" && nextChar === "\n") {
-          i += 1;
-        }
-        row.push(field);
-        if (row.some((value) => value.trim() !== "")) {
-          rows.push(row);
-        }
-        row = [];
-        field = "";
-        continue;
-      }
-
-      field += char;
+  const parsePublishedSheetHtml = (text) => {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(text, "text/html");
+    const table = doc.querySelector("table");
+    if (!table) {
+      return [];
     }
 
-    row.push(field);
-    if (row.some((value) => value.trim() !== "")) {
-      rows.push(row);
-    }
+    const rows = Array.from(table.querySelectorAll("tr"))
+      .map((row) =>
+        Array.from(row.querySelectorAll("th, td")).map((cell) => {
+          const value = cell.textContent?.replace(/\u00a0/g, " ").trim();
+          return value && value.length > 0 ? value : "-";
+        })
+      )
+      .filter((row) => row.some((value) => value !== "-"));
 
     return rows;
   };
@@ -87,13 +56,13 @@
     const status = document.getElementById("allergens-status");
 
     try {
-      const response = await fetch(CSV_URL, { cache: "no-store" });
+      const response = await fetch(ALLERGENS_URL, { cache: "no-store" });
       if (!response.ok) {
         throw new Error("Fetch failed");
       }
 
       const text = await response.text();
-      const rows = parseCsv(text);
+      const rows = parsePublishedSheetHtml(text);
       renderTable(rows);
     } catch (error) {
       if (status) {
