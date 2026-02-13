@@ -1435,3 +1435,79 @@ h1.tagline,
     display: none !important;
   }
 }
+
+/* ==========================================================================
+   Allergenen pagina
+   ========================================================================== */
+
+.hero-subpage {
+  min-height: 55vh;
+}
+
+.section-allergens {
+  position: relative;
+  z-index: 1;
+  background: var(--bg-section);
+  padding: clamp(3.5rem, 8vw, 6rem) 0;
+}
+
+.allergens-intro {
+  max-width: 48rem;
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+}
+
+.allergens-table-wrap {
+  background: var(--bg-card);
+  border: 2px solid var(--primary);
+  border-radius: 1.5rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.allergens-table {
+  width: 100%;
+  min-width: 42rem;
+  border-collapse: collapse;
+}
+
+.allergens-table th,
+.allergens-table td {
+  border-bottom: 1px solid color-mix(in srgb, var(--primary) 35%, white 65%);
+  border-right: 1px solid color-mix(in srgb, var(--primary) 25%, white 75%);
+  padding: 0.8rem 1rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.allergens-table th:last-child,
+.allergens-table td:last-child {
+  border-right: 0;
+}
+
+.allergens-table thead th {
+  position: sticky;
+  top: 0;
+  background: color-mix(in srgb, var(--primary) 85%, white 15%);
+  color: var(--text-on-primary);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.allergens-table tbody tr:nth-child(even) {
+  background: color-mix(in srgb, var(--bg-section-alt) 70%, white 30%);
+}
+
+.allergens-status {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: color-mix(in srgb, var(--text-primary) 80%, black 20%);
+}
+
+@media (max-width: 48rem) {
+  .allergens-table {
+    min-width: 34rem;
+  }
+}
