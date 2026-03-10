@@ -189,6 +189,7 @@
     const dataRows = rows.slice(1);
     const row = dataRows.find((item) => (item?.[0] ?? "").trim());
     const tasteName = row?.[0]?.trim() ?? "";
+    const tasteDescription = row?.[1]?.trim() ?? "";
 
     if (!tasteName) {
       targetEl.innerHTML = "";
@@ -196,9 +197,10 @@
     }
 
     targetEl.innerHTML = `
-      <div class="moment" aria-labelledby="moment-title">
-        <p class="moment-title" id="moment-title">Smaak van het moment</p>
-        <p class="moment-name">${tasteName}</p>
+      <div class="moment" aria-labelledby="moment-label moment-name">
+        <p class="moment-label" id="moment-label">Smaak van het moment</p>
+        <p class="moment-name" id="moment-name">${tasteName}</p>
+        ${tasteDescription ? `<p class="moment-description">${tasteDescription}</p>` : ""}
       </div>
     `;
   };
