@@ -1560,8 +1560,8 @@ h1.tagline,
   align-items: center;
   justify-content: center;
   border-radius: 999px;
-  border: 1px solid color-mix(in srgb, var(--primary) 30%, white 70%);
-  background: color-mix(in srgb, var(--bg-main) 70%, white 30%);
+  border: none;
+  background: transparent;
 }
 
 .allergen-icon-chip img {
