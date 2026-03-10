@@ -1286,6 +1286,19 @@ h1.tagline,
   transform: translateY(-2px);
 }
 
+.footer-allergens-link {
+  color: var(--text-on-primary);
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  transition: opacity 0.3s var(--ease-out-expo);
+}
+
+.footer-allergens-link:hover,
+.footer-allergens-link:focus-visible {
+  opacity: 0.8;
+}
+
 .copyright {
   font-size: 0.85rem;
   font-weight: 300;
@@ -1470,6 +1483,17 @@ h1.tagline,
   max-width: 48rem;
   font-size: clamp(1rem, 1.6vw, 1.2rem);
   margin-bottom: 1.5rem;
+  color: var(--text-primary);
+}
+
+.allergens-warning {
+  max-width: 60rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem 1.25rem;
+  border-radius: 1rem;
+  background: color-mix(in srgb, var(--primary) 10%, white 90%);
+  border: 1px solid color-mix(in srgb, var(--primary) 30%, white 70%);
+  font-size: 1rem;
   color: var(--text-primary);
 }
 
