@@ -157,7 +157,8 @@
           isVegan,
         };
       })
-      .filter(Boolean);
+      .filter(Boolean)
+      .sort((a, b) => a.name.localeCompare(b.name, "nl", { sensitivity: "base" }));
 
     return { products, usedAllergens: [...used] };
   };
@@ -173,11 +174,11 @@
     `;
   };
 
-  const renderLegend = (usedAllergens) => {
+  const renderLegend = () => {
     const legendEl = document.getElementById("allergens-legend-list");
     if (!legendEl) return;
 
-    const remainingKeys = usedAllergens
+    const remainingKeys = Object.keys(ICON_LIBRARY)
       .filter((key) => !LEGEND_PRIORITY.includes(key))
       .sort((a, b) => ICON_LIBRARY[a].label.localeCompare(ICON_LIBRARY[b].label, "nl"));
 
@@ -234,7 +235,7 @@
 
       const text = await response.text();
       const rows = parseCsv(text);
-      const { products, usedAllergens } = toProducts(rows);
+      const { products } = toProducts(rows);
 
       if (products.length === 0) {
         if (status) {
@@ -243,7 +244,7 @@
         return;
       }
 
-      renderLegend(usedAllergens);
+      renderLegend();
       renderProducts(products);
 
       if (status) {
