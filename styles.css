@@ -1479,125 +1479,64 @@ h1.tagline,
   padding: clamp(3.5rem, 8vw, 6rem) 0;
 }
 
-.allergens-heading {
-  font-size: clamp(1.3rem, 2.3vw, 1.9rem);
-  margin-bottom: 0.8rem;
-  color: var(--text-primary);
-}
-
-.allergens-info,
-.allergens-legend-block,
-.allergens-products-block {
-  background: var(--bg-card);
-  border: 1px solid color-mix(in srgb, var(--primary) 32%, white 68%);
-  border-radius: 1.8rem;
-  padding: clamp(1.2rem, 2.5vw, 1.7rem);
-  box-shadow: 0 16px 28px rgba(0, 0, 0, 0.08);
-  margin-bottom: 1.25rem;
-}
-
 .allergens-intro {
-  max-width: 45rem;
-  font-size: clamp(1rem, 1.7vw, 1.18rem);
-  margin-bottom: 1rem;
+  max-width: 48rem;
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
+  margin-bottom: 1.5rem;
   color: var(--text-primary);
 }
 
 .allergens-warning {
   max-width: 60rem;
-  margin: 0;
-  padding: 1rem 1.2rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem 1.25rem;
   border-radius: 1rem;
   background: color-mix(in srgb, var(--primary) 10%, white 90%);
-  border: 1px solid color-mix(in srgb, var(--primary) 28%, white 72%);
-  color: color-mix(in srgb, var(--text-primary) 90%, black 10%);
-  font-size: 0.98rem;
-  line-height: 1.6;
-}
-
-.allergens-legend {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
-  gap: 0.65rem;
-}
-
-.allergens-legend-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.7rem;
-  min-height: 2.8rem;
-  border-radius: 999px;
-  padding: 0.45rem 0.85rem;
-  background: color-mix(in srgb, var(--bg-main) 68%, white 32%);
+  border: 1px solid color-mix(in srgb, var(--primary) 30%, white 70%);
+  font-size: 1rem;
   color: var(--text-primary);
-  font-weight: 500;
 }
 
-.allergen-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2rem;
-  height: 2rem;
-  border-radius: 999px;
-  color: var(--primary-dark);
-  background: color-mix(in srgb, var(--primary) 16%, white 84%);
+.allergens-table-wrap {
+  background: var(--bg-card);
+  border: 2px solid var(--primary);
+  border-radius: 1.5rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
-.allergen-icon svg {
-  width: 1.2rem;
-  height: 1.2rem;
+.allergens-table {
+  width: 100%;
+  min-width: 42rem;
+  border-collapse: collapse;
 }
 
-.allergens-products {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
-  gap: 0.85rem;
+.allergens-table th,
+.allergens-table td {
+  border-bottom: 1px solid color-mix(in srgb, var(--primary) 35%, white 65%);
+  border-right: 1px solid color-mix(in srgb, var(--primary) 25%, white 75%);
+  padding: 0.8rem 1rem;
+  text-align: left;
+  vertical-align: top;
 }
 
-.allergen-product-card {
-  border-radius: 1.4rem;
-  padding: 1rem;
+.allergens-table th:last-child,
+.allergens-table td:last-child {
+  border-right: 0;
+}
+
+.allergens-table thead th {
+  position: sticky;
+  top: 0;
+  background: color-mix(in srgb, var(--primary) 85%, white 15%);
+  color: var(--text-on-primary);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.allergens-table tbody tr:nth-child(even) {
   background: color-mix(in srgb, var(--bg-section-alt) 70%, white 30%);
-  border: 1px solid color-mix(in srgb, var(--primary) 22%, white 78%);
-}
-
-.allergen-product-card h3 {
-  margin-bottom: 0.7rem;
-  font-size: 1.06rem;
-}
-
-.allergen-chip-list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.45rem;
-}
-
-.allergen-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  border-radius: 999px;
-  padding: 0.28rem 0.65rem 0.28rem 0.35rem;
-  background: color-mix(in srgb, var(--primary) 9%, white 91%);
-  border: 1px solid color-mix(in srgb, var(--primary) 20%, white 80%);
-  color: var(--text-primary);
-  font-size: 0.86rem;
-}
-
-.allergen-chip-label {
-  line-height: 1.2;
-}
-
-.allergen-chip-empty {
-  padding: 0.4rem 0.7rem;
-  font-style: italic;
 }
 
 .allergens-status {
@@ -1607,11 +1546,7 @@ h1.tagline,
 }
 
 @media (max-width: 48rem) {
-  .allergens-products {
-    grid-template-columns: 1fr;
-  }
-
-  .allergens-legend {
-    grid-template-columns: 1fr;
+  .allergens-table {
+    min-width: 34rem;
   }
 }
