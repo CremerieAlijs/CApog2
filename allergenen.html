@@ -56,17 +56,25 @@
     <main>
       <section class="section section-allergens">
         <div class="section-inner">
-          <p class="allergens-intro">Hier vind je de allergeneninformatie voor onze producten.</p>
-          <p class="allergens-warning">
-            Ondanks onze zorgvuldige werkwijze worden al onze producten bereid in een omgeving waar ook noten en pinda’s worden verwerkt.
-            Daardoor kunnen sporen van deze allergenen aanwezig zijn.
-          </p>
-          <div class="allergens-table-wrap" role="region" aria-label="Allergenen tabel" tabindex="0">
-            <table class="allergens-table" id="allergens-table">
-              <thead id="allergens-table-head"></thead>
-              <tbody id="allergens-table-body"></tbody>
-            </table>
-          </div>
+          <article class="allergens-info" aria-labelledby="allergenen-intro-titel">
+            <h2 id="allergenen-intro-titel" class="allergens-heading">Allergeneninformatie</h2>
+            <p class="allergens-intro">Hier vind je de allergeneninformatie voor onze producten.</p>
+            <p class="allergens-warning" role="note">
+              Ondanks onze zorgvuldige werkwijze worden al onze producten bereid in een omgeving waar ook noten en pinda's worden verwerkt.
+              Daardoor kunnen sporen van deze allergenen aanwezig zijn.
+            </p>
+          </article>
+
+          <section class="allergens-legend-block" aria-labelledby="allergenen-legenda-titel">
+            <h2 id="allergenen-legenda-titel" class="allergens-heading">Legenda</h2>
+            <ul class="allergens-legend" id="allergens-legend"></ul>
+          </section>
+
+          <section class="allergens-products-block" aria-labelledby="allergenen-overzicht-titel">
+            <h2 id="allergenen-overzicht-titel" class="allergens-heading">Overzicht per product</h2>
+            <div class="allergens-products" id="allergens-products"></div>
+          </section>
+
           <p class="allergens-status" id="allergens-status" aria-live="polite">Allergenenlijst laden…</p>
         </div>
       </section>
