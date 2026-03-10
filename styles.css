@@ -1497,46 +1497,82 @@ h1.tagline,
   color: var(--text-primary);
 }
 
-.allergens-table-wrap {
+.allergens-subtitle {
+  margin: 0 0 1rem;
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  color: var(--text-primary);
+}
+
+.allergens-legend {
   background: var(--bg-card);
-  border: 2px solid var(--primary);
+  border: 2px solid color-mix(in srgb, var(--primary) 35%, white 65%);
   border-radius: 1.5rem;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+  padding: clamp(1rem, 2.5vw, 1.5rem);
+  margin-bottom: 2rem;
 }
 
-.allergens-table {
-  width: 100%;
-  min-width: 42rem;
-  border-collapse: collapse;
+.allergens-icon-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  gap: 0.9rem;
+  margin: 0;
+  padding: 0;
 }
 
-.allergens-table th,
-.allergens-table td {
-  border-bottom: 1px solid color-mix(in srgb, var(--primary) 35%, white 65%);
-  border-right: 1px solid color-mix(in srgb, var(--primary) 25%, white 75%);
-  padding: 0.8rem 1rem;
-  text-align: left;
-  vertical-align: top;
+.allergens-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 500;
 }
 
-.allergens-table th:last-child,
-.allergens-table td:last-child {
-  border-right: 0;
+.allergens-products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 1rem;
 }
 
-.allergens-table thead th {
-  position: sticky;
-  top: 0;
-  background: color-mix(in srgb, var(--primary) 85%, white 15%);
-  color: var(--text-on-primary);
-  font-weight: 700;
-  letter-spacing: 0.01em;
+.allergen-product-card {
+  background: var(--bg-card);
+  border: 2px solid color-mix(in srgb, var(--primary) 25%, white 75%);
+  border-radius: 1.25rem;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+  padding: 1rem;
 }
 
-.allergens-table tbody tr:nth-child(even) {
-  background: color-mix(in srgb, var(--bg-section-alt) 70%, white 30%);
+.allergen-product-card h3 {
+  margin: 0 0 0.8rem;
+  font-size: 1.05rem;
+}
+
+.allergen-product-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.allergen-icon-chip {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--primary) 30%, white 70%);
+  background: color-mix(in srgb, var(--bg-main) 70%, white 30%);
+}
+
+.allergen-icon-chip img {
+  width: 1.8rem;
+  height: 1.8rem;
+  object-fit: contain;
+}
+
+.allergen-none {
+  font-size: 0.9rem;
+  color: color-mix(in srgb, var(--text-primary) 75%, black 25%);
 }
 
 .allergens-status {
@@ -1546,7 +1582,7 @@ h1.tagline,
 }
 
 @media (max-width: 48rem) {
-  .allergens-table {
-    min-width: 34rem;
+  .allergens-icon-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
