@@ -1810,6 +1810,16 @@ h1.tagline,
   background: var(--primary);
 }
 
+.menu-list-label {
+  padding-left: 0 !important;
+  margin-top: 0.35rem;
+  font-weight: 600 !important;
+}
+
+.menu-list-label::before {
+  content: none !important;
+}
+
 .menu-list-columns {
   grid-template-columns: 1fr;
   gap: 0.85rem 1.5rem;
