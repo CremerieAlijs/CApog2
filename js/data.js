@@ -131,11 +131,26 @@
         const li = document.createElement("li");
         const open = row.open || "";
         const close = row.close || "";
+        const note = row.note;
+
+        console.log("Opening hours note:", note, "for day:", row.day);
+        if (note === undefined) {
+          console.warn(
+            "Opening hours note is undefined. Check Google Sheet headers and CSV parsing.",
+            row
+          );
+        }
+
         let hours = "Gesloten";
         if (open && open.toLowerCase() !== "gesloten") {
           hours = close ? `${open} – ${close}` : open;
         }
-        li.textContent = `${row.day}: ${hours}`;
+
+        const hasNote =
+          note !== null && note !== undefined && String(note).trim() !== "";
+        const notePart = hasNote ? ` — ${String(note).trim()}` : "";
+
+        li.textContent = `${row.day}: ${hours}${notePart}`;
         hoursListEl.append(li);
       });
     }
