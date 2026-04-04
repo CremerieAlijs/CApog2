@@ -1315,6 +1315,18 @@ h1.tagline,
   font-size: 0.85rem;
   font-weight: 300;
   opacity: 0.6;
+  line-height: 1.5;
+}
+
+.copyright-main {
+  display: block;
+}
+
+.copyright-subtle {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.8rem;
+  opacity: 0.9;
 }
 
 /* ==========================================================================
