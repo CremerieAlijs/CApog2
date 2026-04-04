@@ -11,6 +11,7 @@
     hours: "0",
     flavors: "109840204",
     moment: "1550368812",
+    potFlavors: "1854556350",
   };
 
   const getSheetUrl = (sheetId) =>
@@ -193,6 +194,43 @@
     });
   };
 
+  const renderPotFlavors = (rows) => {
+    const sectionEl = document.getElementById("pot-flavors-section");
+    const listEl = document.getElementById("pot-flavors-list");
+    if (!sectionEl || !listEl) return;
+
+    if (rows.length < 2) {
+      sectionEl.hidden = true;
+      return;
+    }
+
+    const seen = new Set();
+    const flavors = rows
+      .slice(1)
+      .map((row) => row[0]?.trim() ?? "")
+      .filter((value) => value !== "")
+      .filter((value) => {
+        const key = value.toLowerCase();
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      });
+
+    if (flavors.length === 0) {
+      sectionEl.hidden = true;
+      return;
+    }
+
+    listEl.innerHTML = "";
+    flavors.forEach((flavor) => {
+      const li = document.createElement("li");
+      li.textContent = flavor;
+      listEl.append(li);
+    });
+
+    sectionEl.hidden = false;
+  };
+
   // ============================================================
   // Taste of the Moment
   // ============================================================
@@ -229,6 +267,7 @@
       fetchSheet(SHEETS.hours),
       fetchSheet(SHEETS.flavors),
       fetchSheet(SHEETS.moment),
+      fetchSheet(SHEETS.potFlavors),
     ]);
 
     if (results[0].status === "fulfilled") {
@@ -241,6 +280,10 @@
 
     if (results[2].status === "fulfilled") {
       renderMoment(results[2].value);
+    }
+
+    if (results[3].status === "fulfilled") {
+      renderPotFlavors(results[3].value);
     }
   };
 
