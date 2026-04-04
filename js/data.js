@@ -263,28 +263,28 @@
   // ============================================================
 
   const loadAll = async () => {
-    const results = await Promise.allSettled([
+    const coreResults = await Promise.allSettled([
       fetchSheet(SHEETS.hours),
       fetchSheet(SHEETS.flavors),
       fetchSheet(SHEETS.moment),
-      fetchSheet(SHEETS.potFlavors),
     ]);
 
-    if (results[0].status === "fulfilled") {
-      renderOpeningHours(results[0].value);
+    if (coreResults[0].status === "fulfilled") {
+      renderOpeningHours(coreResults[0].value);
     }
 
-    if (results[1].status === "fulfilled") {
-      renderFlavors(results[1].value);
+    if (coreResults[1].status === "fulfilled") {
+      renderFlavors(coreResults[1].value);
     }
 
-    if (results[2].status === "fulfilled") {
-      renderMoment(results[2].value);
+    if (coreResults[2].status === "fulfilled") {
+      renderMoment(coreResults[2].value);
     }
 
-    if (results[3].status === "fulfilled") {
-      renderPotFlavors(results[3].value);
-    }
+    // Optional sheet: load without blocking core content rendering.
+    fetchSheet(SHEETS.potFlavors)
+      .then(renderPotFlavors)
+      .catch(() => {});
   };
 
   loadAll();
