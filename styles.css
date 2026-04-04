@@ -910,6 +910,18 @@ h1.tagline,
   transition: background-color var(--theme-transition);
 }
 
+.flavor-subsection {
+  margin-bottom: 3rem;
+}
+
+.flavor-subsection-title {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 2rem;
+  transition: color var(--theme-transition);
+}
+
 .flavor-extras {
   display: grid;
   grid-template-columns: 1fr;
