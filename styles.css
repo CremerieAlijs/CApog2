@@ -787,19 +787,56 @@ h1.tagline,
 }
 
 .hours-list li {
+  display: grid;
+  grid-template-columns: minmax(6.25rem, 8rem) 1fr;
+  gap: clamp(0.75rem, 3vw, 2rem);
+  align-items: baseline;
   font-size: clamp(0.95rem, 1.5vw, 1.1rem);
   font-weight: 400;
   color: var(--accent);
   padding: 0.5rem 0;
   border-bottom: 1px solid color-mix(in srgb, var(--primary) 20%, transparent);
-  display: flex;
-  justify-content: space-between;
-  gap: 2rem;
   transition: color var(--theme-transition);
 }
 
 .hours-list li:last-child {
   border-bottom: none;
+}
+
+.hours-day {
+  font-weight: 600;
+  line-height: 1.5;
+  text-transform: capitalize;
+  white-space: nowrap;
+}
+
+.hours-details {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 0.45rem;
+  row-gap: 0.15rem;
+  line-height: 1.5;
+  min-width: 0;
+}
+
+.hours-time {
+  white-space: nowrap;
+}
+
+.hours-note,
+.hours-note-separator {
+  overflow-wrap: anywhere;
+}
+
+.hours-note {
+  min-width: 0;
+}
+
+@media (max-width: 420px) {
+  .hours-list li {
+    grid-template-columns: minmax(5.5rem, 38%) 1fr;
+    gap: 0.75rem;
+  }
 }
 
 .hours-decoration {

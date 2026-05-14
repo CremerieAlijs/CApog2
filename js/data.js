@@ -147,11 +147,34 @@
           hours = close ? `${open} – ${close}` : open;
         }
 
+        const dayEl = document.createElement("span");
+        dayEl.className = "hours-day";
+        dayEl.textContent = row.day;
+
+        const detailsEl = document.createElement("span");
+        detailsEl.className = "hours-details";
+
+        const timeEl = document.createElement("span");
+        timeEl.className = "hours-time";
+        timeEl.textContent = hours;
+        detailsEl.append(timeEl);
+
         const hasNote =
           note !== null && note !== undefined && String(note).trim() !== "";
-        const notePart = hasNote ? ` — ${String(note).trim()}` : "";
+        if (hasNote) {
+          const separatorEl = document.createElement("span");
+          separatorEl.className = "hours-note-separator";
+          separatorEl.setAttribute("aria-hidden", "true");
+          separatorEl.textContent = "—";
 
-        li.textContent = `${row.day}: ${hours}${notePart}`;
+          const noteEl = document.createElement("span");
+          noteEl.className = "hours-note";
+          noteEl.textContent = String(note).trim();
+
+          detailsEl.append(separatorEl, noteEl);
+        }
+
+        li.append(dayEl, detailsEl);
         hoursListEl.append(li);
       });
     }
