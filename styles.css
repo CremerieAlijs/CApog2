@@ -1836,3 +1836,100 @@ h1.tagline,
     grid-column: 1 / -1;
   }
 }
+
+/* ==========================================================================
+   Algemene voorwaarden pagina
+   ========================================================================== */
+
+.hero-terms-page .hero-content {
+  gap: 1rem;
+}
+
+.terms-version {
+  margin: 0;
+  color: var(--text-on-primary);
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.section-terms {
+  position: relative;
+  z-index: 1;
+  background: var(--bg-section);
+  padding: clamp(3.5rem, 8vw, 6rem) 0;
+}
+
+.terms-card {
+  max-width: 62rem;
+  margin: 0 auto;
+  padding: clamp(1.5rem, 4vw, 3.5rem);
+  background: var(--bg-card);
+  border: 2px solid color-mix(in srgb, var(--primary) 28%, white 72%);
+  border-radius: clamp(1.5rem, 4vw, 3rem);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.08);
+  color: var(--text-primary);
+}
+
+.terms-header {
+  margin-bottom: clamp(2rem, 5vw, 3rem);
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--primary) 28%, transparent);
+}
+
+.terms-card section + section {
+  margin-top: clamp(1.8rem, 4vw, 2.6rem);
+}
+
+.terms-card h2 {
+  margin: 0 0 1rem;
+  color: var(--primary-dark);
+  font-size: clamp(1.25rem, 2.3vw, 1.75rem);
+  line-height: 1.25;
+}
+
+.terms-header h2 {
+  font-size: clamp(2rem, 5vw, 3.25rem);
+}
+
+.terms-card h3 {
+  margin: 1.4rem 0 0.75rem;
+  color: var(--primary-dark);
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+}
+
+.terms-card p,
+.terms-card li {
+  font-size: clamp(0.98rem, 1.2vw, 1.05rem);
+  line-height: 1.8;
+}
+
+.terms-card p {
+  margin: 0 0 1rem;
+}
+
+.terms-card ul {
+  margin: 0 0 1rem;
+  padding-left: 1.35rem;
+}
+
+.terms-card li + li {
+  margin-top: 0.45rem;
+}
+
+.terms-card a {
+  color: var(--primary-dark);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.terms-card a:hover,
+.terms-card a:focus-visible {
+  color: var(--primary);
+}
+
+.terms-acceptance {
+  margin-top: clamp(2rem, 5vw, 3rem);
+  padding-top: 1.5rem;
+  border-top: 1px solid color-mix(in srgb, var(--primary) 28%, transparent);
+}
