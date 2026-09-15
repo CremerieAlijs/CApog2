@@ -81,7 +81,7 @@
    Theme Variants
    ========================================================================== */
 
-/* Summer (April 1 - October 31) — Default */
+/* Summer (April 1 - September 15) — Default */
 :root[data-theme="summer"] {
   --primary: var(--brand-sage);
   --primary-light: var(--brand-sage-light);
@@ -96,7 +96,7 @@
   --accent-dark: #5c6b4a;
 }
 
-/* Winter (November 1 - March 31) */
+/* Winter (September 16 - March 31) */
 :root[data-theme="winter"] {
   --primary: var(--brand-red);
   --primary-light: #c4453a;
@@ -193,7 +193,7 @@
   --accent-dark: #4a2210;
 }
 
-/* Halloween (October 31) */
+/* Halloween (October 15 - November 1) */
 :root[data-theme="halloween"] {
   --primary: var(--brand-caramel);
   --primary-light: #c06f3d;
@@ -208,7 +208,7 @@
   --accent-dark: #864421;
 }
 
-/* Sinterklaas (December 5-6) */
+/* Sinterklaas (December 1-6) */
 :root[data-theme="sinterklaas"] {
   --primary: var(--brand-navy);
   --primary-light: #2d3070;
@@ -223,7 +223,7 @@
   --accent-dark: #14153a;
 }
 
-/* Christmas (December 24-26) */
+/* Christmas (December 7 - January 1) */
 :root[data-theme="christmas"] {
   --primary: var(--brand-red);
   --primary-light: #c4453a;
@@ -1959,4 +1959,173 @@ h1.tagline,
   margin-top: clamp(2rem, 5vw, 3rem);
   padding-top: 1.5rem;
   border-top: 1px solid color-mix(in srgb, var(--primary) 28%, transparent);
+}
+
+/* ==========================================================================
+   Announcement Popup
+   ========================================================================== */
+
+.announcement {
+  /* The global reset zeroes every margin, which also kills the UA's
+     `margin: auto` centering for modal dialogs — restore it here. */
+  inset: 0;
+  margin: auto;
+  width: min(92vw, 30rem);
+  max-width: none;
+  max-height: min(88vh, 46rem);
+  padding: 0;
+  border: none;
+  border-radius: clamp(1.5rem, 4vw, 2.25rem);
+  background: var(--bg-section);
+  color: var(--text-primary);
+  overflow: hidden;
+  box-shadow: 0 40px 80px -30px rgba(29, 31, 82, 0.45);
+}
+
+.announcement::backdrop {
+  background: rgba(29, 31, 82, 0.55);
+  backdrop-filter: blur(3px);
+}
+
+.announcement[open] {
+  animation: announcementIn 0.5s var(--ease-out-expo) both;
+}
+
+.announcement[open]::backdrop {
+  animation: announcementBackdropIn 0.4s ease both;
+}
+
+@keyframes announcementIn {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes announcementBackdropIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Not positioned on purpose: the close button pins to the dialog, not to this
+   scrolling container, so it stays put on very short screens. */
+.announcement-inner {
+  padding: clamp(2rem, 6vw, 2.75rem);
+  max-height: inherit;
+  overflow-y: auto;
+}
+
+.announcement-inner .section-badge {
+  margin-bottom: 1.25rem;
+}
+
+.announcement h2 {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.announcement-lead {
+  font-size: clamp(0.95rem, 1.4vw, 1.05rem);
+  color: var(--accent);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.announcement h2 + .announcement-lead {
+  margin-top: 0.25rem;
+}
+
+.announcement-note {
+  margin: 0.5rem 0 1.75rem;
+  padding: 1rem 1.25rem;
+  border-radius: 1rem;
+  border-left: 4px solid var(--primary);
+  background: var(--bg-section-alt);
+  font-size: clamp(0.95rem, 1.4vw, 1.05rem);
+  color: var(--text-primary);
+  line-height: 1.6;
+  transition: background-color var(--theme-transition), border-color var(--theme-transition);
+}
+
+.announcement-note strong {
+  display: block;
+  font-weight: 700;
+}
+
+.announcement-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-on-primary);
+  text-decoration: none;
+  padding: 0.875rem 2rem;
+  background: var(--primary);
+  border-radius: 100px;
+  transition: all 0.3s var(--ease-out-expo);
+}
+
+.announcement-cta:hover,
+.announcement-cta:focus-visible {
+  background: var(--primary-dark);
+  transform: translateX(5px);
+}
+
+/* Keep the label on one line on narrow phones */
+@media (max-width: 26.25rem) {
+  .announcement-cta {
+    font-size: 0.95rem;
+    padding: 0.875rem 1.25rem;
+  }
+}
+
+.announcement-close {
+  position: absolute;
+  top: clamp(0.9rem, 3vw, 1.2rem);
+  right: clamp(0.9rem, 3vw, 1.2rem);
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: var(--bg-section-alt);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background-color 0.3s var(--ease-out-expo), transform 0.3s var(--ease-out-expo);
+}
+
+.announcement-close svg {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+.announcement-close:hover,
+.announcement-close:focus-visible {
+  background: var(--primary);
+  color: var(--text-on-primary);
+  transform: rotate(90deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .announcement[open],
+  .announcement[open]::backdrop {
+    animation: none;
+  }
+
+  .announcement-cta:hover,
+  .announcement-cta:focus-visible,
+  .announcement-close:hover,
+  .announcement-close:focus-visible {
+    transform: none;
+  }
 }

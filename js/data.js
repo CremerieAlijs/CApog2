@@ -76,6 +76,91 @@
   };
 
   // ============================================================
+  // Structured Data (schema.org opening hours)
+  // ============================================================
+
+  // The JSON-LD block in index.html is the source Google reads first, so it is
+  // kept correct by hand. This rewrites it from the sheet as well, so the two
+  // cannot drift apart when the hours change.
+
+  const SCHEMA_DAYS = {
+    maandag: "Monday",
+    dinsdag: "Tuesday",
+    woensdag: "Wednesday",
+    donderdag: "Thursday",
+    vrijdag: "Friday",
+    zaterdag: "Saturday",
+    zondag: "Sunday",
+  };
+
+  // Accepts "11u30", "11u", "11:30" or "11.30" and returns "11:30"
+  const toIsoTime = (value) => {
+    const match = String(value)
+      .trim()
+      .match(/^(\d{1,2})\s*(?:u|:|\.|h)?\s*(\d{2})?$/i);
+    if (!match) return null;
+
+    const hours = Number(match[1]);
+    const minutes = Number(match[2] ?? 0);
+    if (hours > 23 || minutes > 59) return null;
+
+    return `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}`;
+  };
+
+  const buildHoursSpecification = (dataRows) => {
+    // Group days that share the same opening and closing time
+    const groups = new Map();
+
+    dataRows.forEach((row) => {
+      const day = SCHEMA_DAYS[(row.day || "").trim().toLowerCase()];
+      if (!day) return;
+
+      const openRaw = (row.open || "").trim().toLowerCase();
+      const isClosed = openRaw === "" || openRaw === "gesloten";
+
+      const open = toIsoTime(row.open);
+      const close = toIsoTime(row.close);
+
+      // A day whose times we cannot read is left out altogether: publishing it
+      // as closed would turn a typo in the sheet into a lost customer.
+      if (!isClosed && !(open && close)) return;
+
+      // Closed days are published as 00:00–00:00, per Google's guidance
+      const key = isClosed ? "00:00-00:00" : `${open}-${close}`;
+
+      if (!groups.has(key)) groups.set(key, []);
+      groups.get(key).push(day);
+    });
+
+    return Array.from(groups.entries()).map(([key, days]) => {
+      const [opens, closes] = key.split("-");
+      return {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: days,
+        opens,
+        closes,
+      };
+    });
+  };
+
+  const updateStructuredData = (dataRows) => {
+    const scriptEl = document.getElementById("business-schema");
+    if (!scriptEl) return;
+
+    const specification = buildHoursSpecification(dataRows);
+    if (specification.length === 0) return;
+
+    try {
+      const schema = JSON.parse(scriptEl.textContent);
+      schema.openingHoursSpecification = specification;
+      scriptEl.textContent = JSON.stringify(schema, null, 2);
+    } catch (error) {
+      // Leave the hand-written block in place if it cannot be parsed
+      console.warn("Could not update structured data:", error);
+    }
+  };
+
+  // ============================================================
   // Opening Hours
   // ============================================================
 
@@ -100,6 +185,8 @@
       });
       return obj;
     });
+
+    updateStructuredData(dataRows);
 
     // Today's status
     if (todayStatusEl) {

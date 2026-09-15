@@ -41,7 +41,7 @@
     <link rel="stylesheet" href="styles.css" />
 
     <!-- Structured Data -->
-    <script type="application/ld+json">
+    <script type="application/ld+json" id="business-schema">
       {
         "@context": "https://schema.org",
         "@type": "IceCreamShop",
@@ -62,9 +62,21 @@
         "openingHoursSpecification": [
           {
             "@type": "OpeningHoursSpecification",
-            "dayOfWeek": ["Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-            "opens": "11:00",
-            "closes": "18:00"
+            "dayOfWeek": ["Monday", "Tuesday"],
+            "opens": "00:00",
+            "closes": "00:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Wednesday"],
+            "opens": "11:30",
+            "closes": "19:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Thursday", "Friday", "Saturday", "Sunday"],
+            "opens": "12:00",
+            "closes": "19:00"
           }
         ],
         "sameAs": [
@@ -271,11 +283,12 @@
               <p>Warme espresso over een bol vanille of mokka. Klein, maar oh zo goed.</p>
             </article>
             <article class="treat">
-              <h3>Pannenkoekenwoensdag</h3>
+              <h3>Pannenkoeken, alle dagen</h3>
               <p>
-                Op woensdag serveren we voor groot en klein onze versgebakken
-                pannenkoeken. Met suiker, chocoladesaus of met een ijsje. Ook
-                een Mikado mag niet ontbreken.
+                Nu de dagen korter worden en het buiten frisser aanvoelt, bakken
+                we onze pannenkoeken weer alle dagen vers. Met suiker,
+                chocoladesaus of toch met een bolletje ijs erbij. En een Mikado
+                mag natuurlijk niet ontbreken.
               </p>
             </article>
           </div>
@@ -402,9 +415,44 @@
       </div>
     </footer>
 
+    <!-- Announcement popup -->
+    <dialog class="announcement" id="announcement" aria-labelledby="announcement-title">
+      <div class="announcement-inner">
+        <button
+          type="button"
+          class="announcement-close"
+          id="announcement-close"
+          aria-label="Melding sluiten"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <path d="M6 6l12 12M18 6L6 18"/>
+          </svg>
+        </button>
+        <span class="section-badge">Nieuw</span>
+        <h2 id="announcement-title">Kortere dagen. Meer lekkers.</h2>
+        <p class="announcement-lead">
+          Versgebakken pannenkoeken op al onze openingsdagen, koffies met een
+          scheutje extraatje, IJsastridjes en gebak van de warme bakkers.
+          Genoeg om nog even voor te blijven zitten.
+        </p>
+        <p class="announcement-lead">
+          En binnenkort? Dan ontdek &eacute;n bestel je bij ons ook ijstaarten.
+          Kom zeker onze vitrine eens bekijken.
+        </p>
+        <p class="announcement-note">
+          <strong>We sluiten voortaan om 19&nbsp;uur.</strong>
+          Kom gerust wat vroeger genieten.
+        </p>
+        <a href="#openingsuren" class="announcement-cta" data-announcement-dismiss>
+          Bekijk de openingsuren&nbsp;&rarr;
+        </a>
+      </div>
+    </dialog>
+
     <!-- Scripts -->
     <script src="js/theme.js" defer></script>
     <script src="js/data.js" defer></script>
+    <script src="js/announcement.js" defer></script>
 
     <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d3cd907cdd074509a7761a4e3cfab11b"}'></script><!-- End Cloudflare Web Analytics -->
   </body>

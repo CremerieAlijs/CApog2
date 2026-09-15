@@ -140,22 +140,23 @@
       return THEMES.halloween;
     }
 
-    // Sinterklaas: December 1-5
-    if (month === 11 && day >= 1 && day <= 5) {
+    // Sinterklaas: December 1-6
+    if (month === 11 && day >= 1 && day <= 6) {
       return THEMES.sinterklaas;
     }
 
-    // Christmas: December 6 - January 1
-    if ((month === 11 && day >= 6) || (month === 0 && day === 1)) {
+    // Christmas: December 7 - January 1
+    if ((month === 11 && day >= 7) || (month === 0 && day === 1)) {
       return THEMES.christmas;
     }
 
-    // Summer: April 1 - October 31
-    if ((month >= 3 && month <= 9)) {
+    // Summer: April 1 - September 15
+    if ((month >= 3 && month <= 7) || (month === 8 && day <= 15)) {
       return THEMES.summer;
     }
 
-    // Winter: November 1 - March 31
+    // Winter: September 16 - March 31
+    // (Halloween is checked above, so it still takes October 15 - November 1)
     return THEMES.winter;
   }
 
