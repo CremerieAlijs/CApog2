@@ -416,7 +416,8 @@
     </footer>
 
     <!-- Announcement popup -->
-    <dialog class="announcement" id="announcement" aria-labelledby="announcement-title">
+    <!-- Each variant shows only within its date range — see VARIANTS in js/announcement.js -->
+    <dialog class="announcement" id="announcement">
       <div class="announcement-inner">
         <button
           type="button"
@@ -428,24 +429,44 @@
             <path d="M6 6l12 12M18 6L6 18"/>
           </svg>
         </button>
-        <span class="section-badge">Nieuw</span>
-        <h2 id="announcement-title">Kortere dagen. Meer lekkers.</h2>
-        <p class="announcement-lead">
-          Versgebakken pannenkoeken op al onze openingsdagen, koffies met een
-          scheutje extraatje, IJsastridjes en gebak van de warme bakkers.
-          Genoeg om nog even voor te blijven zitten.
-        </p>
-        <p class="announcement-lead">
-          En binnenkort? Dan ontdek &eacute;n bestel je bij ons ook ijstaarten.
-          Kom zeker onze vitrine eens bekijken.
-        </p>
-        <p class="announcement-note">
-          <strong>We sluiten voortaan om 19&nbsp;uur.</strong>
-          Kom gerust wat vroeger genieten.
-        </p>
-        <a href="#openingsuren" class="announcement-cta" data-announcement-dismiss>
-          Bekijk de openingsuren&nbsp;&rarr;
-        </a>
+
+        <!-- Before the holiday: until Sunday 4 October 2026 -->
+        <div data-announcement-variant="voor-verlof" hidden>
+          <span class="section-badge">Verlof</span>
+          <h2 id="announcement-title-voor-verlof">Nog snel een ijsje?</h2>
+          <p class="announcement-lead">
+            Van maandag 5 tot en met zondag 11 oktober zijn we met verlof.
+          </p>
+          <p class="announcement-lead">
+            Zin in een ijsje, een pannenkoek of een wafel? Of wil je nog een
+            voorraadje ijs voor thuis inslaan? Spring dan zeker nog even binnen
+            dit weekend.
+          </p>
+          <p class="announcement-note">
+            <strong>Dit weekend zijn we nog open.</strong>
+            Daarna staan we vanaf woensdag 14 oktober weer voor je klaar.
+          </p>
+          <a href="#openingsuren" class="announcement-cta" data-announcement-dismiss>
+            Bekijk de openingsuren&nbsp;&rarr;
+          </a>
+        </div>
+
+        <!-- During the holiday: 5 – 11 October 2026 -->
+        <div data-announcement-variant="verlof" hidden>
+          <span class="section-badge">Verlof</span>
+          <h2 id="announcement-title-verlof">Even op adem komen</h2>
+          <p class="announcement-lead">
+            We knijpen er een weekje tussen uit om even op adem te komen van
+            deze prachtige zomer.
+          </p>
+          <p class="announcement-note">
+            <strong>We ontvangen je graag terug op woensdag 14 oktober.</strong>
+            Tot dan!
+          </p>
+          <a href="#openingsuren" class="announcement-cta" data-announcement-dismiss>
+            Bekijk de openingsuren&nbsp;&rarr;
+          </a>
+        </div>
       </div>
     </dialog>
 
