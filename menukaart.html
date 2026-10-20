@@ -3,35 +3,36 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Onze menukaart — Cremerie Alijs</title>
-    <meta
-      name="description"
-      content="Ontdek de menukaart van Cremerie Alijs in Rijmenam: ijsjes, coupes, wafels, pannenkoeken, gebak, koffies en frisdranken."
-    />
+    <title>Menukaart — Cremerie Alijs</title>
+    <meta name="description" content="Bolletjes, coupes, wafels, pannenkoeken, gebak, koffie en frisdrank: de volledige menukaart van Cremerie Alijs in Rijmenam." />
 
-    <link rel="canonical" href="https://alijs.be/menukaart" />
+    <!-- Canonical & SEO -->
+    <link rel="canonical" href="https://alijs.beC:/Program Files/Git/menukaart" />
     <meta name="robots" content="index,follow" />
+    <meta name="geo.region" content="BE-VAN" />
+    <meta name="geo.placename" content="Rijmenam" />
 
+    <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Cremerie Alijs" />
-    <meta property="og:title" content="Onze menukaart — Cremerie Alijs" />
-    <meta property="og:description" content="Bekijk onze menukaart in Rijmenam en ontdek wat er allemaal te proeven valt." />
-    <meta property="og:url" content="https://alijs.be/menukaart" />
+    <meta property="og:title" content="Menukaart — Cremerie Alijs" />
+    <meta property="og:description" content="Bolletjes, coupes, wafels, pannenkoeken, gebak, koffie en frisdrank: de volledige menukaart van Cremerie Alijs in Rijmenam." />
+    <meta property="og:url" content="https://alijs.beC:/Program Files/Git/menukaart" />
     <meta property="og:image" content="https://alijs.be/img/logo-alijs.png" />
-
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Onze menukaart — Cremerie Alijs" />
-    <meta name="twitter:description" content="Bekijk onze menukaart in Rijmenam en ontdek wat er allemaal te proeven valt." />
-    <meta name="twitter:image" content="https://alijs.be/img/logo-alijs.png" />
 
+    <!-- Favicon -->
     <link rel="icon" href="img/favicon.svg" type="image/svg+xml" />
 
+    <!-- Fonts -->
     <link rel="preload" href="fonts/montserrat-latin.woff2" as="font" type="font/woff2" crossorigin />
 
+    <!-- Styles -->
     <link rel="stylesheet" href="styles.css" />
   </head>
 
-  <body>
+<body>
+
     <div class="floating-shapes" aria-hidden="true">
       <div class="shape shape-1"></div>
       <div class="shape shape-2"></div>
@@ -40,27 +41,58 @@
       <div class="shape shape-5"></div>
     </div>
 
-    <header class="hero hero-subpage hero-menu-page">
-      <div class="hero-content">
-        <div class="logo-badge">
-          <a href="/" aria-label="Ga naar homepagina">
-            <img src="img/logo-alijs.png" alt="Cremerie Alijs logo" class="logo" width="240" height="240" />
-          </a>
+    <nav class="site-nav" aria-label="Hoofdmenu">
+      <a href="/" class="nav-home">
+        <img src="img/logo-alijs.png" alt="" class="logo" width="40" height="40" />
+        Cremerie Alijs
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="/ons-ijs">Ons ijs &amp; zoetigheden</a></li>
+        <li><a href="/menukaart" aria-current="page">Menukaart</a></li>
+        <li data-segment="ijstaarten"><a href="/ijstaarten">IJstaarten</a></li>
+        <li data-segment="ape"><a href="/ape">De Ape</a></li>
+        <li><a href="/over-ons">Over ons</a></li>
+        <li><a href="/#bezoek">Bezoek ons</a></li>
+        <li data-segment="ijstaarten"><a href="/ijstaarten" class="nav-cta">Bestel een taart</a></li>
+      </ul>
+    </nav>
+
+    <!-- Hero -->
+    <header class="hero hero-ape">
+      <div class="hero-ape-grid">
+        <div>
+          <span class="section-badge section-badge-soft">Onze menukaart</span>
+          <h1>Iets lekkers voor elk moment</h1>
+          <p class="lead">
+            Zin in een bolletje, een coupe, een warme wafel of een koffietje?
+            Hier vind je alles wat we met zorg en goesting voor je maken.
+          </p>
         </div>
-        <span class="section-badge section-badge-soft">Onze menukaart</span>
-        <h1 class="menu-title">Iets lekkers voor elk moment</h1>
-        <p class="menu-intro">
-          Zin in een bolletje, een coupe, een warme wafel of een koffietje?<br />
-          Hier vind je alles wat we met zorg en goesting voor je maken.
-        </p>
+        <div class="hero-photo">
+          <img src="img/foto/coupe-chocobol.jpg" alt="Een coupe met een chocoladebol, slagroom en chocoladeschilfers" width="1050" height="1400" />
+        </div>
       </div>
     </header>
+
+    <!-- Snel naar een rubriek -->
+    <nav class="menu-jump" aria-label="Rubrieken van de menukaart">
+      <div class="section-inner">
+        <a href="#ijsjes">IJsjes</a>
+        <a href="#coupes">Coupes</a>
+        <a href="#wafels">Wafels &amp; pannenkoeken</a>
+        <a href="#gebak">Gebak</a>
+        <a href="#koffie">Koffie &amp; thee</a>
+        <a href="#speciale-koffies">Speciale koffies</a>
+        <a href="#fris">Fris &amp; sappen</a>
+      </div>
+    </nav>
 
     <main>
       <section class="section section-menu-overview">
         <div class="section-inner">
           <div class="menu-grid">
-            <article class="menu-category-card menu-category-card-featured" aria-labelledby="menu-ijsjes-title">
+            <article class="menu-category-card menu-category-card-featured" id="ijsjes" aria-labelledby="menu-ijsjes-title">
               <div class="menu-category-header">
                 <span class="section-badge">Onze ijsjes</span>
                 <h2 id="menu-ijsjes-title">Kies je favoriete ijsmoment</h2>
@@ -111,7 +143,7 @@
               </div>
             </article>
 
-            <article class="menu-category-card" aria-labelledby="menu-coupes-title">
+            <article class="menu-category-card" id="coupes" aria-labelledby="menu-coupes-title">
               <div class="menu-category-header">
                 <span class="section-badge">Onze coupes</span>
                 <h2 id="menu-coupes-title">Coupes om van te genieten</h2>
@@ -139,7 +171,7 @@
               </ul>
             </article>
 
-            <article class="menu-category-card" aria-labelledby="menu-wafels-title">
+            <article class="menu-category-card" id="wafels" aria-labelledby="menu-wafels-title">
               <div class="menu-category-header">
                 <span class="section-badge">Wafels &amp; pannenkoeken</span>
                 <h2 id="menu-wafels-title">Warm, krokant en huiselijk</h2>
@@ -159,10 +191,10 @@
               </ul>
             </article>
 
-            <article class="menu-category-card" aria-labelledby="menu-gebak-title">
+            <article class="menu-category-card" id="gebak" aria-labelledby="menu-gebak-title">
               <div class="menu-category-header">
                 <span class="section-badge">Gebak &amp; zoet</span>
-                <h2 id="menu-gebak-title">Zoet van de warme bakkers</h2>
+                <h2 id="menu-gebak-title">Iets zoets bij je koffie</h2>
                 <p>Vers gebak om bij je koffie te blijven hangen.</p>
               </div>
               <ul class="menu-list">
@@ -170,11 +202,10 @@
                 <li>Koffie met gebak</li>
                 <li>Taart met ijs</li>
                 <li>Apfelstrudel met ijs</li>
-                <li>IJsastridje</li>
               </ul>
             </article>
 
-            <article class="menu-category-card" aria-labelledby="menu-warm-title">
+            <article class="menu-category-card" id="koffie" aria-labelledby="menu-warm-title">
               <div class="menu-category-header">
                 <span class="section-badge">Koffie &amp; thee</span>
                 <h2 id="menu-warm-title">Voor koude dagen of een rustig koffiemoment</h2>
@@ -198,7 +229,7 @@
               </ul>
             </article>
 
-            <article class="menu-category-card" aria-labelledby="menu-speciale-koffies-title">
+            <article class="menu-category-card" id="speciale-koffies" aria-labelledby="menu-speciale-koffies-title">
               <div class="menu-category-header">
                 <span class="section-badge">Speciale koffies</span>
                 <h2 id="menu-speciale-koffies-title">Koffie met een tikkeltje extra</h2>
@@ -215,7 +246,7 @@
               </ul>
             </article>
 
-            <article class="menu-category-card" aria-labelledby="menu-fris-title">
+            <article class="menu-category-card" id="fris" aria-labelledby="menu-fris-title">
               <div class="menu-category-header">
                 <span class="section-badge">Fris &amp; sappen</span>
                 <h2 id="menu-fris-title">Fris &amp; verfrissend</h2>
@@ -235,6 +266,19 @@
           </div>
         </div>
       </section>
+
+      <section class="section section-cream">
+        <div class="section-inner">
+          <div class="cta-block">
+            <h2>Allergieën?</h2>
+            <p>Bekijk per product welke allergenen erin zitten, of vraag het gerust aan de toog.</p>
+            <div class="hero-actions">
+              <a href="/allergenen" class="btn btn-light">Allergenenlijst</a>
+              <a href="/ons-ijs#smaken" class="btn btn-ghost">De smaken van vandaag</a>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer class="site-footer">
@@ -246,7 +290,12 @@
       <div class="footer-inner">
         <img src="img/logo-alijs.png" alt="Cremerie Alijs" class="footer-logo" width="120" height="120" />
         <div class="footer-social">
-          <a href="https://instagram.com/cremeriealijs" target="_blank" rel="noopener noreferrer" class="social-link">
+          <a
+            href="https://instagram.com/cremeriealijs"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-link"
+          >
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
             </svg>
@@ -254,16 +303,27 @@
           </a>
         </div>
         <div class="footer-links">
-          <a href="/menukaart" class="footer-allergens-link">Bekijk onze menukaart.</a>
-          <a href="/allergenen" class="footer-allergens-link">Bekijk hier onze allergenenlijst.</a>
+          <a href="/menukaart" class="footer-allergens-link">Menukaart</a>
+          <a href="/allergenen" class="footer-allergens-link">Allergenen</a>
           <a href="/algemene-voorwaarden" class="footer-allergens-link">Algemene voorwaarden</a>
           <a href="/privacyverklaring" class="footer-allergens-link">Privacyverklaring</a>
         </div>
-        <p class="copyright">© 2026 Cremerie Alijs. Alle rechten voorbehouden.</p>
+        <p class="copyright">
+          <span class="copyright-main">© 2026 Cremerie Alijs. Alle rechten voorbehouden.</span>
+          <span class="copyright-subtle">Cremerie Alijs wordt uitgebaat door BraMa BV (Ondernemingsnummer: 1031.725.256).</span>
+        </p>
       </div>
     </footer>
 
+    <nav class="mobile-bar" aria-label="Snelle acties">
+      <a href="/ijstaarten" data-segment="ijstaarten">Bestel een taart</a>
+      <a href="/ape" data-segment="ape">Boek de Ape</a>
+    </nav>
+
+    <!-- Scripts -->
     <script src="js/theme.js" defer></script>
+    <script src="js/data.js" defer></script>
+    <script src="js/site.js" defer></script>
 
     <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d3cd907cdd074509a7761a4e3cfab11b"}'></script><!-- End Cloudflare Web Analytics -->
   </body>

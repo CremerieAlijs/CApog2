@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 230" role="img" aria-label="Lijntekening van een ijstaart" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+  <!-- bord -->
+  <ellipse cx="150" cy="200" rx="135" ry="16"/>
+  <!-- taart -->
+  <path d="M42 120 v62 c0 20 216 20 216 0 v-62"/>
+  <ellipse cx="150" cy="120" rx="108" ry="24"/>
+  <!-- twee smaken: laaglijn -->
+  <path d="M42 152 c0 20 216 20 216 0" stroke-width="2" stroke-dasharray="2 9"/>
+  <!-- afdruipende rand -->
+  <path d="M43 126 c8 16 20 16 24 2 c5 20 20 20 25 3 c5 16 18 16 23 1 c5 20 21 20 26 2 c5 16 18 16 23 0 c5 20 20 20 25 2 c5 14 17 14 22 -4 c4 12 12 12 15 -4"/>
+  <!-- bolletjes op de taart -->
+  <path d="M96 112 c-10 -2 -12 -16 -1 -20 c1 -14 22 -17 27 -4 c11 -1 14 14 4 19"/>
+  <path d="M138 106 c-10 -2 -12 -16 -1 -20 c1 -14 22 -17 27 -4 c11 -1 14 14 4 19"/>
+  <path d="M180 112 c-10 -2 -12 -16 -1 -20 c1 -14 22 -17 27 -4 c11 -1 14 14 4 19"/>
+  <!-- wafeltjes -->
+  <path d="M120 86 l10 -40 l12 4 l-8 38"/>
+  <path d="M124 70 l14 4 M127 58 l13 4" stroke-width="2"/>
+  <path d="M196 92 l20 -34 l10 7 l-16 31"/>
+  <path d="M204 78 l12 7 M210 68 l11 7" stroke-width="2"/>
+  <!-- kaarsje -->
+  <path d="M168 84 v-26"/>
+  <path d="M168 50 c-6 -6 0 -13 0 -15 c0 2 6 9 0 15 z"/>
+</svg>

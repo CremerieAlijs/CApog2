@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ons ijs & zoetigheden — Cremerie Alijs</title>
+    <meta name="description" content="De smaken van vandaag, potten ijs voor thuis, coupes, wafels, pannenkoeken en gebak bij je koffie. Vers gedraaid ijs in Rijmenam." />
+
+    <!-- Canonical & SEO -->
+    <link rel="canonical" href="https://alijs.beC:/Program Files/Git/ons-ijs" />
+    <meta name="robots" content="index,follow" />
+    <meta name="geo.region" content="BE-VAN" />
+    <meta name="geo.placename" content="Rijmenam" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Cremerie Alijs" />
+    <meta property="og:title" content="Ons ijs & zoetigheden — Cremerie Alijs" />
+    <meta property="og:description" content="De smaken van vandaag, potten ijs voor thuis, coupes, wafels, pannenkoeken en gebak bij je koffie. Vers gedraaid ijs in Rijmenam." />
+    <meta property="og:url" content="https://alijs.beC:/Program Files/Git/ons-ijs" />
+    <meta property="og:image" content="https://alijs.be/img/logo-alijs.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml" />
+
+    <!-- Fonts -->
+    <link rel="preload" href="fonts/montserrat-latin.woff2" as="font" type="font/woff2" crossorigin />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+<body>
+
+    <div class="floating-shapes" aria-hidden="true">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+      <div class="shape shape-4"></div>
+      <div class="shape shape-5"></div>
+    </div>
+
+    <nav class="site-nav" aria-label="Hoofdmenu">
+      <a href="/" class="nav-home">
+        <img src="img/logo-alijs.png" alt="" class="logo" width="40" height="40" />
+        Cremerie Alijs
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="/ons-ijs" aria-current="page">Ons ijs &amp; zoetigheden</a></li>
+        <li><a href="/menukaart">Menukaart</a></li>
+        <li data-segment="ijstaarten"><a href="/ijstaarten">IJstaarten</a></li>
+        <li data-segment="ape"><a href="/ape">De Ape</a></li>
+        <li><a href="/over-ons">Over ons</a></li>
+        <li><a href="/#bezoek">Bezoek ons</a></li>
+        <li data-segment="ijstaarten"><a href="/ijstaarten" class="nav-cta">Bestel een taart</a></li>
+      </ul>
+    </nav>
+
+    <!-- Hero -->
+    <header class="hero hero-ape">
+      <div class="hero-ape-grid">
+        <div>
+          <span class="section-badge section-badge-soft">Ons ijs &amp; zoetigheden</span>
+          <h1>Vers gedraaid, elke week opnieuw</h1>
+          <p class="lead">
+            Met melk van de boerderij om de hoek draaien we kleine batches ijs.
+            Daarnaast bakken we wafels en pannenkoeken, en staat er altijd
+            gebak klaar bij je koffie.
+          </p>
+          <div class="hero-actions">
+            <a href="#smaken" class="btn btn-light">De smaken van vandaag</a>
+            <a href="#zoetigheden" class="btn btn-ghost">Zoetigheden</a>
+          </div>
+        </div>
+        <div class="hero-photo">
+          <img src="img/foto/ijs-stukjes-hand.jpg" alt="Een groen Alijs-bekertje met ijs en een wafeltje, in de hand" width="1050" height="1400" />
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Smaken van vandaag (live uit de Google Sheet) -->
+      <section class="section section-cream curve-top" id="smaken">
+        <div class="section-inner flavors-layout">
+          <div class="flavor-board">
+            <span class="section-badge">Vandaag in onze pozzetti</span>
+            <h2>Onze smaken</h2>
+            <ul id="tastes-list" class="flavor-list"><li>Smaken laden…</li></ul>
+          </div>
+
+          <aside class="pozzetti">
+            <img src="img/foto/toog-pozzetti.jpg" alt="Onze toog met de afgedekte pozzetti en het smakenbord" width="1400" height="933" />
+            <h3>Waarom zie je ons ijs niet liggen?</h3>
+            <p>
+              We bewaren ons ijs in pozzetti: diepe kuipen met een deksel, zoals
+              in Italië. Zo blijft het op de juiste temperatuur en droogt het
+              niet uit. Je ziet het pas als we het voor je scheppen, daarom
+              staan de smaken hier en op het bord aan de toog.
+            </p>
+          </aside>
+        </div>
+      </section>
+
+      <!-- Potten voor thuis -->
+      <section class="section section-cream-alt" id="potten">
+        <div class="section-inner teaser">
+          <div class="teaser-photo">
+            <img src="img/foto/ijspot-thuis.jpg" alt="Een pot Alijs-ijs om mee te nemen, naast een bekertje" width="1050" height="1400" />
+          </div>
+          <div class="teaser-text">
+            <span class="section-badge">Neem mee naar huis</span>
+            <h2>Een pot ijs voor thuis</h2>
+            <p>
+              Een liter, of twee, voor in je eigen diepvries? Dat kan. We pakken
+              het mooi in, zodat je thuis rustig verder kan genieten.
+            </p>
+            <div id="pot-flavors-section" hidden>
+              <h3 class="pot-title">Nu in grote potten</h3>
+              <ul id="pot-flavors-list" class="pot-list"></ul>
+            </div>
+            <p>
+              Een smaak die er niet bij staat? Op aanvraag draaien we hem voor
+              je, vanaf 5 liter.
+            </p>
+            <a href="/ijstaarten" class="text-link" data-segment="ijstaarten">Liever een ijstaart? →</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Het seizoen -->
+      <section class="section section-cream season">
+        <div class="section-inner">
+          <div class="season-card">
+            <h2>Wat het seizoen brengt</h2>
+            <p>
+              In de lente en zomer: framboos, bosvruchten en frisse limoen. De
+              herfst brengt praliné, peer en karamel. En in de winter? Kruidige
+              smaken en een glaasje glühwein.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Zoetigheden -->
+      <section class="section section-cream-alt" id="zoetigheden">
+        <div class="section-inner">
+          <div class="section-head center">
+            <span class="section-badge">Meer dan alleen ijs</span>
+            <h2>Blijf gerust wat langer</h2>
+            <p>Voor wie zin heeft in iets warms, iets zoets of allebei.</p>
+          </div>
+
+          <div class="treats">
+            <article class="treat-card">
+              <img src="img/foto/coupe-chocobol.jpg" alt="Een coupe met een chocoladebol, slagroom en chocoladeschilfers" width="1050" height="1400" />
+              <h3>Coupes</h3>
+              <p>Dame Blanche, Brésilienne, Banoffee of een Coupe Amarena. Onze klassiekers krijg je met drie bollen, minder mag ook.</p>
+            </article>
+            <article class="treat-card">
+              <img src="img/foto/wafel-aardbeien.jpg" alt="Een Brusselse wafel met verse aardbeien en poedersuiker" width="1400" height="1050" />
+              <h3>Wafels &amp; pannenkoeken</h3>
+              <p>Luchtige Brusselse wafels en pannenkoeken, per twee en vers gebakken tot 18u. Met suiker, chocoladesaus of een bolletje ijs.</p>
+            </article>
+            <article class="treat-card">
+              <img src="img/foto/gebak-amandeltaart.jpg" alt="Een amandeltaart op een wit bord" width="1050" height="1400" />
+              <h3>Gebak bij je koffie</h3>
+              <p>Elke dag gebak om bij je koffie te blijven hangen, of met een bolletje ijs erbij.</p>
+            </article>
+            <article class="treat-card">
+              <img src="img/foto/koffie-siropen.jpg" alt="Flessen koffiesiroop op onze toog" width="1050" height="1400" />
+              <h3>Koffie &amp; affogato</h3>
+              <p>Van espresso tot chai latte, met een siroop naar keuze. Of een affogato: warme espresso over een bol vanille.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Afsluiter -->
+      <section class="section section-cream">
+        <div class="section-inner">
+          <div class="cta-block">
+            <h2>Alles op een rij?</h2>
+            <p>Op de menukaart vind je alle bolletjes, coupes, wafels en drankjes.</p>
+            <div class="hero-actions">
+              <a href="/menukaart" class="btn btn-light">Bekijk de menukaart</a>
+              <a href="/#bezoek" class="btn btn-ghost">Openingsuren</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-wave" aria-hidden="true">
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+          <path d="M0,60 C360,120 720,0 1080,60 C1260,90 1380,90 1440,60 L1440,120 L0,120 Z"/>
+        </svg>
+      </div>
+      <div class="footer-inner">
+        <img src="img/logo-alijs.png" alt="Cremerie Alijs" class="footer-logo" width="120" height="120" />
+        <div class="footer-social">
+          <a
+            href="https://instagram.com/cremeriealijs"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-link"
+          >
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+            @cremeriealijs
+          </a>
+        </div>
+        <div class="footer-links">
+          <a href="/menukaart" class="footer-allergens-link">Menukaart</a>
+          <a href="/allergenen" class="footer-allergens-link">Allergenen</a>
+          <a href="/algemene-voorwaarden" class="footer-allergens-link">Algemene voorwaarden</a>
+          <a href="/privacyverklaring" class="footer-allergens-link">Privacyverklaring</a>
+        </div>
+        <p class="copyright">
+          <span class="copyright-main">© 2026 Cremerie Alijs. Alle rechten voorbehouden.</span>
+          <span class="copyright-subtle">Cremerie Alijs wordt uitgebaat door BraMa BV (Ondernemingsnummer: 1031.725.256).</span>
+        </p>
+      </div>
+    </footer>
+
+    <nav class="mobile-bar" aria-label="Snelle acties">
+      <a href="/ijstaarten" data-segment="ijstaarten">Bestel een taart</a>
+      <a href="/ape" data-segment="ape">Boek de Ape</a>
+    </nav>
+
+    <!-- Scripts -->
+    <script src="js/theme.js" defer></script>
+    <script src="js/data.js" defer></script>
+    <script src="js/site.js" defer></script>
+
+    <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d3cd907cdd074509a7761a4e3cfab11b"}'></script><!-- End Cloudflare Web Analytics -->
+  </body>
+</html>
