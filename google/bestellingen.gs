@@ -282,8 +282,8 @@ function opruimen() {
 function schrijf(soort, rij) {
   const blad = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(TABS[soort].naam);
   if (!blad) throw new Error('Tabblad ontbreekt: voer setup() uit.');
-  // Voorkom formules in velden die de klant invult
-  blad.appendRow(rij.map((v) => (typeof v === 'string' && /^[=+\-@]/.test(v) ? "'" + v : v)));
+  // Voorkom formules in velden die de klant invult, en bewaar de 0 vooraan in telefoonnummers
+  blad.appendRow(rij.map((v) => (typeof v === 'string' && /^([=+\-@]|0\d)/.test(v) ? "'" + v : v)));
   return blad;
 }
 

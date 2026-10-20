@@ -156,7 +156,7 @@
   // Formulieren versturen naar het Google Apps Script (zie google/LEESMIJ.md)
   // ------------------------------------------------------------------
   // Webadres van de Apps Script-implementatie (…/exec). Leeg = nog niet gekoppeld.
-  const FORM_ENDPOINT = '';
+  const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwqxYqlbAgkVdvFpWOg6re4MUoYE3CqoyJh8RpqjwcphRGzv0jbNdVpT-dgeET3trgA/exec';
   const geladen = Date.now();
 
   window.AlijsForms = {
