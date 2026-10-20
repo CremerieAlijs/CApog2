@@ -34,8 +34,13 @@
 
   // ------------------------------------------------------------------
   // Onderdelen aan/uit: aan, gesloten (zichtbaar, niet bestelbaar) of uit.
-  // TODO: inlezen uit het tabblad "Instellingen" in de Google Sheet.
+  // Komt uit het tabblad "Instellingen" in de Google Sheet (WebsiteData).
+  // De waarden hieronder gelden zolang de Sheet niet geladen is.
   // ------------------------------------------------------------------
+  const SETTINGS_CSV =
+    'https://docs.google.com/spreadsheets/d/e/2PACX-1vTFHVIq4m5c0quhYDrSoDoYVxV-0LsN5h1ZSzv-hOBFIN6YRFZjkKB59JNWyeLoR7et0p6kHFPgoyxG/pub?gid=1900226224&single=true&output=csv';
+  const STANDEN = ['aan', 'gesloten', 'uit'];
+
   const SEGMENTS = {
     ijstaarten: {
       title: 'IJstaarten',
@@ -117,7 +122,70 @@
     listeners.forEach((fn) => fn());
   };
 
+  // Kolommen A–C: onderdeel, stand, boodschap. Andere rijen en kolommen (het overzicht) tellen niet mee.
+  const parseCsv = (text) => {
+    const rows = [[]];
+    let field = '';
+    let quoted = false;
+    for (let i = 0; i < text.length; i += 1) {
+      const c = text[i];
+      if (quoted) {
+        if (c === '"' && text[i + 1] === '"') { field += '"'; i += 1; }
+        else if (c === '"') quoted = false;
+        else field += c;
+      } else if (c === '"') quoted = true;
+      else if (c === ',') { rows.at(-1).push(field); field = ''; }
+      else if (c === '\n') { rows.at(-1).push(field); field = ''; rows.push([]); }
+      else if (c !== '\r') field += c;
+    }
+    rows.at(-1).push(field);
+    return rows;
+  };
+
+  const useSettings = (rows) => {
+    let changed = false;
+    rows.forEach(([key = '', value = '', boodschap = '']) => {
+      key = key.trim().toLowerCase();
+      value = value.trim().toLowerCase();
+      if (!settings[key] || !STANDEN.includes(value)) return;
+      const next = { stand: value, boodschap: boodschap.trim() };
+      if (next.stand !== settings[key].stand || next.boodschap !== settings[key].boodschap) changed = true;
+      settings[key] = next;
+    });
+    return changed;
+  };
+
+  // Laatst gekende stand eerst, zodat een onderdeel dat uit staat niet even zichtbaar is.
+  // Jonger dan 5 minuten: niet opnieuw ophalen (Google ververst het tabblad toch maar om de paar minuten).
+  let fresh = false;
+  try {
+    const cached = JSON.parse(localStorage.getItem('alijs-instellingen'));
+    if (cached && Array.isArray(cached.rows)) {
+      useSettings(cached.rows);
+      fresh = Date.now() - cached.t < 5 * 60 * 1000;
+    }
+  } catch (e) {
+    // Geen opslag beschikbaar: dan gelden de standaardwaarden
+  }
+
   applySegments();
+
+  if (!fresh) {
+    fetch(SETTINGS_CSV)
+      .then((res) => (res.ok ? res.text() : Promise.reject(res.status)))
+      .then((text) => {
+        const rows = parseCsv(text).map((row) => row.slice(0, 3));
+        try {
+          localStorage.setItem('alijs-instellingen', JSON.stringify({ t: Date.now(), rows }));
+        } catch (e) {
+          // Niet erg: volgende keer gewoon opnieuw laden
+        }
+        if (useSettings(rows)) applySegments();
+      })
+      .catch(() => {
+        // Sheet niet bereikbaar: de standaardwaarden blijven gelden
+      });
+  }
 
   // ------------------------------------------------------------------
   // Menukaart: de rubriek waar je bent licht op in de snelbalk

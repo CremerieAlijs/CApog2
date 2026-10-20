@@ -44,9 +44,9 @@ Werk overal ingelogd als **hallo@alijs.be**.
 - Daarna: **Afgehaald** of **Geannuleerd** (er vertrekt dan geen mail).
 - Bestellingen ouder dan 12 maanden worden elke maand automatisch gewist (privacy).
 
-## 6. Onderdelen aan/uit (later)
+## 6. Onderdelen aan/uit
 
-In de **website-Sheet** (die met smaken en uren) komt een tabblad **Instellingen**:
+In de Sheet **WebsiteData** (die met smaken en uren) staat het tabblad **Instellingen**:
 
 | onderdeel  | stand | boodschap |
 |------------|-------|-----------|
@@ -54,8 +54,11 @@ In de **website-Sheet** (die met smaken en uren) komt een tabblad **Instellingen
 | eindejaar  | uit   |           |
 | ape        | aan   |           |
 
-`stand` is `aan`, `gesloten` of `uit`. Publiceer dit tabblad als CSV (Bestand → Delen → Publiceren op internet),
-dan worden website en script eraan gekoppeld.
+- `stand` kies je in het keuzelijstje: **aan** (bestellen kan), **gesloten** (zichtbaar, bestellen kan niet)
+  of **uit** (verdwijnt van de site). Het overzicht ernaast (kolom E–F) legt het nog eens uit.
+- `boodschap` leeg = standaardtekst; anders toont de site jouw tekst.
+- Website (`js/site.js`) en script (`CONFIG.instellingenCsv`) lezen dit tabblad. Een wijziging staat
+  na ongeveer 5 minuten online. Verander de namen in kolom A niet.
 
 ## Aan te passen in het script
 

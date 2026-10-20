@@ -68,10 +68,27 @@
     return rows;
   };
 
+  // Tabbladen 5 minuten onthouden in de browser, zodat rondklikken niet telkens alles opnieuw vraagt.
+  // Google ververst een gepubliceerd tabblad toch maar om de paar minuten.
+  const CACHE_MS = 5 * 60 * 1000;
+
   const fetchSheet = async (sheetId) => {
+    const key = `alijs-sheet-${sheetId}`;
+    try {
+      const cached = JSON.parse(sessionStorage.getItem(key));
+      if (cached && Date.now() - cached.t < CACHE_MS) return parseCsv(cached.text);
+    } catch (error) {
+      // Geen opslag beschikbaar: gewoon ophalen
+    }
+
     const response = await fetch(getSheetUrl(sheetId), { cache: "no-store" });
     if (!response.ok) throw new Error("Fetch failed");
     const text = await response.text();
+    try {
+      sessionStorage.setItem(key, JSON.stringify({ t: Date.now(), text }));
+    } catch (error) {
+      // Niet erg: volgende pagina haalt het opnieuw op
+    }
     return parseCsv(text);
   };
 
@@ -369,32 +386,22 @@
   };
 
   // ============================================================
-  // Load all data in parallel
+  // Load the data this page needs, in parallel
   // ============================================================
 
-  const loadAll = async () => {
-    const coreResults = await Promise.allSettled([
-      fetchSheet(SHEETS.hours),
-      fetchSheet(SHEETS.flavors),
-      fetchSheet(SHEETS.moment),
-    ]);
+  // Alleen ophalen wat deze pagina toont
+  const has = (...ids) => ids.some((id) => document.getElementById(id));
 
-    if (coreResults[0].status === "fulfilled") {
-      renderOpeningHours(coreResults[0].value);
-    }
-
-    if (coreResults[1].status === "fulfilled") {
-      renderFlavors(coreResults[1].value);
-    }
-
-    if (coreResults[2].status === "fulfilled") {
-      renderMoment(coreResults[2].value);
-    }
-
-    // Optional sheet: load without blocking core content rendering.
-    fetchSheet(SHEETS.potFlavors)
-      .then(renderPotFlavors)
+  const load = (sheetId, render) =>
+    fetchSheet(sheetId)
+      .then(render)
       .catch(() => {});
+
+  const loadAll = () => {
+    if (has("today-status", "opening-hours", "business-schema")) load(SHEETS.hours, renderOpeningHours);
+    if (has("tastes-list")) load(SHEETS.flavors, renderFlavors);
+    if (has("taste-of-the-moment")) load(SHEETS.moment, renderMoment);
+    if (has("pot-flavors-section", "pot-flavors-list")) load(SHEETS.potFlavors, renderPotFlavors);
   };
 
   loadAll();

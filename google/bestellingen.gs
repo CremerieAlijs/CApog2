@@ -17,7 +17,7 @@ const CONFIG = {
   afzenderNaam: 'Cremerie Alijs',
   tijdzone: 'Europe/Brussels',
   // Gepubliceerde CSV van het tabblad "Instellingen" in de website-Sheet (leeg = niet controleren)
-  instellingenCsv: '',
+  instellingenCsv: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTFHVIq4m5c0quhYDrSoDoYVxV-0LsN5h1ZSzv-hOBFIN6YRFZjkKB59JNWyeLoR7et0p6kHFPgoyxG/pub?gid=1900226224&single=true&output=csv',
   bewaarMaanden: 12,
 };
 
@@ -299,7 +299,12 @@ function controleerKlant(d) {
 
 function controleerStand(onderdeel) {
   if (!CONFIG.instellingenCsv) return;
-  const csv = Utilities.parseCsv(UrlFetchApp.fetch(CONFIG.instellingenCsv).getContentText());
+  let csv;
+  try {
+    csv = Utilities.parseCsv(UrlFetchApp.fetch(CONFIG.instellingenCsv).getContentText());
+  } catch (e) {
+    return; // Instellingen niet bereikbaar: bestelling gewoon aannemen, je bevestigt toch zelf
+  }
   const rij = csv.find((r) => String(r[0]).trim().toLowerCase() === onderdeel);
   const stand = rij ? String(rij[1]).trim().toLowerCase() : 'aan';
   if (stand !== 'aan') throw new Fout((rij && rij[2]) || 'Bestellen of aanvragen kan momenteel niet.');
