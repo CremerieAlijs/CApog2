@@ -60,7 +60,7 @@
   };
 
   const settings = {
-    ijstaarten: { stand: 'aan', boodschap: '' },
+    ijstaarten: { stand: 'uit', boodschap: '' },
     eindejaar: { stand: 'uit', boodschap: '' },
     ape: { stand: 'aan', boodschap: '' },
   };

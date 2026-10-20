@@ -231,7 +231,7 @@ function bijStatusWijziging(e) {
       `Dag ${voornaam},`, '',
       `Goed nieuws: de Ape is voor je vastgelegd op ${leesbareDatum(dag)}.`,
       `Formule: ${veld('Formule')}, voor ${veld('Gasten')} gasten in ${veld('Gemeente')}.`, '',
-      'Annuleren kan kosteloos tot 7 dagen op voorhand. Daarna brengen we het feest of de minimumhoeveelheid bolletjes in rekening.',
+      'Annuleren kan kosteloos tot 2 weken op voorhand. Daarna brengen we het feest of de minimumhoeveelheid bolletjes in rekening.',
       'Zorg voor stroom ter plaatse en een plek die vlot bereikbaar is met de Ape.', '',
       'Heb je nog vragen? Antwoord gewoon op deze mail.', '',
       'Tot op je feest!', 'Cremerie Alijs',
