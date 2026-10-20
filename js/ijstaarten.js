@@ -59,7 +59,7 @@
     cart = [];
   }
   // Taarten die niet meer in het aanbod zitten, vallen uit het mandje
-  cart = cart.filter((item) => item && PRODUCTS[item.id]);
+  cart = cart.filter((item) => item && PRODUCTS[item.id] && (item.id !== 'ijstaart' || item.maat));
 
   const saveCart = () => {
     try {
@@ -242,6 +242,8 @@
     let name = PRODUCTS[current].name;
     let detail;
     let price = PRODUCTS[current].price ?? null;
+    // Gestructureerde keuze, zodat het script zelf de prijs en regels controleert
+    const keuze = {};
     if (current === 'ijstaart') {
       const size = picker.querySelector('input[name="size"]:checked').value;
       const f1 = $('#flavor-1').value;
@@ -255,11 +257,13 @@
       price = chosen.price;
       // Twee keer dezelfde smaak = een volledige taart in die smaak
       detail = f1 === f2 ? `volledig ${f1}` : `${f1} & ${f2}`;
+      Object.assign(keuze, { maat: size, smaak1: f1, smaak2: f2 });
     } else {
       detail = picker.querySelector('input[name="combo"]:checked').value;
+      keuze.combinatie = detail;
     }
     const wasXmas = hasXmas();
-    cart.push({ id: current, name, detail, qty, price });
+    cart.push({ id: current, name, detail, qty, price, ...keuze });
     saveCart();
     renderCart();
     if (wasXmas !== hasXmas()) setupPickup();
@@ -267,8 +271,8 @@
     $('#bestellen').scrollIntoView({ behavior: 'smooth' });
   });
 
-  // ---------------------------------------------------------------- versturen (schets)
-  $('#order-form').addEventListener('submit', (e) => {
+  // ---------------------------------------------------------------- versturen
+  $('#order-form').addEventListener('submit', async (e) => {
     e.preventDefault();
     const form = e.currentTarget;
     if (segment('ijstaarten') !== 'aan') return;
@@ -288,21 +292,38 @@
       return;
     }
     const data = new FormData(form);
-    $('#mail-body').textContent = [
-      `Nieuwe bestelling ijstaarten`,
-      ``,
-      ...cart.map((item) => `${item.qty}× ${item.name} — ${item.detail}${typeof item.price === 'number' ? ` (${euro(item.price * item.qty)})` : ''}`),
-      ``,
-      `Afhalen: ${longDate(day)} om ${timeSelect.value}`,
-      ``,
-      `Naam: ${data.get('naam')}`,
-      `Telefoon: ${data.get('telefoon')}`,
-      `E-mail: ${data.get('email')}`,
-      `Opmerking: ${data.get('opmerking') || '—'}`,
-      ``,
-      `Nog te bevestigen aan de klant.`,
-    ].join('\n');
-    $('#mail-preview').showModal();
+    const status = $('#order-status');
+    const button = form.querySelector('button[type="submit"]');
+    button.disabled = true;
+    status.className = 'form-status';
+    status.textContent = 'Even geduld…';
+    try {
+      await window.AlijsForms.send({
+        soort: 'ijstaarten',
+        items: cart.map(({ id, qty, maat, smaak1, smaak2, combinatie }) => ({ id, aantal: qty, maat, smaak1, smaak2, combinatie })),
+        dag: day,
+        uur: timeSelect.value,
+        naam: data.get('naam'),
+        telefoon: data.get('telefoon'),
+        email: data.get('email'),
+        opmerking: data.get('opmerking'),
+        website: data.get('website'),
+      });
+      const summary = cart.map((item) => `${item.qty}× ${item.name} (${item.detail})`).join(', ');
+      cart = [];
+      saveCart();
+      renderCart();
+      form.innerHTML = `
+        <div class="form-done field-full" role="status">
+          <h2>Bedankt, je bestelling is goed aangekomen!</h2>
+          <p>${summary}, af te halen op ${longDate(day)} om ${timeSelect.value}.</p>
+          <p>Je bestelling is pas definitief als wij ze per mail bevestigd hebben. Betalen doe je bij het afhalen.</p>
+        </div>`;
+    } catch (err) {
+      status.className = 'form-status is-error';
+      status.textContent = err.message;
+      button.disabled = false;
+    }
   });
 
   document.querySelectorAll('[data-close]').forEach((btn) =>

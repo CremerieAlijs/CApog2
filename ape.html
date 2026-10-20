@@ -288,19 +288,19 @@
               <p>Liever bellen? <a href="tel:+32469725829">0469 72 58 29</a></p>
             </div>
 
-            <form class="form" data-pending-form data-segment-form>
+            <form class="form" data-ape-form data-segment-form novalidate>
               <div class="field">
-                <label for="f-date">Datum</label>
-                <input id="f-date" type="date" />
+                <label for="f-date">Datum *</label>
+                <input id="f-date" name="datum" type="date" required />
               </div>
               <div class="field">
-                <label for="f-guests">Aantal gasten</label>
-                <input id="f-guests" type="number" min="1" placeholder="bv. 60" />
+                <label for="f-guests">Aantal gasten *</label>
+                <input id="f-guests" name="gasten" type="number" min="1" placeholder="bv. 60" required />
                 <small class="field-help">À volonté: minimum 30 personen</small>
               </div>
               <div class="field">
                 <label for="f-type">Soort feest</label>
-                <select id="f-type">
+                <select id="f-type" name="feest">
                   <option>Verjaardag</option>
                   <option>Trouwfeest</option>
                   <option>Communie / lentefeest</option>
@@ -311,11 +311,11 @@
               </div>
               <div class="field">
                 <label for="f-time">Uur van het feest</label>
-                <input id="f-time" type="time" />
+                <input id="f-time" name="uur" type="time" />
               </div>
               <div class="field">
-                <label for="f-place">Gemeente</label>
-                <input id="f-place" type="text" placeholder="bv. Bonheiden" />
+                <label for="f-place">Gemeente *</label>
+                <input id="f-place" name="gemeente" type="text" placeholder="bv. Bonheiden" required />
               </div>
               <div class="field field-full">
                 <fieldset>
@@ -329,23 +329,28 @@
                 </fieldset>
               </div>
               <div class="field">
-                <label for="f-name">Naam</label>
-                <input id="f-name" type="text" autocomplete="name" />
+                <label for="f-name">Naam *</label>
+                <input id="f-name" name="naam" type="text" autocomplete="name" required />
               </div>
               <div class="field">
-                <label for="f-email">E-mail</label>
-                <input id="f-email" type="email" autocomplete="email" />
+                <label for="f-email">E-mail *</label>
+                <input id="f-email" name="email" type="email" autocomplete="email" required />
               </div>
               <div class="field">
-                <label for="f-phone">Telefoon</label>
-                <input id="f-phone" type="tel" autocomplete="tel" />
+                <label for="f-phone">Telefoon *</label>
+                <input id="f-phone" name="telefoon" type="tel" autocomplete="tel" required />
               </div>
               <div class="field field-full">
                 <label for="f-msg">Nog iets wat we moeten weten?</label>
-                <textarea id="f-msg" rows="3" placeholder="Allergieën, wensen, de plek waar de Ape kan staan…"></textarea>
+                <textarea id="f-msg" name="opmerking" rows="3" placeholder="Allergieën, wensen, de plek waar de Ape kan staan…"></textarea>
+              </div>
+              <div class="form-trap" aria-hidden="true">
+                <label for="f-website">Laat dit veld leeg</label>
+                <input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off" />
               </div>
               <button type="submit" class="btn btn-primary">Verstuur aanvraag</button>
-              <p class="form-note">We gebruiken je gegevens alleen om je aanvraag te beantwoorden. Zie onze privacyverklaring.</p>
+              <p class="form-status" role="status" aria-live="polite"></p>
+              <p class="form-note">We gebruiken je gegevens alleen om je aanvraag te beantwoorden. Zie onze <a href="/privacyverklaring">privacyverklaring</a>.</p>
             </form>
           </div>
         </div>

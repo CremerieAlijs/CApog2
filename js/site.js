@@ -152,12 +152,57 @@
     });
   });
 
-  // TODO (to-do forms): versturen via Google Apps Script
-  document.querySelectorAll('form[data-pending-form]').forEach((form) => {
-    form.addEventListener('submit', (e) => {
+  // ------------------------------------------------------------------
+  // Formulieren versturen naar het Google Apps Script (zie google/LEESMIJ.md)
+  // ------------------------------------------------------------------
+  // Webadres van de Apps Script-implementatie (…/exec). Leeg = nog niet gekoppeld.
+  const FORM_ENDPOINT = '';
+  const geladen = Date.now();
+
+  window.AlijsForms = {
+    async send(payload) {
+      if (!FORM_ENDPOINT) {
+        throw new Error('Online bestellen wordt binnenkort gekoppeld. Mail ons intussen via hallo@alijs.be.');
+      }
+      // text/plain: geen extra CORS-controle nodig bij Apps Script
+      const res = await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({ ...payload, duur: Date.now() - geladen }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!data.ok) throw new Error(data.fout || 'Er liep iets mis. Probeer het later opnieuw of mail naar hallo@alijs.be.');
+      return data;
+    },
+  };
+
+  // De Ape: aanvraagformulier
+  document.querySelectorAll('form[data-ape-form]').forEach((form) => {
+    const status = form.querySelector('.form-status');
+    const knop = form.querySelector('button[type="submit"]');
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
       if (form.inert) return;
-      alert('Het formulier wordt nog gekoppeld. Mail ons intussen via hallo@alijs.be.');
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+      const velden = Object.fromEntries(new FormData(form));
+      knop.disabled = true;
+      status.className = 'form-status';
+      status.textContent = 'Even geduld…';
+      try {
+        await window.AlijsForms.send({ soort: 'ape', ...velden });
+        form.innerHTML = `
+          <div class="form-done field-full" role="status">
+            <h3>Bedankt, we hebben je aanvraag goed ontvangen!</h3>
+            <p>We kijken of de Ape vrij is en laten zo snel mogelijk iets weten.</p>
+          </div>`;
+      } catch (err) {
+        status.className = 'form-status is-error';
+        status.textContent = err.message;
+        knop.disabled = false;
+      }
     });
   });
 })();

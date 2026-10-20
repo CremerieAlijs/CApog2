@@ -3961,3 +3961,18 @@ h1.tagline,
   filter: none !important;
   opacity: 0.95;
 }
+
+/* Formulieren: onzichtbaar spamveld, statusmelding, bedankt */
+.form-trap {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.form-status { grid-column: 1 / -1; font-weight: 600; min-height: 0; }
+.form-status:empty { display: none; }
+.form-status.is-error { color: var(--brand-red); }
+
+.form-done h3 { font-size: 1.3rem; margin-bottom: 0.5rem; }

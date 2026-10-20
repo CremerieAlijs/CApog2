@@ -240,7 +240,12 @@
                 Je bestelling is pas definitief als wij ze per mail bevestigd hebben.
                 Betalen doe je bij het afhalen.
               </p>
+              <div class="form-trap" aria-hidden="true">
+                <label for="f-website">Laat dit veld leeg</label>
+                <input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off" />
+              </div>
               <button type="submit" class="btn btn-primary">Bestelling versturen</button>
+              <p class="form-status" id="order-status" role="status" aria-live="polite"></p>
             </form>
           </div>
         </div>
@@ -276,17 +281,6 @@
         <p class="field-error" id="picker-error" role="alert"></p>
         <button type="submit" class="btn btn-primary">In mijn bestelling</button>
       </form>
-    </dialog>
-
-    <!-- Voorbeeld van de mail (alleen in de schets) -->
-    <dialog class="picker" id="mail-preview" aria-labelledby="mail-title">
-      <div class="picker-form">
-        <button type="button" class="picker-close" data-close aria-label="Sluiten">×</button>
-        <!-- TODO (to-do forms): vervangen door een echte bevestiging na versturen -->
-        <h2 id="mail-title">Voorbeeld van de bestelmail</h2>
-        <pre class="mail-body" id="mail-body"></pre>
-        <p class="hint">Er is niets verstuurd. In de echte site gaat dit naar hallo@alijs.be en krijgt de klant een ontvangstbevestiging.</p>
-      </div>
     </dialog>
 
     <!-- Live gegevens uit de Google Sheet (onzichtbaar, voor de smaken en uren) -->
