@@ -3939,3 +3939,25 @@ h1.tagline,
   margin-top: -4.5rem;
   padding-top: clamp(7rem, 12vw, 9rem);
 }
+
+/* Logo als lichte SVG: kleurt mee met het thema in plaats van met filters */
+.logo-svg {
+  display: block;
+  height: auto;
+  aspect-ratio: 245.345 / 218.006;
+  overflow: visible;
+}
+
+.logo.logo-svg {
+  color: var(--primary-dark);
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.12)) !important;
+  transition: color var(--theme-transition);
+}
+
+.nav-home .logo-svg { width: 2.75rem; height: auto; filter: none !important; }
+
+.footer-logo.logo-svg {
+  color: var(--brand-white);
+  filter: none !important;
+  opacity: 0.95;
+}
