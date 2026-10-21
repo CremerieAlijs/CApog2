@@ -48,9 +48,9 @@
       off: 'Onze ijstaarten zijn er even niet. Kom gerust langs voor een bolletje.',
     },
     eindejaar: {
-      title: 'Eindejaarstaarten',
-      closed: 'Bestellen voor het eindejaar is afgesloten.',
-      off: '',
+      title: 'Feestdagen en stronken',
+      closed: 'Bestellen voor de feestdagen is afgesloten.',
+      off: 'Onze taarten voor de feestdagen zijn er even niet. Kom gerust langs voor een bolletje.',
     },
     ape: {
       title: 'De Ape',

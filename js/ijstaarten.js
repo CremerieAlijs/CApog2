@@ -1,7 +1,11 @@
-// Cremerie Alijs — ijstaarten: keuzevenster, mandje en afhaalregels.
-// TODO (to-do forms): bestelling versturen via Google Apps Script; nu tonen we de mail ter controle.
+// Cremerie Alijs — ijstaarten (/ijstaarten) en feestdagen (/feestdagen): keuzevenster, mandje en afhaalregels.
+// Elke pagina heeft een eigen mandje en een eigen bestelling.
 (function () {
   'use strict';
+
+  const XMAS = document.body.dataset.pageSegment === 'eindejaar';
+  const PAGE_SEGMENT = XMAS ? 'eindejaar' : 'ijstaarten';
+  const STORE_KEY = XMAS ? 'alijs-feesttaarten' : 'alijs-taarten';
 
   const LEAD_DAYS = 14;
 
@@ -54,22 +58,22 @@
   // ---------------------------------------------------------------- mandje
   let cart = [];
   try {
-    cart = JSON.parse(localStorage.getItem('alijs-taarten') || '[]');
+    cart = JSON.parse(localStorage.getItem(STORE_KEY) || '[]');
   } catch (e) {
     cart = [];
   }
-  // Taarten die niet meer in het aanbod zitten, vallen uit het mandje
-  cart = cart.filter((item) => item && PRODUCTS[item.id] && (item.id !== 'ijstaart' || item.maat));
+  // Taarten die niet (meer) op deze pagina horen, vallen uit het mandje
+  cart = cart.filter(
+    (item) => item && PRODUCTS[item.id] && PRODUCTS[item.id].kind === (XMAS ? 'xmas' : 'year') && (item.id !== 'ijstaart' || item.maat)
+  );
 
   const saveCart = () => {
     try {
-      localStorage.setItem('alijs-taarten', JSON.stringify(cart));
+      localStorage.setItem(STORE_KEY, JSON.stringify(cart));
     } catch (e) {
       // zonder opslag werkt het mandje gewoon tot de pagina sluit
     }
   };
-
-  const hasXmas = () => cart.some((item) => PRODUCTS[item.id].kind === 'xmas');
 
   const renderCart = () => {
     const list = $('#cart-list');
@@ -164,13 +168,12 @@
   };
 
   const setupPickup = () => {
-    const xmas = hasXmas();
-    dateInput.hidden = xmas;
-    dateInput.disabled = xmas;
-    dateSelect.hidden = !xmas;
-    dateSelect.disabled = !xmas;
-    if (xmas) {
-      $('#pickup-hint').textContent = 'Eindejaarstaarten haal je af op 24 of 31 december, tussen 10 en 14 uur.';
+    dateInput.hidden = XMAS;
+    dateInput.disabled = XMAS;
+    dateSelect.hidden = !XMAS;
+    dateSelect.disabled = !XMAS;
+    if (XMAS) {
+      $('#pickup-hint').textContent = 'Je haalt je taart af op 24 of 31 december, tussen 10 en 14 uur.';
       dateSelect.innerHTML = '';
       dateSelect.append(new Option('Kies een dag', ''));
       XMAS_DAYS.filter((d) => d >= minDate()).forEach((d) => dateSelect.append(new Option(longDate(d), d)));
@@ -262,11 +265,9 @@
       detail = picker.querySelector('input[name="combo"]:checked').value;
       keuze.combinatie = detail;
     }
-    const wasXmas = hasXmas();
     cart.push({ id: current, name, detail, qty, price, ...keuze });
     saveCart();
     renderCart();
-    if (wasXmas !== hasXmas()) setupPickup();
     picker.close();
     $('#bestellen').scrollIntoView({ behavior: 'smooth' });
   });
@@ -275,13 +276,13 @@
   $('#order-form').addEventListener('submit', async (e) => {
     e.preventDefault();
     const form = e.currentTarget;
-    if (segment('ijstaarten') !== 'aan') return;
+    if (segment(PAGE_SEGMENT) !== 'aan') return;
     if (cart.length === 0) {
       pickupError.textContent = 'Je bestelling is nog leeg. Kies eerst een taart.';
       $('#bestellen').scrollIntoView({ behavior: 'smooth' });
       return;
     }
-    const day = hasXmas() ? dateSelect.value : dateInput.value;
+    const day = XMAS ? dateSelect.value : dateInput.value;
     if (!day || !timeSelect.value) {
       pickupError.textContent ||= 'Kies een dag en een uur om af te halen.';
       timeSelect.focus();
@@ -330,13 +331,11 @@
     btn.addEventListener('click', () => btn.closest('dialog').close())
   );
 
-  // ---------------------------------------------------------------- eindejaar (aan / gesloten / uit)
-  // Zichtbaar of niet regelt schets.js via data-segment="eindejaar"; hier alleen of je kan bestellen.
+  // ---------------------------------------------------------------- feestdagen (aan / gesloten / uit)
+  // Pagina zichtbaar of niet regelt site.js; hier ook de besteldeadline van 6 december.
   const applyXmas = () => {
-    const canOrder =
-      segment('ijstaarten') === 'aan' &&
-      segment('eindejaar') === 'aan' &&
-      iso(new Date()) <= XMAS_ORDER_DEADLINE;
+    if (!XMAS) return;
+    const canOrder = segment('eindejaar') === 'aan' && iso(new Date()) <= XMAS_ORDER_DEADLINE;
     document.querySelectorAll('[data-open-product^="buche"], [data-open-product^="rond"]').forEach((btn) => {
       btn.dataset.label ||= btn.textContent;
       btn.disabled = !canOrder;
@@ -344,20 +343,21 @@
     });
     const note = $('#xmas-closed');
     note.hidden = canOrder;
-    note.textContent = canOrder ? '' : window.AlijsSegments?.message('eindejaar') || 'Bestellen voor het eindejaar is afgesloten.';
-    if (!canOrder && hasXmas()) {
-      cart = cart.filter((item) => PRODUCTS[item.id].kind !== 'xmas');
+    note.textContent = canOrder ? '' : window.AlijsSegments?.message('eindejaar') || 'Bestellen voor de feestdagen is afgesloten.';
+    if (!canOrder && cart.length) {
+      cart = [];
       saveCart();
       renderCart();
     }
-    setupPickup();
   };
 
   window.AlijsSegments?.onChange(applyXmas);
 
   // De uren komen pas binnen na het laden van de Sheet
-  new MutationObserver(setupPickup).observe($('#opening-hours'), { childList: true });
+  const hoursList = $('#opening-hours');
+  if (hoursList) new MutationObserver(setupPickup).observe(hoursList, { childList: true });
 
   renderCart();
   applyXmas();
+  setupPickup();
 })();

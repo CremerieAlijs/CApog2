@@ -88,10 +88,15 @@ class Fout extends Error {}
 
 // ---------------------------------------------------------------- ijstaarten
 function bewaarIjstaarten(d) {
-  controleerStand('ijstaarten');
-  const klant = controleerKlant(d);
   const items = Array.isArray(d.items) ? d.items.slice(0, 20) : [];
   if (!items.length) throw new Fout('Je bestelling is leeg.');
+  // Ijstaarten (/ijstaarten) en feestdagen (/feestdagen) zijn aparte bestellingen met elk hun eigen stand
+  const soorten = items.map((it) => (TAARTEN[it.id] || {}).soort);
+  if (soorten.indexOf('jaar') !== -1 && soorten.indexOf('eindejaar') !== -1) {
+    throw new Fout('Bestel ijstaarten en taarten voor de feestdagen apart.');
+  }
+  controleerStand(soorten.indexOf('eindejaar') !== -1 ? 'eindejaar' : 'ijstaarten');
+  const klant = controleerKlant(d);
 
   let totaal = 0;
   let eindejaar = false;
@@ -112,7 +117,6 @@ function bewaarIjstaarten(d) {
       smaak = s1 === s2 ? `volledig ${s1}` : `${s1} & ${s2}`;
     } else {
       eindejaar = true;
-      controleerStand('eindejaar');
       if (vandaag() > EINDEJAAR.bestelTot) throw new Fout('Bestellen voor het eindejaar is afgesloten.');
       if (COMBINATIES.indexOf(it.combinatie) === -1) throw new Fout('Kies een geldige smaakcombinatie.');
       naam = taart.naam;
