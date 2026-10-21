@@ -57,6 +57,8 @@ In de Sheet **WebsiteData** (die met smaken en uren) staat het tabblad **Instell
 - `stand` kies je in het keuzelijstje: **aan** (bestellen kan), **gesloten** (zichtbaar, bestellen kan niet)
   of **uit** (verdwijnt van de site). Het overzicht ernaast (kolom E–F) legt het nog eens uit.
 - `boodschap` leeg = standaardtekst; anders toont de site jouw tekst.
+- `ijstaarten` = pagina /ijstaarten (hele jaar), `eindejaar` = pagina /feestdagen (stronken en feesttaarten).
+  Ze staan los van elkaar: je kan bv. enkel de feestdagen openzetten. Een bestelling met beide soorten weigert het script.
 - Website (`js/site.js`) en script (`CONFIG.instellingenCsv`) lezen dit tabblad. Een wijziging staat
   na ongeveer 5 minuten online. Verander de namen in kolom A niet.
 

@@ -39,9 +39,9 @@ const TABS = {
 // Aanbod en prijzen: het script rekent zelf, de prijzen van de website tellen niet
 const TAARTEN = {
   ijstaart: { naam: 'Ronde ijstaart', soort: 'jaar', maten: { '4-6': ['4 à 6 personen', 31.75], '8-10': ['8 à 10 personen', 57.15] } },
-  buche34: { naam: 'Bûche, 3 à 4 personen', soort: 'eindejaar', prijs: 22.25 },
+  buche34: { naam: 'Stronk (bûche), 3 à 4 personen', soort: 'eindejaar', prijs: 22.25 },
   rond46: { naam: 'Ronde taart, 4 à 6 personen', soort: 'eindejaar', prijs: 31.75 },
-  buche68: { naam: 'Bûche, 6 à 8 personen', soort: 'eindejaar', prijs: 44.45 },
+  buche68: { naam: 'Stronk (bûche), 6 à 8 personen', soort: 'eindejaar', prijs: 44.45 },
   rond810: { naam: 'Ronde taart, 8 à 10 personen', soort: 'eindejaar', prijs: 57.15 },
 };
 const COMBINATIES = ['Vanille & chocolade', 'Vanille & mokka', 'Hazelnoot & chocolade (vegan)', 'Framboos & stracciatella'];
@@ -117,7 +117,7 @@ function bewaarIjstaarten(d) {
       smaak = s1 === s2 ? `volledig ${s1}` : `${s1} & ${s2}`;
     } else {
       eindejaar = true;
-      if (vandaag() > EINDEJAAR.bestelTot) throw new Fout('Bestellen voor het eindejaar is afgesloten.');
+      if (vandaag() > EINDEJAAR.bestelTot) throw new Fout('Bestellen voor de feestdagen is afgesloten.');
       if (COMBINATIES.indexOf(it.combinatie) === -1) throw new Fout('Kies een geldige smaakcombinatie.');
       naam = taart.naam;
       prijs = taart.prijs;
@@ -129,7 +129,7 @@ function bewaarIjstaarten(d) {
 
   const dag = datum(d.dag);
   if (eindejaar) {
-    if (EINDEJAAR.dagen.indexOf(dag) === -1) throw new Fout('Eindejaarstaarten haal je af op 24 of 31 december.');
+    if (EINDEJAAR.dagen.indexOf(dag) === -1) throw new Fout('Taarten voor de feestdagen haal je af op 24 of 31 december.');
   } else if (dag < plusDagen(MIN_DAGEN_OP_VOORHAND)) {
     throw new Fout('Bestel minstens twee weken op voorhand.');
   } else if (gesloten(dag)) {

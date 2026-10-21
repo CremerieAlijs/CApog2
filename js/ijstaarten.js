@@ -24,9 +24,9 @@
   ];
   const PRODUCTS = {
     ijstaart: { name: 'IJstaart', kind: 'year' },
-    buche34: { name: 'Bûche, 3 à 4 personen', kind: 'xmas', price: 22.25 },
+    buche34: { name: 'Stronk (bûche), 3 à 4 personen', kind: 'xmas', price: 22.25 },
     rond46: { name: 'Ronde taart, 4 à 6 personen', kind: 'xmas', price: 31.75 },
-    buche68: { name: 'Bûche, 6 à 8 personen', kind: 'xmas', price: 44.45 },
+    buche68: { name: 'Stronk (bûche), 6 à 8 personen', kind: 'xmas', price: 44.45 },
     rond810: { name: 'Ronde taart, 8 à 10 personen', kind: 'xmas', price: 57.15 },
   };
 
