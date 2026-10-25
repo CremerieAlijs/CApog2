@@ -3976,3 +3976,24 @@ h1.tagline,
 .form-status.is-error { color: var(--brand-red); }
 
 .form-done h3 { font-size: 1.3rem; margin-bottom: 0.5rem; }
+
+/* --- Webshop: tegels naar cremerie-alijs.be --- */
+.shop-grid .tile-ijs { grid-column: span 3; grid-row: span 2; }
+.shop-grid .tile-taart { grid-column: span 3; background: radial-gradient(circle at 80% 30%, #a6899f 0%, transparent 55%), var(--brand-mauve); }
+.shop-grid .tile-taart h3, .shop-grid .tile-taart p { max-width: 55%; }
+.shop-grid .tile-taart .tile-taart-art { width: 40%; top: auto; bottom: 1.25rem; }
+.shop-grid .tile-feest { grid-column: span 3; background: radial-gradient(circle at 80% 20%, #c4473a 0%, transparent 55%), var(--brand-red); color: var(--brand-white); }
+.shop-grid .tile-bezoek { grid-column: span 6; min-height: 0; flex-direction: row; align-items: center; gap: 1.5rem; }
+.shop-grid .tile-bezoek p { flex: 1; max-width: none; }
+@media (max-width: 60rem) {
+  .shop-grid .tile-ijs { grid-column: span 2; grid-row: span 1; min-height: 20rem; }
+  .shop-grid .tile-taart { grid-column: span 2; }
+  .shop-grid .tile-feest, .shop-grid .tile-bezoek { grid-column: span 1; }
+  .shop-grid .tile-bezoek { flex-direction: column; align-items: stretch; justify-content: space-between; }
+}
+@media (max-width: 34rem) {
+  .shop-grid .tile { grid-column: span 1 !important; }
+  .shop-grid .tile-taart h3, .shop-grid .tile-taart p { max-width: none; }
+  .shop-grid .tile-taart { padding-top: 9rem; }
+  .shop-grid .tile-taart .tile-taart-art { top: 1.25rem; bottom: auto; left: 1.25rem; right: auto; width: 45%; }
+}

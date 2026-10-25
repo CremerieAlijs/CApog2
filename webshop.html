@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="nl-BE">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Webshop: literpotten en ijstaarten bestellen — Cremerie Alijs</title>
+    <meta name="description" content="Bestel literpotten, ijstaarten en ons eindejaarsaanbod in de webshop van Cremerie Alijs. Afhalen en betalen in onze zaak in Rijmenam." />
+
+    <!-- Canonical & SEO -->
+    <link rel="canonical" href="https://alijs.be/webshop" />
+    <meta name="robots" content="index,follow" />
+    <meta name="geo.region" content="BE-VAN" />
+    <meta name="geo.placename" content="Rijmenam" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Cremerie Alijs" />
+    <meta property="og:title" content="Webshop: literpotten en ijstaarten bestellen — Cremerie Alijs" />
+    <meta property="og:description" content="Bestel literpotten, ijstaarten en ons eindejaarsaanbod in de webshop van Cremerie Alijs. Afhalen en betalen in onze zaak in Rijmenam." />
+    <meta property="og:url" content="https://alijs.be/webshop" />
+    <meta property="og:image" content="https://alijs.be/img/logo-alijs-640.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/img/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- Fonts -->
+    <link rel="preload" href="fonts/montserrat-latin.woff2" as="font" type="font/woff2" crossorigin />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css" />
+      <style>
+      /* schets: tegels voor de webshop */
+      .shop-grid .tile-ijs { grid-column: span 3; grid-row: span 2; }
+      .shop-grid .tile-taart { grid-column: span 3; background: radial-gradient(circle at 80% 30%, #a6899f 0%, transparent 55%), var(--brand-mauve); }
+      .shop-grid .tile-taart h3, .shop-grid .tile-taart p { max-width: 55%; }
+      .shop-grid .tile-taart .tile-taart-art { width: 40%; top: auto; bottom: 1.25rem; }
+      .shop-grid .tile-feest { grid-column: span 3; background: radial-gradient(circle at 80% 20%, #c4473a 0%, transparent 55%), var(--brand-red); color: var(--brand-white); }
+      .shop-grid .tile-bezoek { grid-column: span 6; min-height: 0; flex-direction: row; align-items: center; gap: 1.5rem; }
+      .shop-grid .tile-bezoek p { flex: 1; max-width: none; }
+      @media (max-width: 60rem) {
+        .shop-grid .tile-ijs { grid-column: span 2; grid-row: span 1; min-height: 20rem; }
+        .shop-grid .tile-taart { grid-column: span 2; }
+        .shop-grid .tile-feest, .shop-grid .tile-bezoek { grid-column: span 1; }
+        .shop-grid .tile-bezoek { flex-direction: column; align-items: stretch; justify-content: space-between; }
+      }
+      @media (max-width: 34rem) {
+        .shop-grid .tile { grid-column: span 1 !important; }
+        .shop-grid .tile-taart h3, .shop-grid .tile-taart p { max-width: none; }
+        .shop-grid .tile-taart { padding-top: 9rem; }
+        .shop-grid .tile-taart .tile-taart-art { top: 1.25rem; bottom: auto; left: 1.25rem; right: auto; width: 45%; }
+      }
+    </style>
+  </head>
+
+<body >
+
+    <div class="floating-shapes" aria-hidden="true">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+      <div class="shape shape-4"></div>
+      <div class="shape shape-5"></div>
+    </div>
+
+    <nav class="site-nav" aria-label="Hoofdmenu">
+      <a href="/" class="nav-home">
+        <svg class="logo logo-svg" viewBox="0 0 245.345 218.006" aria-hidden="true" focusable="false"><use href="img/logo-alijs.svg#logo"/></svg>
+        Cremerie Alijs
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="/ons-ijs">Ons ijs &amp; zoetigheden</a></li>
+        <li><a href="/menukaart">Menukaart</a></li>
+        <li><a href="/webshop" aria-current="page">Webshop</a></li>
+        <li data-segment="ape"><a href="/ape">De Ape</a></li>
+        <li><a href="/over-ons">Over ons</a></li>
+        <li><a href="/#bezoek">Bezoek ons</a></li>
+        <li><a href="https://www.cremerie-alijs.be" class="nav-cta">Naar de webshop</a></li>
+      </ul>
+    </nav>
+
+    <header class="hero hero-ape">
+      <div class="hero-ape-grid">
+        <div>
+          <span class="section-badge section-badge-soft">Webshop</span>
+          <h1>Ambachtelijk ijs, om thuis van te genieten</h1>
+          <p class="lead">
+            Bestel je literpotten en ijstaarten online en haal ze af in onze zaak in Rijmenam.
+            Betalen doe je bij het afhalen.
+          </p>
+          <div class="hero-actions">
+            <a href="https://www.cremerie-alijs.be" class="btn btn-light">Naar de webshop</a>
+            <a href="#aanbod" class="btn btn-ghost">Bekijk het aanbod</a>
+          </div>
+        </div>
+        <div class="cake-art" data-inline-svg="img/ijstaart.svg"></div>
+      </div>
+    </header>
+
+    <main>
+      <section class="section section-cream curve-top" id="aanbod">
+        <div class="section-inner">
+          <div class="section-head center">
+            <span class="section-badge">Ons aanbod</span>
+            <h2>Kies wat je wil bestellen</h2>
+            <p>Je bestelt op cremerie-alijs.be, onze webshop. Daar zie je bij elk product hoeveel tijd we nodig hebben.</p>
+          </div>
+
+          <div class="bento shop-grid">
+            <a href="https://www.cremerie-alijs.be/ons-assortiment/literpotten" class="tile tile-ijs tile-has-photo">
+              <img class="tile-photo" src="img/foto/ijspot-thuis.jpg" alt="Een pot Alijs-ijs thuis op tafel" />
+              <span class="tile-arrow" aria-hidden="true">→</span>
+              <h3>Literpotten</h3>
+              <p>Roomijs, sorbet en vegan ijs per liter. Bestel minstens 1 week op voorhand.</p>
+            </a>
+
+            <a href="https://www.cremerie-alijs.be/ons-assortiment/ijstaarten" class="tile tile-taart">
+              <div class="tile-taart-art" data-inline-svg="img/ijstaart.svg"></div>
+              <span class="tile-arrow" aria-hidden="true">→</span>
+              <h3>IJstaarten</h3>
+              <p>Rond of langwerpig, voor 3 tot 10 personen, met jouw favoriete smaken. Bestel minstens 2 weken op voorhand.</p>
+            </a>
+
+            <a href="https://www.cremerie-alijs.be/ons-assortiment/eindejaarsfeesten" class="tile tile-feest">
+              <span class="tile-arrow" aria-hidden="true">→</span>
+              <h3>Eindejaarsfeesten</h3>
+              <p>Stronken (bûches) en feesttaarten. Ons eindejaarsaanbod volgt binnenkort.</p>
+            </a>
+
+            <a href="https://www.cremerie-alijs.be/praktische-informatie-afhalen" class="tile tile-bezoek">
+              <h3>Praktische info &amp; afhalen</h3>
+              <p>Termijnen, afhalen, bewaren en betalen.</p>
+              <span class="tile-arrow" aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-cream-alt">
+        <div class="section-inner">
+          <div class="section-head">
+            <span class="section-badge">Zo werkt het</span>
+            <h2>Online bestellen, vers afhalen</h2>
+          </div>
+          <dl class="facts-list">
+            <div><dt>Bestellen</dt><dd>Kies je producten en afhaalmoment in de <a href="https://www.cremerie-alijs.be">webshop</a>. Bij elk product staat hoe lang op voorhand je moet bestellen.</dd></div>
+            <div><dt>Afhalen</dt><dd>In onze zaak, Lange Dreef 9 in Rijmenam, tijdens de <a href="/#bezoek">openingsuren</a>.</dd></div>
+            <div><dt>Betalen</dt><dd>Doe je bij het afhalen, in de winkel.</dd></div>
+            <div><dt>Meteen in de diepvries</dt><dd>Neem een koeltas mee en zet je ijs thuis meteen in de diepvries.</dd></div>
+            <div><dt>Allergieën</dt><dd>Bekijk onze <a href="/allergenen">allergenenlijst</a> of laat het ons weten bij je bestelling.</dd></div>
+            <div><dt>Dringend of iets speciaals?</dt><dd>Bel ons op <a href="tel:+32469725829">0469 72 58 29</a> of mail naar <a href="mailto:hallo@alijs.be">hallo@alijs.be</a>.</dd></div>
+          </dl>
+        </div>
+      </section>
+    </main>
+
+    <ul id="tastes-list" hidden></ul>
+    <ul id="opening-hours" hidden></ul>
+
+    <footer class="site-footer">
+      <div class="footer-wave" aria-hidden="true">
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+          <path d="M0,60 C360,120 720,0 1080,60 C1260,90 1380,90 1440,60 L1440,120 L0,120 Z"/>
+        </svg>
+      </div>
+      <div class="footer-inner">
+        <svg class="footer-logo logo-svg" viewBox="0 0 245.345 218.006" role="img" aria-label="Cremerie Alijs"><use href="img/logo-alijs.svg#logo"/></svg>
+        <div class="footer-social">
+          <a
+            href="https://instagram.com/cremeriealijs"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-link"
+          >
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+            @cremeriealijs
+          </a>
+        </div>
+        <div class="footer-links">
+          <a href="/menukaart" class="footer-allergens-link">Menukaart</a>
+          <a href="/allergenen" class="footer-allergens-link">Allergenen</a>
+          <a href="/algemene-voorwaarden" class="footer-allergens-link">Algemene voorwaarden</a>
+          <a href="/privacyverklaring" class="footer-allergens-link">Privacyverklaring</a>
+        </div>
+        <p class="copyright">
+          <span class="copyright-main">© 2026 Cremerie Alijs. Alle rechten voorbehouden.</span>
+          <span class="copyright-subtle">Cremerie Alijs wordt uitgebaat door BraMa BV (Ondernemingsnummer: 1031.725.256).</span>
+        </p>
+      </div>
+    </footer>
+
+    <nav class="mobile-bar" aria-label="Snelle acties">
+      <a href="https://www.cremerie-alijs.be">Naar de webshop</a>
+      <a href="/ape" data-segment="ape">Boek de Ape</a>
+    </nav>
+
+    <!-- Scripts -->
+    <script src="js/theme.js" defer></script>
+    <script src="js/data.js" defer></script>
+    <script src="js/site.js" defer></script>
+
+    <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d3cd907cdd074509a7761a4e3cfab11b"}'></script><!-- End Cloudflare Web Analytics -->
+  </body>
+</html>
