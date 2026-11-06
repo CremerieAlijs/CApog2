@@ -133,6 +133,48 @@
     </header>
 
     <main>
+      <!-- Eindejaar: aan/gesloten/uit via de rij "eindejaar" in de Instellingen-tab -->
+      <section class="section section-feest" id="eindejaar" data-segment="eindejaar" hidden>
+        <div class="section-inner feest-card">
+          <div class="feest-photo">
+            <img src="img/foto/stronk-framboos.jpg" alt="IJsstronk stracciatella-framboos met rode spiegel, slagroom en kerstversiering in chocolade" width="1400" height="1050" />
+          </div>
+          <div class="feest-text">
+            <span class="section-badge">Eindejaar</span>
+            <h2>Bestel je ijsstronk voor de feestdagen</h2>
+            <p class="feest-lead">Ambachtelijke ijsstronken, een ronde feestijstaart en stronkjes voor één persoon. Er zijn ook vegan en suikerarme opties.</p>
+
+            <ul class="feest-aanbod">
+              <li>
+                <img src="img/foto/stronk-hazelnoot-vegan.jpg" alt="" loading="lazy" />
+                <span><strong>IJsstronken</strong> 3 à 4 of 6 à 8 personen<em>vanaf € 25</em></span>
+              </li>
+              <li>
+                <img src="img/foto/feestijstaart-rond.jpg" alt="" loading="lazy" />
+                <span><strong>Feestijstaart</strong> rond, 8 à 10 personen<em>€ 56</em></span>
+              </li>
+              <li>
+                <img src="img/foto/stronkjes-dubai.jpg" alt="" loading="lazy" />
+                <span><strong>Stronkje</strong> voor één persoon<em>€ 8,50</em></span>
+              </li>
+            </ul>
+
+            <div data-segment-when="eindejaar:aan">
+              <p class="feest-info">
+                <strong>Bestellen kan tot en met zondag 6 december.</strong>
+                Afhalen in onze zaak in Rijmenam op 19, 20, 23, 24, 26, 27, 30 of 31 december.
+              </p>
+              <div class="feest-actions">
+                <a href="https://www.cremerie-alijs.be/ons-assortiment/eindejaarsfeesten" class="btn btn-feest">Bestel online</a>
+                <a href="#bezoek" class="btn btn-ghost">Bestel in de cremerie</a>
+              </div>
+              <p class="feest-small">Liever persoonlijk? Bestel gewoon aan de toog in de cremerie, of bel ons op <a href="tel:+32469725829">0469 72 58 29</a>.</p>
+            </div>
+            <p class="feest-closed" data-segment-when="eindejaar:gesloten" data-segment-message="eindejaar"></p>
+          </div>
+        </div>
+      </section>
+
       <!-- Smaak van het moment (blijft, uit Google Sheet) -->
       <section class="section section-moment" id="smaak">
         <div class="section-inner">
@@ -266,7 +308,8 @@
 
     <!-- Vaste knoppen op gsm -->
     <nav class="mobile-bar" aria-label="Snelle acties">
-      <a href="https://www.cremerie-alijs.be">Naar de webshop</a>
+      <a href="https://www.cremerie-alijs.be/ons-assortiment/eindejaarsfeesten" data-segment-when="eindejaar:aan" hidden>Eindejaarstaarten</a>
+      <a href="https://www.cremerie-alijs.be" data-segment-when="eindejaar:gesloten,uit">Naar de webshop</a>
       <a href="/ape" data-segment="ape">Boek de Ape</a>
     </nav>
 

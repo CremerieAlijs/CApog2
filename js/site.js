@@ -79,6 +79,15 @@
     document.querySelectorAll('[data-segment]').forEach((el) => {
       el.hidden = stand(el.dataset.segment) === 'uit';
     });
+    // data-segment-when="eindejaar:aan" of "eindejaar:gesloten,uit": enkel zichtbaar in die stand(en)
+    document.querySelectorAll('[data-segment-when]').forEach((el) => {
+      const [key, values = ''] = el.dataset.segmentWhen.split(':');
+      el.hidden = !values.split(',').includes(stand(key));
+    });
+    document.querySelectorAll('[data-segment-message]').forEach((el) => {
+      const key = el.dataset.segmentMessage;
+      el.textContent = message(key, stand(key) === 'uit' ? 'off' : 'closed');
+    });
 
     const page = document.body.dataset.pageSegment;
     document.querySelectorAll('.segment-notice').forEach((el) => el.remove());

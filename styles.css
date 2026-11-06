@@ -3997,3 +3997,118 @@ h1.tagline,
   .shop-grid .tile-taart { padding-top: 9rem; }
   .shop-grid .tile-taart .tile-taart-art { top: 1.25rem; bottom: auto; left: 1.25rem; right: auto; width: 45%; }
 }
+
+/* ==========================================================================
+   Eindejaar: feestblok op de homepage (aan/gesloten/uit via de Sheet)
+   ========================================================================== */
+.section-feest {
+  background: var(--bg-main);
+  padding-top: clamp(1rem, 4vw, 2rem);
+  padding-bottom: clamp(0.5rem, 2vw, 1rem);
+  transition: background-color var(--theme-transition);
+}
+
+.feest-card {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  align-items: center;
+  padding: clamp(1.25rem, 4vw, 3rem);
+  border-radius: clamp(1.5rem, 4vw, 3rem);
+  background: radial-gradient(circle at 85% 15%, #7e3a1d 0%, transparent 55%), var(--brand-chocolate);
+  color: var(--brand-white);
+  border: 3px solid var(--brand-golden);
+  box-shadow:
+    0 24px 70px -22px rgba(40, 10, 4, 0.6),
+    0 0 0 10px color-mix(in srgb, var(--brand-golden) 22%, transparent);
+}
+
+.feest-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: clamp(1.25rem, 3vw, 2.25rem);
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.6);
+}
+
+.feest-text .section-badge {
+  background: var(--brand-golden);
+  color: var(--brand-chocolate);
+  margin-bottom: 1rem;
+}
+
+.feest-text h2 {
+  font-size: clamp(1.8rem, 4.2vw, 2.9rem);
+  line-height: 1.08;
+  margin-bottom: 0.75rem;
+  color: var(--brand-white);
+}
+
+.feest-lead { font-size: 1.08rem; margin-bottom: 1.25rem; }
+
+.feest-aanbod {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.feest-aanbod li {
+  display: grid;
+  gap: 0.5rem;
+  padding: 0.5rem 0.5rem 0.75rem;
+  border-radius: 1.25rem;
+  background: rgba(255, 255, 255, 0.1);
+  font-size: 0.88rem;
+  line-height: 1.35;
+}
+
+.feest-aanbod img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 0.9rem;
+}
+
+.feest-aanbod strong { display: block; font-size: 1rem; }
+.feest-aanbod em { display: block; font-style: normal; font-weight: 700; color: var(--brand-golden); margin-top: 0.15rem; }
+.feest-aanbod span { padding-inline: 0.25rem; }
+
+.feest-info { margin-bottom: 1.25rem; }
+.feest-info strong { display: block; }
+
+.feest-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1rem; }
+
+.btn-feest { background: var(--brand-golden); color: var(--brand-chocolate); }
+.btn-feest:hover { background: var(--brand-white); }
+.feest-actions .btn-ghost { border-color: var(--brand-white); color: var(--brand-white); }
+
+.feest-small { font-size: 0.92rem; opacity: 0.9; }
+.feest-small a { color: inherit; font-weight: 600; }
+
+.feest-closed {
+  padding: 0.85rem 1.25rem;
+  border-radius: 1rem;
+  background: var(--brand-golden);
+  color: var(--brand-chocolate);
+  font-weight: 600;
+}
+
+@media (max-width: 60rem) {
+  .feest-card { grid-template-columns: 1fr; }
+  .feest-photo { max-width: 34rem; }
+}
+
+@media (max-width: 34rem) {
+  .feest-aanbod { grid-template-columns: 1fr; }
+  .feest-aanbod li { grid-template-columns: 5.5rem 1fr; align-items: center; padding: 0.5rem; }
+  .feest-actions .btn { flex: 1 1 100%; justify-content: center; }
+}
+
+/* Webshop-tegel eindejaar met foto */
+.shop-grid .tile-feest.tile-has-photo { background: var(--brand-red); padding-top: 13rem; }
+.shop-grid .tile-feest .tile-photo { height: 12rem; bottom: auto; }
+.shop-grid .tile-feest.tile-has-photo::before { background: linear-gradient(to bottom, rgba(40, 20, 10, 0.35), rgba(40, 20, 10, 0) 30%); }
