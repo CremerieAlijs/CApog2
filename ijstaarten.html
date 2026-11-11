@@ -2,12 +2,278 @@
 <html lang="nl-BE">
   <head>
     <meta charset="utf-8" />
-    <title>Onze webshop — Cremerie Alijs</title>
-    <meta name="robots" content="noindex" />
-    <link rel="canonical" href="https://alijs.be/webshop" />
-    <meta http-equiv="refresh" content="0; url=/webshop" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>IJstaart bestellen in Rijmenam — Cremerie Alijs</title>
+    <meta name="description" content="Ambachtelijke ijstaart op maat voor 3 tot 10 personen, met je eigen smaken. Bestel online bij Cremerie Alijs en haal af in Rijmenam, vlakbij Bonheiden, Keerbergen en Mechelen." />
+
+    <!-- Canonical & SEO -->
+    <link rel="canonical" href="https://alijs.be/ijstaarten" />
+    <meta name="robots" content="index,follow" />
+    <meta name="geo.region" content="BE-VAN" />
+    <meta name="geo.placename" content="Rijmenam" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Cremerie Alijs" />
+    <meta property="og:title" content="IJstaart bestellen in Rijmenam — Cremerie Alijs" />
+    <meta property="og:description" content="Ambachtelijke ijstaart op maat voor 3 tot 10 personen, met je eigen smaken. Bestel online en haal af in Rijmenam." />
+    <meta property="og:url" content="https://alijs.be/ijstaarten" />
+    <meta property="og:image" content="https://alijs.be/img/foto/ijstaart-rond-aardbei.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/img/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- Fonts -->
+    <link rel="preload" href="fonts/montserrat-latin.woff2" as="font" type="font/woff2" crossorigin />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .taart-foto { border-radius: 1.5rem; overflow: hidden; box-shadow: 0 1rem 2.5rem rgba(0,0,0,0.18); }
+      .taart-foto img { display: block; width: 100%; height: auto; }
+      .taart-stappen { row-gap: 2.75rem; margin-top: 1.5rem; }
+      .regio { text-align: center; max-width: 40rem; margin: 0 auto; }
+    </style>
+
+    <!-- Gestructureerde gegevens voor Google: de veelgestelde vragen (zonder prijzen) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "FAQPage",
+            "mainEntity": [
+              { "@type": "Question", "name": "Hoe lang op voorhand moet ik een ijstaart bestellen?", "acceptedAnswer": { "@type": "Answer", "text": "Bestel minstens twee weken op voorhand. Is het dringender? Bel ons op 0469 72 58 29, vaak is er meer mogelijk." } },
+              { "@type": "Question", "name": "Kunnen jullie de ijstaart versieren voor een verjaardag?", "acceptedAnswer": { "@type": "Answer", "text": "Ja. Vermeld de gelegenheid bij je bestelling, dan decoreren we je ijstaart speciaal voor die dag." } },
+              { "@type": "Question", "name": "Hebben jullie een vegan of suikerarme ijstaart?", "acceptedAnswer": { "@type": "Answer", "text": "Ja. Er zijn altijd vegan en suikerarme smaken, en ook een vegan bodem. In de webshop zie je bij elke smaak of hij vegan is." } },
+              { "@type": "Question", "name": "Hoe bewaar ik de ijstaart?", "acceptedAnswer": { "@type": "Answer", "text": "Neem een koeltas mee en zet de taart thuis meteen in de diepvries. Zet ze een kwartiertje voor het aansnijden in de koelkast." } },
+              { "@type": "Question", "name": "Waar haal ik de ijstaart af?", "acceptedAnswer": { "@type": "Answer", "text": "In onze zaak aan de Lange Dreef 9 in Rijmenam, tijdens de openingsuren. Vanuit Bonheiden, Keerbergen, Boortmeerbeek, Putte of Mechelen ben je er snel." } }
+            ]
+          }
+        ]
+      }
+    </script>
   </head>
-  <body>
-    <p>Bestellen doe je nu in <a href="/webshop">onze webshop</a>.</p>
+
+<body>
+
+    <div class="floating-shapes" aria-hidden="true">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+      <div class="shape shape-4"></div>
+      <div class="shape shape-5"></div>
+    </div>
+
+    <nav class="site-nav" aria-label="Hoofdmenu">
+      <a href="/" class="nav-home">
+        <svg class="logo logo-svg" viewBox="0 0 245.345 218.006" aria-hidden="true" focusable="false"><use href="img/logo-alijs.svg#logo"/></svg>
+        Cremerie Alijs
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="/ons-ijs">Ons ijs &amp; zoetigheden</a></li>
+        <li><a href="/menukaart">Menukaart</a></li>
+        <li><a href="/webshop">Webshop</a></li>
+        <li data-segment="ape"><a href="/ape">De Ape</a></li>
+        <li><a href="/over-ons">Over ons</a></li>
+        <li><a href="/#bezoek">Bezoek ons</a></li>
+        <li><a href="https://www.cremerie-alijs.be" class="nav-cta">Naar de webshop</a></li>
+      </ul>
+    </nav>
+
+    <header class="hero hero-ape">
+      <div class="hero-ape-grid">
+        <div>
+          <span class="section-badge section-badge-soft">IJstaarten</span>
+          <h1>IJstaart op maat, gemaakt in Rijmenam</h1>
+          <p class="lead">
+            Een ronde of langwerpige ijstaart voor 3 tot 10 personen, met jouw favoriete smaken.
+            We maken ze zelf, met verse melk van de boerderij. Bestel online en haal af in onze zaak.
+          </p>
+          <div class="hero-actions">
+            <a href="https://www.cremerie-alijs.be/ons-assortiment/ijstaarten" class="btn btn-light">Bestel je ijstaart</a>
+            <a href="#zo-werkt-het" class="btn btn-ghost">Zo werkt het</a>
+          </div>
+        </div>
+        <div class="taart-foto">
+          <img src="img/foto/ijstaart-rond-aardbei.jpg" alt="Ronde ijstaart aardbei-vanille voor 8 à 10 personen, met slagroom, chocoladeblokjes en de naam Leo in chocolade" width="1400" height="1050" />
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Eindejaar: zelfde schakelaar als op de homepage (rij "eindejaar" in de Instellingen-tab) -->
+      <section class="section section-feest" id="eindejaar" data-segment="eindejaar" hidden>
+        <div class="section-inner feest-card">
+          <div class="feest-photo">
+            <img src="img/foto/feestijstaart-rond.jpg" alt="Ronde feestijstaart vanille-chocolade met chocoladespiegel en pralines" width="1400" height="1050" />
+          </div>
+          <div class="feest-text">
+            <span class="section-badge">Eindejaar</span>
+            <h2>IJsstronk of feestijstaart voor de feestdagen</h2>
+            <p class="feest-lead">Ambachtelijke ijsstronken (bûches), een ronde feestijstaart en stronkjes voor één persoon. Er zijn ook vegan en suikerarme opties.</p>
+            <div data-segment-when="eindejaar:aan">
+              <p class="feest-info"><strong>Bestellen kan tot en met zondag 6 december.</strong> Afhalen tussen 19 en 31 december.</p>
+              <div class="feest-actions">
+                <a href="https://www.cremerie-alijs.be/ons-assortiment/eindejaarsfeesten" class="btn btn-feest">Bestel online</a>
+              </div>
+            </div>
+            <p class="feest-closed" data-segment-when="eindejaar:gesloten" data-segment-message="eindejaar"></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Zo bestel je: het proces, zonder prijzen of smakenlijst (die staan in de webshop en veranderen) -->
+      <section class="section section-cream curve-top" id="zo-werkt-het">
+        <div class="section-inner">
+          <div class="section-head center">
+            <span class="section-badge">Zo werkt het</span>
+            <h2>Zo stel je je ijstaart samen</h2>
+            <p>Je kiest alles zelf in onze webshop. Wij maken ze zelf en zetten ze klaar tegen je afhaaldag.</p>
+          </div>
+          <ol class="steps taart-stappen">
+            <li>
+              <h3>Kies de vorm en grootte</h3>
+              <p>Rond of langwerpig, voor een klein gezelschap of een feest tot 10 personen.</p>
+            </li>
+            <li>
+              <h3>Kies je smaken</h3>
+              <p>Combineer twee smaken uit ons assortiment, of kies er één. Er zijn altijd vegan en suikerarme smaken bij.</p>
+            </li>
+            <li>
+              <h3>Kies afwerking en bodem</h3>
+              <p>Een spiegel of meringue erop, en een krokante bodem eronder als je dat lekker vindt.</p>
+            </li>
+            <li>
+              <h3>Vertel ons wat je viert</h3>
+              <p>Verjaardag, communie of jubileum: vermeld het bij je bestelling, dan versieren we je taart voor die gelegenheid.</p>
+            </li>
+            <li>
+              <h3>Kies je afhaaldag en betaal</h3>
+              <p>Bestel minstens twee weken op voorhand en betaal meteen online. Je krijgt een bevestiging van ons.</p>
+            </li>
+            <li>
+              <h3>Haal je taart af in Rijmenam</h3>
+              <p>In een stevige taartdoos, tijdens de openingsuren. Neem een koeltas mee en zet de taart thuis meteen in de diepvries.</p>
+            </li>
+          </ol>
+          <div class="hero-actions" style="justify-content:center; margin-top:2.5rem">
+            <a href="https://www.cremerie-alijs.be/ons-assortiment/ijstaarten" class="btn btn-primary">Stel je ijstaart samen</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Goed om te weten -->
+      <section class="section section-cream-alt">
+        <div class="section-inner">
+          <div class="section-head">
+            <span class="section-badge">Goed om te weten</span>
+            <h2>Voor je je taart komt halen</h2>
+          </div>
+          <dl class="facts-list">
+            <div><dt>Waar</dt><dd>In onze zaak, Lange Dreef 9 in Rijmenam, tijdens de <a href="/#bezoek">openingsuren</a>.</dd></div>
+            <div><dt>Aansnijden</dt><dd>Zet je taart een kwartiertje voor het aansnijden in de koelkast. Zo snijdt ze mooi en proef je de smaak het best.</dd></div>
+            <div><dt>Allergieën</dt><dd>Bekijk onze <a href="/allergenen">allergenenlijst</a> of laat het ons weten bij je bestelling.</dd></div>
+            <div><dt>Dringend of iets speciaals?</dt><dd>Bel ons op <a href="tel:+32469725829">0469 72 58 29</a> of kom langs. Vaak is er meer mogelijk.</dd></div>
+          </dl>
+        </div>
+      </section>
+
+      <!-- FAQ (dezelfde vragen staan in de gegevens voor Google) -->
+      <section class="section section-cream-alt">
+        <div class="section-inner">
+          <div class="section-head center">
+            <span class="section-badge">Vragen</span>
+            <h2>Wat je misschien nog wil weten</h2>
+          </div>
+          <div class="faq">
+            <details>
+              <summary>Hoe lang op voorhand moet ik een ijstaart bestellen?</summary>
+              <p>Bestel minstens twee weken op voorhand. Is het dringender? Bel ons op <a href="tel:+32469725829">0469 72 58 29</a>, vaak is er meer mogelijk.</p>
+            </details>
+            <details>
+              <summary>Kunnen jullie de ijstaart versieren voor een verjaardag?</summary>
+              <p>Ja. Vermeld de gelegenheid bij je bestelling, dan decoreren we je ijstaart speciaal voor die dag.</p>
+            </details>
+            <details>
+              <summary>Hebben jullie een vegan of suikerarme ijstaart?</summary>
+              <p>Ja. Er zijn altijd vegan en suikerarme smaken, en ook een vegan bodem. In de webshop zie je bij elke smaak of hij vegan is.</p>
+            </details>
+            <details>
+              <summary>Hoe bewaar ik de ijstaart?</summary>
+              <p>Neem een koeltas mee en zet de taart thuis meteen in de diepvries. Zet ze een kwartiertje voor het aansnijden in de koelkast.</p>
+            </details>
+            <details>
+              <summary>Waar haal ik de ijstaart af?</summary>
+              <p>In onze zaak aan de Lange Dreef 9 in Rijmenam, tijdens de openingsuren. Vanuit Bonheiden, Keerbergen, Boortmeerbeek, Putte of Mechelen ben je er snel.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- Afsluiter -->
+      <section class="section section-cream">
+        <div class="section-inner regio">
+          <h2>Een ijstaart voor je feest?</h2>
+          <p>Verjaardag, communie, familiefeest of gewoon zondag: stel je taart samen en haal ze af in Rijmenam.</p>
+          <div class="hero-actions" style="justify-content:center">
+            <a href="https://www.cremerie-alijs.be/ons-assortiment/ijstaarten" class="btn btn-primary">Bestel je ijstaart</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <ul id="tastes-list" hidden></ul>
+    <ul id="opening-hours" hidden></ul>
+
+    <footer class="site-footer">
+      <div class="footer-wave" aria-hidden="true">
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+          <path d="M0,60 C360,120 720,0 1080,60 C1260,90 1380,90 1440,60 L1440,120 L0,120 Z"/>
+        </svg>
+      </div>
+      <div class="footer-inner">
+        <svg class="footer-logo logo-svg" viewBox="0 0 245.345 218.006" role="img" aria-label="Cremerie Alijs"><use href="img/logo-alijs.svg#logo"/></svg>
+        <div class="footer-social">
+          <a
+            href="https://instagram.com/cremeriealijs"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-link"
+          >
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+            @cremeriealijs
+          </a>
+        </div>
+        <div class="footer-links">
+          <a href="/menukaart" class="footer-allergens-link">Menukaart</a>
+          <a href="/allergenen" class="footer-allergens-link">Allergenen</a>
+          <a href="/algemene-voorwaarden" class="footer-allergens-link">Algemene voorwaarden</a>
+          <a href="/privacyverklaring" class="footer-allergens-link">Privacyverklaring</a>
+        </div>
+        <p class="copyright">
+          <span class="copyright-main">© 2026 Cremerie Alijs. Alle rechten voorbehouden.</span>
+          <span class="copyright-subtle">Cremerie Alijs wordt uitgebaat door BraMa BV (Ondernemingsnummer: 1031.725.256).</span>
+        </p>
+      </div>
+    </footer>
+
+    <nav class="mobile-bar" aria-label="Snelle acties">
+      <a href="https://www.cremerie-alijs.be">Naar de webshop</a>
+      <a href="/ape" data-segment="ape">Boek de Ape</a>
+    </nav>
+
+    <!-- Scripts -->
+    <script src="js/theme.js" defer></script>
+    <script src="js/data.js" defer></script>
+    <script src="js/site.js" defer></script>
+
+    <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d3cd907cdd074509a7761a4e3cfab11b"}'></script><!-- End Cloudflare Web Analytics -->
   </body>
 </html>
