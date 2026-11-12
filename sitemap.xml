@@ -49,6 +49,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://alijs.be/b2b</loc>
+    <lastmod>2026-11-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://alijs.be/algemene-voorwaarden</loc>
     <lastmod>2026-10-21</lastmod>
     <changefreq>yearly</changefreq>
