@@ -3978,24 +3978,43 @@ h1.tagline,
 .form-done h3 { font-size: 1.3rem; margin-bottom: 0.5rem; }
 
 /* --- Webshop: tegels naar cremerie-alijs.be --- */
-.shop-grid .tile-ijs { grid-column: span 3; grid-row: span 2; }
-.shop-grid .tile-taart { grid-column: span 3; background: radial-gradient(circle at 80% 30%, #a6899f 0%, transparent 55%), var(--brand-mauve); }
-.shop-grid .tile-taart h3, .shop-grid .tile-taart p { max-width: 55%; }
-.shop-grid .tile-taart .tile-taart-art { width: 40%; top: auto; bottom: 1.25rem; }
-.shop-grid .tile-feest { grid-column: span 3; background: radial-gradient(circle at 80% 20%, #c4473a 0%, transparent 55%), var(--brand-red); color: var(--brand-white); }
+/* Feestdagen bovenaan (foto boven, kleurvlak onder), daaronder literpotten en ijstaarten */
+.shop-grid .tile-feest,
+.shop-grid .tile-sint,
+.shop-grid .tile-ijs,
+.shop-grid .tile-taart { grid-column: span 3; }
+.shop-grid .tile-ijs,
+.shop-grid .tile-taart { min-height: 17rem; }
+.shop-grid .tile-feest { background: var(--brand-red); color: var(--brand-white); }
+.shop-grid .tile-sint { background: var(--brand-navy); color: var(--brand-white); }
+.shop-grid .tile-feest.tile-has-photo,
+.shop-grid .tile-sint.tile-has-photo { padding-top: 17rem; }
+.shop-grid .tile-feest .tile-photo,
+.shop-grid .tile-sint .tile-photo { height: 16rem; bottom: auto; }
+.shop-grid .tile-feest.tile-has-photo::before,
+.shop-grid .tile-sint.tile-has-photo::before { background: linear-gradient(to bottom, rgba(40, 20, 10, 0.35), rgba(40, 20, 10, 0) 30%); }
+/* Na Sinterklaas: eindejaar alleen over de volle breedte, foto links */
+.shop-grid:has(.tile-sint[hidden]) .tile-feest { grid-column: span 6; padding-top: clamp(1.25rem, 2.5vw, 2rem); padding-left: calc(50% + clamp(1.25rem, 2.5vw, 2rem)); min-height: 20rem; }
+.shop-grid:has(.tile-sint[hidden]) .tile-feest .tile-photo { width: 50%; height: 100%; }
 .shop-grid .tile-bezoek { grid-column: span 6; min-height: 0; flex-direction: row; align-items: center; gap: 1.5rem; }
 .shop-grid .tile-bezoek p { flex: 1; max-width: none; }
 @media (max-width: 60rem) {
-  .shop-grid .tile-ijs { grid-column: span 2; grid-row: span 1; min-height: 20rem; }
-  .shop-grid .tile-taart { grid-column: span 2; }
-  .shop-grid .tile-feest, .shop-grid .tile-bezoek { grid-column: span 1; }
-  .shop-grid .tile-bezoek { flex-direction: column; align-items: stretch; justify-content: space-between; }
+  .shop-grid .tile-feest,
+  .shop-grid .tile-sint,
+  .shop-grid .tile-ijs,
+  .shop-grid .tile-taart { grid-column: span 1; grid-row: span 1; }
+  .shop-grid .tile-feest.tile-has-photo,
+  .shop-grid .tile-sint.tile-has-photo { padding-top: 13rem; }
+  .shop-grid .tile-feest .tile-photo,
+  .shop-grid .tile-sint .tile-photo { height: 12rem; }
+  .shop-grid:has(.tile-sint[hidden]) .tile-feest { grid-column: span 2; }
+  .shop-grid .tile-bezoek { grid-column: span 2; }
 }
 @media (max-width: 34rem) {
   .shop-grid .tile { grid-column: span 1 !important; }
-  .shop-grid .tile-taart h3, .shop-grid .tile-taart p { max-width: none; }
-  .shop-grid .tile-taart { padding-top: 9rem; }
-  .shop-grid .tile-taart .tile-taart-art { top: 1.25rem; bottom: auto; left: 1.25rem; right: auto; width: 45%; }
+  .shop-grid:has(.tile-sint[hidden]) .tile-feest { padding-top: 13rem; padding-left: clamp(1.25rem, 2.5vw, 2rem); }
+  .shop-grid:has(.tile-sint[hidden]) .tile-feest .tile-photo { width: 100%; height: 12rem; }
+  .shop-grid .tile-bezoek { flex-direction: column; align-items: stretch; }
 }
 
 /* ==========================================================================
@@ -4108,7 +4127,3 @@ h1.tagline,
   .feest-actions .btn { flex: 1 1 100%; justify-content: center; }
 }
 
-/* Webshop-tegel eindejaar met foto */
-.shop-grid .tile-feest.tile-has-photo { background: var(--brand-red); padding-top: 13rem; }
-.shop-grid .tile-feest .tile-photo { height: 12rem; bottom: auto; }
-.shop-grid .tile-feest.tile-has-photo::before { background: linear-gradient(to bottom, rgba(40, 20, 10, 0.35), rgba(40, 20, 10, 0) 30%); }

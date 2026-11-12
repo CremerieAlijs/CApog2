@@ -18,6 +18,14 @@
   }
 
   // ------------------------------------------------------------------
+  // Tijdelijke blokken: data-show-until="2026-12-06" verdwijnt na die dag
+  // ------------------------------------------------------------------
+  const today = new Date().toLocaleDateString('sv-SE', { timeZone: 'Europe/Brussels' });
+  document.querySelectorAll('[data-show-until]').forEach((el) => {
+    if (today > el.dataset.showUntil) el.hidden = true;
+  });
+
+  // ------------------------------------------------------------------
   // Lijntekeningen inline laden zodat ze de themakleur (currentColor) volgen
   // ------------------------------------------------------------------
   document.querySelectorAll('[data-inline-svg]').forEach(async (el) => {
