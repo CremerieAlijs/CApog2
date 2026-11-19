@@ -18,8 +18,15 @@ const CONFIG = {
   tijdzone: 'Europe/Brussels',
   // Gepubliceerde CSV van het tabblad "Instellingen" in de website-Sheet (leeg = niet controleren)
   instellingenCsv: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTFHVIq4m5c0quhYDrSoDoYVxV-0LsN5h1ZSzv-hOBFIN6YRFZjkKB59JNWyeLoR7et0p6kHFPgoyxG/pub?gid=1900226224&single=true&output=csv',
-  bewaarMaanden: 12,
+  // Privacy: na zoveel maanden worden naam, telefoon, e-mail en opmerking leeggemaakt
+  naamLeegNaMaanden: 12,
+  // Fiscus: de rest van de rij (datum, bestelling, totaal …) blijft zoveel jaar na het einde
+  // van het kalenderjaar staan en wordt daarna gewist
+  wissenNaJaren: 10,
 };
+
+// Kolommen met persoonsgegevens die opruimen() leegmaakt
+const PERSOONSKOLOMMEN = ['Naam', 'Telefoon', 'E-mail', 'Opmerking'];
 
 const STATUSSEN = ['Nieuw', 'Bevestigd', 'Afgehaald', 'Geannuleerd'];
 
@@ -267,18 +274,51 @@ function setup() {
   ScriptApp.newTrigger('opruimen').timeBased().onMonthDay(1).atHour(4).create();
 }
 
-// Verwijdert bestellingen ouder dan CONFIG.bewaarMaanden (privacy)
+// Maandelijks (trigger, naam niet wijzigen). Telt vanaf de laatste van "Ontvangen" en de afhaal-/feestdag:
+// - ouder dan CONFIG.naamLeegNaMaanden → naam, telefoon, e-mail en opmerking leeg (privacy)
+// - ouder dan CONFIG.wissenNaJaren na het einde van dat kalenderjaar → rij gewist (fiscale bewaarplicht)
 function opruimen() {
-  const grens = new Date();
-  grens.setMonth(grens.getMonth() - CONFIG.bewaarMaanden);
+  const nu = new Date();
+  const naamGrens = new Date(nu);
+  naamGrens.setMonth(naamGrens.getMonth() - CONFIG.naamLeegNaMaanden);
+  const laatsteWisJaar = nu.getFullYear() - CONFIG.wissenNaJaren - 1;
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   Object.keys(TABS).forEach((k) => {
     const blad = ss.getSheetByName(TABS[k].naam);
-    if (!blad) return;
-    for (let r = blad.getLastRow(); r >= 2; r -= 1) {
-      const ontvangen = blad.getRange(r, 1).getValue();
-      if (ontvangen instanceof Date && ontvangen < grens) blad.deleteRow(r);
+    if (!blad || blad.getLastRow() < 2) return;
+    const kol = TABS[k].kolommen;
+    const waarden = blad.getRange(2, 1, blad.getLastRow() - 1, kol.length).getValues();
+    // Van onder naar boven, zodat wissen de rijnummers erboven niet verschuift
+    for (let i = waarden.length - 1; i >= 0; i -= 1) {
+      const ref = referentieDatum_(waarden[i], kol);
+      if (!ref) continue;
+      if (ref.getFullYear() <= laatsteWisJaar) blad.deleteRow(i + 2);
+      else if (ref < naamGrens) naamLeegmaken_(blad, i + 2, waarden[i], kol);
     }
+  });
+}
+
+// Laatste van "Ontvangen" en de afhaal-/feestdag; null als er geen bruikbare datum is
+function referentieDatum_(rij, kol) {
+  const ontvangen = rij[kol.indexOf('Ontvangen')];
+  if (!(ontvangen instanceof Date)) return null;
+  const dagKol = kol.indexOf('Afhaaldag') !== -1 ? kol.indexOf('Afhaaldag') : kol.indexOf('Datum feest');
+  const dag = naarDatum_(rij[dagKol]);
+  return dag && dag > ontvangen ? dag : ontvangen;
+}
+
+// Sheets maakt van "2026-12-24" soms een datum, soms blijft het tekst
+function naarDatum_(v) {
+  if (v instanceof Date) return v;
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(v == null ? '' : v).trim());
+  return m ? new Date(Number(m[1]), Number(m[2]) - 1, Number(m[3]), 23, 59) : null;
+}
+
+// Enkel de cellen met persoonsgegevens; de rest van de rij blijft onaangeroerd
+function naamLeegmaken_(blad, rijNr, rij, kol) {
+  PERSOONSKOLOMMEN.forEach((naam) => {
+    const c = kol.indexOf(naam);
+    if (c !== -1 && rij[c] !== '' && rij[c] != null) blad.getRange(rijNr, c + 1).clearContent();
   });
 }
 

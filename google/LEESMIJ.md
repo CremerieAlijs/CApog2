@@ -42,7 +42,12 @@ Werk overal ingelogd als **hallo@alijs.be**.
 - Zet de **Status** op **Bevestigd** → de klant krijgt automatisch één bevestigingsmail.
   De kolom *Bevestiging verstuurd* toont wanneer.
 - Daarna: **Afgehaald** of **Geannuleerd** (er vertrekt dan geen mail).
-- Bestellingen ouder dan 12 maanden worden elke maand automatisch gewist (privacy).
+- Elke maand ruimt het script automatisch op. Het telt vanaf de ontvangstdag of de afhaal-/feestdag (de laatste van de twee):
+  - na **12 maanden** worden *Naam*, *Telefoon*, *E-mail* en *Opmerking* leeggemaakt (privacy);
+  - datum, bestelling, totaal, gasten, formule … blijven staan voor de boekhouding;
+  - na **10 jaar** (na het einde van dat kalenderjaar) wordt de hele rij gewist (fiscale bewaarplicht).
+  Termijnen aanpassen: `naamLeegNaMaanden` en `wissenNaJaren` bovenaan het script.
+  Na een wijziging hieraan volstaat plakken en **Opslaan**: de maandelijkse trigger op `opruimen` blijft werken.
 
 ## 6. Onderdelen aan/uit
 
