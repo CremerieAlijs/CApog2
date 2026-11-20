@@ -4180,3 +4180,31 @@ h1.tagline,
   .feest-actions .btn { flex: 1 1 100%; justify-content: center; }
 }
 
+
+/* Eindejaar op /webshop: landingsblok bovenaan (advertenties), zonder productlijst */
+.section-feest-shop { padding-top: clamp(0.75rem, 3vw, 1.5rem); scroll-margin-top: 5.5rem; }
+.feest-facts { list-style: none; display: grid; gap: 0.35rem; margin-bottom: 1.1rem; }
+.feest-facts li { padding-left: 1.4rem; position: relative; }
+.feest-facts li::before { content: ''; position: absolute; left: 0; top: 0.5em; width: 0.6rem; height: 0.6rem; border-radius: 50%; background: var(--brand-golden); }
+.feest-facts strong { color: var(--brand-golden); font-size: 1.08rem; }
+.feest-vegan {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 1.25rem;
+  background: rgba(255, 255, 255, 0.1);
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+.vegan-blad { flex: 0 0 auto; width: 1.6rem; height: auto; aspect-ratio: 212 / 294; fill: var(--brand-sage-light); }
+.btn-feest-groot { font-size: 1.12rem; padding: 1.05rem 2rem; }
+@media (max-width: 34rem) {
+  .section-feest-shop .feest-photo img { aspect-ratio: 5 / 2; object-position: center 60%; }
+  .section-feest-shop .feest-card { gap: 1.1rem; }
+  .section-feest-shop .feest-text .section-badge { display: none; }
+  .section-feest-shop .feest-lead { font-size: 1rem; margin-bottom: 0.9rem; }
+  .section-feest-shop .feest-vegan { margin-bottom: 1.1rem; }
+  .btn-feest-groot { display: flex; justify-content: center; width: 100%; }
+}
