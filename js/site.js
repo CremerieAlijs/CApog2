@@ -259,12 +259,75 @@
       if (!data.ok) throw new Error(data.fout || 'Er liep iets mis. Probeer het later opnieuw of mail naar hallo@alijs.be.');
       return data;
     },
+
+    // Ape-aanvraag: rechtstreeks naar de databank van het bestelplatform.
+    // Is de databank niet bereikbaar (storing, gepauzeerd), dan gaat de aanvraag naar het
+    // oude Apps Script, zodat er niets verloren gaat. Een fout in de invoer komt gewoon terug.
+    async sendApe(velden) {
+      let res;
+      try {
+        const stop = new AbortController();
+        const wekker = setTimeout(() => stop.abort(), 15000);
+        res = await fetch(DATABANK.indienen, {
+          method: 'POST',
+          headers: { apikey: DATABANK.sleutel, 'Content-Type': 'application/json' },
+          body: JSON.stringify({ gegevens: { ...velden, duur: Date.now() - geladen } }),
+          signal: stop.signal,
+        });
+        clearTimeout(wekker);
+      } catch {
+        res = null;
+      }
+      const data = res && res.ok ? await res.json().catch(() => null) : null;
+      if (!data || typeof data.ok !== 'boolean') return this.send(apeVoorOudScript(velden));
+      if (!data.ok) throw new Error(data.fout || 'Er liep iets mis. Probeer het later opnieuw of mail naar hallo@alijs.be.');
+      return data;
+    },
   };
+
+  // Databank van het bestelplatform (project AlijsBestellingen). De publishable key hoort in een
+  // webpagina: hij mag alleen ape_aanvraag_indienen uitvoeren en niets lezen (afgedwongen in de
+  // databank zelf). Zet hier NOOIT een geheime sleutel (sb_secret of service_role).
+  const DATABANK = {
+    indienen: 'https://uzzdrcypwwhztqisogyd.supabase.co/rest/v1/rpc/ape_aanvraag_indienen',
+    sleutel: 'sb_publishable_qrs_tLxI7oWtfB-xw8AGQA_E36EKSuv',
+  };
+
+  // Het oude script kent alleen "gemeente" en "opmerking": de nieuwe velden gaan mee in de opmerking.
+  function apeVoorOudScript(v) {
+    const extra = [
+      `Adres: ${v.straat || ''}, ${v.postcode || ''} ${v.gemeente || ''}`,
+      `Binnen of buiten: ${v.locatie || '?'}`,
+      'Doorgang 200 cm, plaats 200 × 300 cm en stopcontact binnen 20 m: bevestigd',
+      v.klanttype === 'bedrijf' ? `Bedrijf, btw ${v.btw || '?'}` : 'Particulier',
+      '(Databank was niet bereikbaar: via het oude script binnengekomen.)',
+    ];
+    return {
+      soort: 'ape',
+      ...v,
+      gemeente: `${v.postcode || ''} ${v.gemeente || ''}`.trim(),
+      opmerking: [...extra, v.opmerking].filter(Boolean).join('\n'),
+    };
+  }
 
   // De Ape: aanvraagformulier
   document.querySelectorAll('form[data-ape-form]').forEach((form) => {
     const status = form.querySelector('.form-status');
     const knop = form.querySelector('button[type="submit"]');
+    // Btw-nummer alleen tonen (en verplicht maken) bij "bedrijf"
+    const btwVeld = form.querySelector('[data-btw-veld]');
+    const btwInput = btwVeld && btwVeld.querySelector('input');
+    const toonBtw = () => {
+      if (!btwVeld) return;
+      const bedrijf = form.querySelector('input[name="klanttype"]:checked')?.value === 'bedrijf';
+      btwVeld.hidden = !bedrijf;
+      btwInput.disabled = !bedrijf;
+      btwInput.required = bedrijf;
+    };
+    form.addEventListener('change', (e) => {
+      if (e.target.name === 'klanttype') toonBtw();
+    });
+    toonBtw();
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       if (form.inert) return;
@@ -277,7 +340,7 @@
       status.className = 'form-status';
       status.textContent = 'Even geduld…';
       try {
-        await window.AlijsForms.send({ soort: 'ape', ...velden });
+        await window.AlijsForms.sendApe(velden);
         form.innerHTML = `
           <div class="form-done field-full" role="status">
             <h3>Bedankt, we hebben je aanvraag goed ontvangen!</h3>

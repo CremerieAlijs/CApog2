@@ -313,12 +313,34 @@
                 </select>
               </div>
               <div class="field">
-                <label for="f-time">Uur van het feest</label>
+                <label for="f-time">Beginuur</label>
                 <input id="f-time" name="uur" type="time" />
+              </div>
+              <div class="field field-full">
+                <label for="f-street">Adres van het feest: straat en nummer *</label>
+                <input id="f-street" name="straat" type="text" autocomplete="street-address" maxlength="120" placeholder="bv. Dorpsstraat 1" required />
+              </div>
+              <div class="field">
+                <label for="f-postcode">Postcode *</label>
+                <input id="f-postcode" name="postcode" type="text" inputmode="numeric" autocomplete="postal-code" pattern="\s*\d{4}\s*" maxlength="6" placeholder="bv. 2820" required />
               </div>
               <div class="field">
                 <label for="f-place">Gemeente *</label>
-                <input id="f-place" name="gemeente" type="text" placeholder="bv. Bonheiden" required />
+                <input id="f-place" name="gemeente" type="text" autocomplete="address-level2" maxlength="80" placeholder="bv. Bonheiden" required />
+              </div>
+              <div class="field field-full">
+                <fieldset>
+                  <legend>Binnen of buiten? *</legend>
+                  <div class="radio-pills">
+                    <label><input type="radio" name="locatie" value="buiten" required /> Buiten</label>
+                    <label><input type="radio" name="locatie" value="binnen" /> Binnen</label>
+                  </div>
+                  <small class="field-help">Binnen kan, als de Ape er vlot binnen raakt (zie hieronder).</small>
+                </fieldset>
+              </div>
+              <div class="field-full form-checks">
+                <label class="check"><input type="checkbox" name="doorgang" value="ja" required /> <span>Er is overal minstens 200 cm doorgang tot de plaats van de Ape, en daar is een vrije plaats van 200 × 300 cm. *</span></label>
+                <label class="check"><input type="checkbox" name="stroom" value="ja" required /> <span>Er is een stopcontact binnen 20 meter van de plaats van de Ape. *</span></label>
               </div>
               <div class="field field-full">
                 <fieldset>
@@ -330,6 +352,20 @@
                     <label><input type="radio" name="formule" value="weet-niet" /> Weet ik nog niet</label>
                   </div>
                 </fieldset>
+              </div>
+              <div class="field field-full">
+                <fieldset>
+                  <legend>Particulier of bedrijf?</legend>
+                  <div class="radio-pills">
+                    <label><input type="radio" name="klanttype" value="particulier" checked /> Particulier</label>
+                    <label><input type="radio" name="klanttype" value="bedrijf" /> Bedrijf</label>
+                  </div>
+                </fieldset>
+              </div>
+              <div class="field field-full" data-btw-veld hidden>
+                <label for="f-btw">Btw-nummer *</label>
+                <input id="f-btw" name="btw" type="text" maxlength="20" placeholder="bv. BE 0123.456.789" disabled />
+                <small class="field-help">We maken de factuur op naam van je bedrijf.</small>
               </div>
               <div class="field">
                 <label for="f-name">Naam *</label>
@@ -345,7 +381,7 @@
               </div>
               <div class="field field-full">
                 <label for="f-msg">Nog iets wat we moeten weten?</label>
-                <textarea id="f-msg" name="opmerking" rows="3" placeholder="Allergieën, wensen, de plek waar de Ape kan staan…"></textarea>
+                <textarea id="f-msg" name="opmerking" rows="3" maxlength="1000" placeholder="Allergieën, wensen, hoe de Ape het best tot bij jullie raakt…"></textarea>
               </div>
               <div class="form-trap" aria-hidden="true">
                 <label for="f-website">Laat dit veld leeg</label>

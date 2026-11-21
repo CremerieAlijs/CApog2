@@ -4,6 +4,11 @@ Het script `bestellingen.gs` ontvangt de ijstaartbestellingen en Ape-aanvragen v
 zet ze in een privé-spreadsheet en mailt **hallo@alijs.be**. De klant krijgt pas een mail
 wanneer je de status op **Bevestigd** zet.
 
+> **Ape-aanvragen (sinds stap E van AlijsBestellingen):** het Ape-formulier stuurt eerst naar de
+> databank van het bestelplatform (`sendApe` in `js/site.js`). Alleen als die niet bereikbaar is,
+> komt de aanvraag nog via dit script binnen; adres, binnen/buiten en btw staan dan in de opmerking.
+> IJstaarten lopen nog volledig via dit script.
+
 Werk overal ingelogd als **hallo@alijs.be**.
 
 ## 1. Spreadsheet maken

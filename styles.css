@@ -3513,6 +3513,8 @@ h1.tagline,
 
 .check input { margin-top: 0.3rem; accent-color: var(--primary); }
 
+.form-checks { display: grid; gap: 0.6rem; }
+
 .order-note { font-size: 0.92rem; }
 .order-form .btn { justify-self: start; }
 
